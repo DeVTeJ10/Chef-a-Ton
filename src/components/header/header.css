@@ -1,25 +1,35 @@
 .headers{
     display: flex;
-    justify-content: center;
-    gap: 40px;
+    gap:70px;
 }
 
 .heading{
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: -30px;
-    /* border: 2px solid white; */
-    /* padding-left: 40px; */
-    /* padding-right: 40px; */
+    margin-top: -0px;
+    gap: 150px;
+    border: 1px solid gray;
+}
+
+.heading2{
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+.heading3{
+    /* border: 1px solid gray; */
+    /* padding-left: 50px; */
 }
 
 .logos{
     display: flex;
 }
 
-.headings2{
-    padding-left: 90px;
-    padding-right: 90px;
-    border: 1px white solid;
+.inputRecipe{
+    padding-left: 50px;
+    padding-right: 30px;
+    padding-top: 20px;
+    border-radius: 20px;
+    border: 0px;
 }
