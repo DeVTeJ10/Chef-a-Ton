@@ -4,4 +4,22 @@
     gap: 40px;
 }
 
+.heading{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -30px;
+    /* border: 2px solid white; */
+    /* padding-left: 40px; */
+    /* padding-right: 40px; */
+}
 
+.logos{
+    display: flex;
+}
+
+.headings2{
+    padding-left: 90px;
+    padding-right: 90px;
+    border: 1px white solid;
+}
