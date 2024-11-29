@@ -5,3 +5,27 @@ body{
     font-size: larger;
     margin-top: 20px;
 }
+
+.cookingteam{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    border-radius: 50px;
+}
+
+.cooking1ton{
+    border-radius: 50px;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+
+.featTheRecipes{
+    border: 1px solid #6B4F31 ;
+}
+
+.featTheRecipes1{
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
