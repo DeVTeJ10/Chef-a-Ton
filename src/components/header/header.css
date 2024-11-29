@@ -1,15 +1,20 @@
 .headers{
     display: flex;
     gap:70px;
+    border: 1px solid #786C3B;
+    border-radius: 30px;
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
 .heading{
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: -0px;
-    gap: 150px;
-    border: 1px solid gray;
+    margin-top: 40px;
+    gap: 200px;
+    border: 1px solid #786C3B;
+    border-radius: 30px;
 }
 
 .heading2{
@@ -17,19 +22,17 @@
     padding-right: 50px;
 }
 
-.heading3{
-    /* border: 1px solid gray; */
-    /* padding-left: 50px; */
-}
-
 .logos{
     display: flex;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 .inputRecipe{
     padding-left: 50px;
     padding-right: 30px;
-    padding-top: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
     border-radius: 20px;
     border: 0px;
 }

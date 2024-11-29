@@ -13,8 +13,8 @@ const header = () => {
         <div className='logos'>
             <img
             src={logoImg}
-            width={150}
-            height={150}
+            width={80}
+            height={80}
             className="cookingtons"
             alt="Villa"
         />
@@ -26,7 +26,7 @@ const header = () => {
             <h3>About us</h3>
         </div>
         <input
-        placeholder='Input recipe' 
+        placeholder='Search for recipe' 
         className='inputRecipe'></input>
         </div>
         </div>
