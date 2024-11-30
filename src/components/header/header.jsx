@@ -1,4 +1,4 @@
-import React from 'react'
+import { Link } from "react-router-dom";
 import "./header.css"
 import logoImg from "../../images/cookaton.png";
 
@@ -20,8 +20,12 @@ const header = () => {
         />
         </div>
         <div className="headers">
+        <Link to={"/"}>
             <h3>Home</h3>
+          </Link>
+          <Link to={""}>
             <h3>Recipe</h3>
+            </Link>
             <h3>Cooking tips</h3>
             <h3>About us</h3>
         </div>
