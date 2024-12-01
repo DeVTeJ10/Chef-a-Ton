@@ -1,6 +1,7 @@
 import "./home.css"
 import Header from "../../components/header/header";
 import cooking1 from "../../images/cooking1.jpg";
+import sushi from "../../images/foodsushi.jpg";
 
 
 
@@ -31,6 +32,17 @@ const homepage = () => {
         <h4 className="lunch">Lunch</h4>
         <h4 className="dinner">Dinner</h4>
         </div>
+        <img
+              src={sushi}
+              width={427}
+              height={234}
+              className="cooking1ton"
+              alt="Villa"
+          />
+          <h1>Savoury herb infused fish</h1>
+          <p>Indulge in the rich and savory symphony of flavors with our Savory Herb-Infused Fish</p>
+          <p className="timePrep">40 Min - easy prep - 3 serves</p>
+          <button className="viewRecipe">VIEW RECIPE</button>
     </div>
   );
 };
