@@ -68,3 +68,13 @@ body{
     padding: 5px;
     border-radius: 5px;
 }
+
+.viewRecipe{
+    padding: 10px;
+    border-radius: 30px;
+    border: 1px solid black;
+}
+
+.timePrep{
+    font-weight: bold;
+}

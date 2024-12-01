@@ -23,7 +23,7 @@ const header = () => {
         <Link to={"/"}>
             <h3>Home</h3>
           </Link>
-          <Link to={""}>
+          <Link to={"/recipe-page/:id"}>
             <h3>Recipe</h3>
             </Link>
             <h3>Cooking tips</h3>
