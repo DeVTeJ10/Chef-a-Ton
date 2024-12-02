@@ -32,17 +32,28 @@ const homepage = () => {
         <h4 className="lunch">Lunch</h4>
         <h4 className="dinner">Dinner</h4>
         </div>
+
+
+      <div className="cardFood">
+      <div className="foodCard">
         <img
               src={sushi}
-              width={427}
+              width={350}
               height={234}
               className="cooking1ton"
               alt="Villa"
           />
-          <h1>Savoury herb infused fish</h1>
-          <p>Indulge in the rich and savory symphony of flavors with our Savory Herb-Infused Fish</p>
+          {/* <div className="savouryFish"> */}
+          <h3>Savoury herb infused fish</h3>
+          <p className="indulgeFish">Indulge in the rich and savory symphony of flavors with our Savory Herb-Infused Fish</p>
+          {/* </div> */}
+
+        <div className="timePrepRecipe">
           <p className="timePrep">40 Min - easy prep - 3 serves</p>
-          <button className="viewRecipe">VIEW RECIPE</button>
+          <button className="viewRecipeBTN">VIEW RECIPE</button>
+        </div>
+        </div>
+      </div>
     </div>
   );
 };
