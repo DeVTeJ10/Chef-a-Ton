@@ -13,7 +13,7 @@ body{
 }
 
 .cooking1ton{
-    border-radius: 5%;
+    border-radius: 30px;
     padding-left: 50px;
     padding-right: 50px;
 }
@@ -69,12 +69,54 @@ body{
     border-radius: 5px;
 }
 
-.viewRecipe{
-    padding: 10px;
+.viewRecipeBTN{
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 30px;
+    padding-right: 30px;
     border-radius: 30px;
     border: 1px solid black;
+    background-color: #6B4F31;
+    color: white;
+    width: 132px;
 }
 
 .timePrep{
     font-weight: bold;
+}
+
+.timePrepRecipe{
+    display: flex;
+}
+
+.foodCard{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid #6B4F31;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    width: 400px;
+    border-radius: 30px;
+}
+
+.prepRecipe{
+    /* border: 1px solid pink; */
+}
+
+.cardFood{
+    display: flex;
+    justify-content: center;
+}
+
+.savouryFish{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.indulgeFish{
+    display: flex;
+    
 }
