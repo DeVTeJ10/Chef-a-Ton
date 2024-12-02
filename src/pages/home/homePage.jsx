@@ -43,10 +43,10 @@ const homepage = () => {
               className="cooking1ton"
               alt="Villa"
           />
-          {/* <div className="savouryFish"> */}
+          <div className="savouryFish">
           <h3>Savoury herb infused fish</h3>
-          <p className="indulgeFish">Indulge in the rich and savory symphony of flavors with our Savory Herb-Infused Fish</p>
-          {/* </div> */}
+          <p className="indulgeFish">Indulge in the rich and savory symphony of<br></br> flavors with our Savory Herb-Infused Fish</p>
+          </div>
 
         <div className="timePrepRecipe">
           <p className="timePrep">40 Min - easy prep - 3 serves</p>
