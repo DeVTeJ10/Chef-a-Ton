@@ -13,9 +13,19 @@ body{
 }
 
 .cooking1ton{
-    border-radius: 30px;
+    border-radius: 40px;
     padding-left: 50px;
     padding-right: 50px;
+}
+
+.railAway{
+    font-weight: 100;
+}
+
+.healthyRailing{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .featTheRecipes{
