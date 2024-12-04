@@ -20,13 +20,26 @@ body{
 
 .railAway{
     font-weight: 100;
+    margin-top: -20px;
 }
 
 .healthyRailing{
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
+    margin-top: 60px;
+    border: 1px solid #6B4F31;
+    width: 800px;
+    border-radius: 30px;
 }
+
+.railHeal{
+     display: flex;
+     justify-content: center;
+     margin-top: 50px;
+}
+
 
 .featTheRecipes{
     border: 1px solid #6B4F31 ;

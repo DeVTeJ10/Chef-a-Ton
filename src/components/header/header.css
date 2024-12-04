@@ -20,6 +20,7 @@
 .heading2{
     padding-left: 50px;
     padding-right: 50px;
+    /* background-color: #3D4538; */
 }
 
 .logos{
@@ -35,4 +36,8 @@
     padding-bottom: 10px;
     border-radius: 20px;
     border: 0px;
+}
+
+Link{
+    color: #f39237;
 }
