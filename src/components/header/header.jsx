@@ -26,12 +26,12 @@ const header = () => {
           <Link to={"/recipe-page/:id"}>
             <h3>Recipe</h3>
             </Link>
-            <h3>Cooking tips</h3>
-            <h3>About us</h3>
         </div>
         <input
         placeholder='Search for recipe' 
-        className='inputRecipe'></input>
+        className='inputRecipe'/>
+        <button>Login</button>
+        <button>Sign up</button>
         </div>
         </div>
     </div>
