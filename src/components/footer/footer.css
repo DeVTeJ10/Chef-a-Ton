@@ -1,4 +1,4 @@
-.headers{
+.headers1{
     display: flex;
     gap:80px;
     border: 1px solid #786C3B;
@@ -9,25 +9,26 @@
 
 .heading{
     display: flex;
-    padding-left: 120px;
-    /* justify-content: center; */
+    padding-left: 40px;
+    justify-content: center;
     align-items: center;
-    margin-top: 40px;
-    gap: 50px;
+    margin-top: 140px;
+    gap: 90px;
     border: 1px solid #786C3B;
     border-radius: 30px;
 }
 
-.heading2{
+.heading23{
     padding-left: 50px;
     padding-right: 50px;
+    margin-top: 60px;
 }
 
-.logos{
+.logos1{
     display: flex;
     padding-top: 10px;
     padding-bottom: 10px;
-    
+    padding-right: 50px;
 }
 
 .inputRecipe{
