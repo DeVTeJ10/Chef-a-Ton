@@ -56,11 +56,6 @@ body{
     margin-top: 30px;
 }
 
-/* .recipeQuoteLink{
-    display: flex;
-    flex-direction: column;
-} */
-
 .healthWealth{
     display: flex;
     justify-content: center;
@@ -121,10 +116,6 @@ body{
     padding-bottom: 30px;
     width: 400px;
     border-radius: 30px;
-}
-
-.prepRecipe{
-    /* border: 1px solid pink; */
 }
 
 .cardFood{
