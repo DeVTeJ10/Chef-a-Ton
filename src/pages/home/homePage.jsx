@@ -1,6 +1,6 @@
 import "./home.css"
 import Header from "../../components/header/header";
-import Footer from "../../components/footer/footer"
+import Footer from "../../components/footer/Footer";
 import cooking1 from "../../images/cooking1.jpg";
 import sushi from "../../images/foodsushi.jpg";
 
@@ -64,7 +64,7 @@ const homepage = () => {
           <h3 className="railAway"> its mearly a rail away, <a href="https://example.com">login</a> or <a href="https://example.com">signup</a> to save more recipes</h3>
         </div>
     </div>
-      <Footer/>
+    <Footer/>
     </div>
   );
 };

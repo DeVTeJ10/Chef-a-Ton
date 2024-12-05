@@ -5,29 +5,38 @@ import logoImg from "../../images/cookaton.png";
 
 
 
-const footer = () => {
+const header = () => {
   return (
     <div>
         <div className='heading2'>
         <div className='heading'>
         <div className='logos'>
-            <img
-            src={logoImg}
-            width={80}
-            height={80}
-            className="cookingtons"
-            alt="Villa"
-        />
+
         </div>
         <div className="headers">
-        <Link to={"/"}>
-            <h3>Home</h3>
-          </Link>
-          <Link to={"/recipe-page/:id"}>
-            <h3>Recipe</h3>
+          <Link to={"/"} className="homeTag">
+              <h3>Home</h3>
             </Link>
-            <h3>Cooking tips</h3>
-            <h3>About us</h3>
+          <Link to={"/recipe-page/:id"} className="recipeTag">
+                <h3>Recipe</h3>
+            </Link>
+          <Link to={"/recipe-page"} className="aboutUsTag">
+                <h3>About us</h3>
+              </Link>
+          <Link to={"/recipe-page"} className="favouritesTag">
+                <h3>Favourites</h3>
+              </Link>
+        </div>
+
+        <div className="inputinup">
+        <input
+        placeholder='Search for recipe' 
+        className='inputRecipe'/>
+
+      <div className="authentication">
+        <button className="login">Login</button>
+        <button className="signUp">Sign up</button>
+      </div>
         </div>
         </div>
         </div>
@@ -35,4 +44,4 @@ const footer = () => {
   )
 }
 
-export default footer
+export default header

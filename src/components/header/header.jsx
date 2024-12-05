@@ -20,18 +20,30 @@ const header = () => {
         />
         </div>
         <div className="headers">
-        <Link to={"/"}>
-            <h3>Home</h3>
-          </Link>
-          <Link to={"/recipe-page/:id"}>
-            <h3>Recipe</h3>
+          <Link to={"/"} className="homeTag">
+              <h3>Home</h3>
             </Link>
+          <Link to={"/recipe-page/:id"} className="recipeTag">
+                <h3>Recipe</h3>
+            </Link>
+          <Link to={"/recipe-page"} className="aboutUsTag">
+                <h3>About us</h3>
+              </Link>
+          <Link to={"/recipe-page"} className="favouritesTag">
+                <h3>Favourites</h3>
+              </Link>
         </div>
+
+        <div className="inputinup">
         <input
         placeholder='Search for recipe' 
         className='inputRecipe'/>
-        <button>Login</button>
-        <button>Sign up</button>
+
+      <div className="authentication">
+        <button className="login">Login</button>
+        <button className="signUp">Sign up</button>
+      </div>
+        </div>
         </div>
         </div>
     </div>
