@@ -1,6 +1,6 @@
 import "./home.css"
 import Header from "../../components/header/header";
-import Footer from "../../components/footer/Footer";
+import Footer from "../../components/footer/footer";
 import cooking1 from "../../images/cooking1.jpg";
 import sushi from "../../images/foodsushi.jpg";
 
