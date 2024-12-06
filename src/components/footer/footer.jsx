@@ -9,7 +9,7 @@ const header = () => {
   return (
     <div>
         <div className='heading23'>
-        <div className='heading'>
+        <div className='heading45'>
         <div className='logos1'>
             <img
             src={logoImg}

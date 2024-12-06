@@ -15,8 +15,9 @@ const homepage = () => {
               src={cooking1}
               width={1400}
               height={400}
-              className="cooking1ton"
+              className="cooking1-ton"
               alt="Villa"
+
           />
         </div>
 

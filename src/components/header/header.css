@@ -9,13 +9,17 @@
 
 .heading{
     display: flex;
-    padding-left: 120px;
+    padding-left: 70px;
     /* justify-content: center; */
     align-items: center;
     margin-top: 40px;
     gap: 50px;
     border: 1px solid #786C3B;
     border-radius: 30px;
+}
+
+.headersLinks{
+    padding-left: 60px;
 }
 
 .heading2{
@@ -73,24 +77,27 @@
 
 .authentication{
     display: flex;
-    gap: 10px;
+    gap: 5px;
 }
 
 .login{
     padding: 10px;
-    border: 1px solid #786C3B;
+    color: white;
+    background-color: #6B4F31;
     border-radius: 10px;
 }
 
 .signUp{
     padding: 10px;
-    border: 1px solid #786C3B;
+    border: 1px solid #6B4F31;
+    background-color: white;
+    color: #6B4F31;
     border-radius: 10px;
 }
 
 .inputinup{
     display: flex;
     gap: 30px;
-    padding-left: 50px;
+    padding-left: 10px;
 }
 
