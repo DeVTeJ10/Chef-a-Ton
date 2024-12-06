@@ -8,12 +8,18 @@ import logoImg from "../../images/cookaton.png";
 const header = () => {
   return (
     <div>
-        <div className='heading2'>
-        <div className='heading'>
-        <div className='logos'>
-
+        <div className='heading23'>
+        <div className='heading45'>
+        <div className='logos1'>
+            <img
+            src={logoImg}
+            width={80}
+            height={80}
+            className="cookingtons"
+            alt="Villa"
+        />
         </div>
-        <div className="headers">
+        <div className="headers1">
           <Link to={"/"} className="homeTag">
               <h3>Home</h3>
             </Link>
@@ -32,11 +38,6 @@ const header = () => {
         <input
         placeholder='Search for recipe' 
         className='inputRecipe'/>
-
-      <div className="authentication">
-        <button className="login">Login</button>
-        <button className="signUp">Sign up</button>
-      </div>
         </div>
         </div>
         </div>

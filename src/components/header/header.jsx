@@ -19,6 +19,8 @@ const header = () => {
             alt="Villa"
         />
         </div>
+
+        <div className="headersLinks">
         <div className="headers">
           <Link to={"/"} className="homeTag">
               <h3>Home</h3>
@@ -32,6 +34,7 @@ const header = () => {
           <Link to={"/recipe-page"} className="favouritesTag">
                 <h3>Favourites</h3>
               </Link>
+        </div>
         </div>
 
         <div className="inputinup">
