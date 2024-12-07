@@ -2,3 +2,33 @@
     display: flex;
     justify-content: center;
 }
+
+.cooking2ton{
+    display: flex;
+    justify-content: center;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+.cooking2tons{
+    border-radius: 30px;
+    /* margin-top: 30px; */
+}
+
+.cooking2tonpasta{
+    margin-top: 50px;
+}
+
+.perfectime{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.timeperfect{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+}
