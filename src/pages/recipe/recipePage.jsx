@@ -9,7 +9,7 @@ const recipesPage = () => {
   return (
     <div>
       <Header/>
-      <div>
+      <div className="firstrecipecontent">
           <h1 className="foodingrecipe">Street food varieties</h1>
 
           <div className="timeperfect">
@@ -21,8 +21,8 @@ const recipesPage = () => {
                   alt="pasta"
                   className="cooking2tons"
               />
-              <h3>1</h3>
-              <h3>Hour</h3>
+              <h4>1</h4>
+              <h4>Hour</h4>
         </div>
         <div className="perfectime">
         <img
@@ -44,6 +44,39 @@ const recipesPage = () => {
                   alt="pasta"
                   className="cooking2tons"
               />
+        </div>
+        <div className="loremthekingsun">
+        <div className="loremkingsun">
+        <p>Lorem ipsum dolor sit amet,<br></br> consectetur adipiscing elit, 
+                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<br></br>
+
+                Ut enim ad minim veniam,<br></br> quis nostrud exercitation,<br></br> ullamco laboris 
+                nisi ut aliquip ex ea commodo consequat. 
+
+                Duis aute irure dolor in<br></br> reprehenderit in voluptate <br></br>
+                velit esse cillum dolore eu fugiat nulla pariatur. 
+
+                Excepteur sint occaecat<br></br> cupidatat non proident, <br></br>
+                sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+                Lorem ipsum dolor sit amet,<br></br> consectetur adipiscing elit, 
+                  sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+
+                  Ut enim ad minim veniam,<br></br> quis nostrud exercitation ullamco laboris <br></br>
+                  nisi ut aliquip ex ea commodo consequat. 
+
+                  Duis aute irure dolor in reprehenderit<br></br> in voluptate 
+                  velit esse<br></br> cillum dolore eu fugiat nulla pariatur. 
+
+                  Excepteur sint occaecat<br></br> cupidatat non proident, 
+                  sunt in culpa qui officia<br></br> deserunt mollit anim id est laborum.
+              </p>
+        </div>
+              <div className="lorempisum">
+              <h2> 1. Ingredients</h2>
+                <h2> 2. Equipment needed for preparation </h2>
+                <h2> 3. Nutritional value</h2>
+              </div>
         </div>
       </div>
       </div>
