@@ -2,6 +2,10 @@ import Header from "../../components/header/header"
 import streetfood from "../../images/streetfood.jpg";
 import perfectiming from "../../images/perfecttime.png"
 import foodserving from "../../images/foodserving.png"
+import sushi from "../../images/foodsushi.jpg";
+import similarfood1 from "../../images/similarfood1.jpg"
+import similarfood2 from "../../images/similarfood2.jpg"
+import Footer from "../../components/footer/footer"
 import "./recipe.css"
 
 
@@ -79,6 +83,51 @@ const recipesPage = () => {
               </div>
         </div>
       </div>
+      <h1 className="instructions">Instructions</h1>
+
+      <div className="similarRecipes">
+      <div className="foodCards">
+        <div className="cookCardFood">
+        <img
+              src={similarfood1}
+              width={350}
+              height={234}
+              // className="cooking1ton"
+              alt="Villa"
+          />
+        </div>
+          <div className="savouryFishs">
+          <h3>Savoury herb infused fish</h3>
+          <p className="indulgeFishs">Indulge in the rich and savory symphony of<br></br> flavors with our Savory Herb-Infused Fish</p>
+          </div>
+
+        <div className="timePrepRecipes">
+          <p className="timePrep">40 Min - easy prep - 3 serves</p>
+          <button className="viewRecipeBTNs">VIEW RECIPE</button>
+        </div>
+        </div>
+        <div className="foodCards">
+        <div className="cookCardFood">
+        <img
+              src={similarfood2}
+              width={350}
+              height={234}
+              // className="cooking1ton"
+              alt="Villa"
+          />
+        </div>
+          <div className="savouryFishs">
+          <h3>Savoury herb infused fish</h3>
+          <p className="indulgeFishs">Indulge in the rich and savory symphony of<br></br> flavors with our Savory Herb-Infused Fish</p>
+          </div>
+
+        <div className="timePrepRecipes">
+          <p className="timePrep">40 Min - easy prep - 3 serves</p>
+          <button className="viewRecipeBTNs">VIEW RECIPE</button>
+        </div>
+        </div>
+      </div>
+      <Footer/>
       </div>
   )
 }
