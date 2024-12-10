@@ -84,7 +84,11 @@ const recipesPage = () => {
       </div>
       <h1 className="instructions">Instructions</h1>
 
-      <div className="similarRecipes">
+
+    <div className="similarpiece">
+    <h2 className="simrecipes">Similar recipes</h2>
+
+    <div className="similarRecipes">
       <div className="foodCards">
         <div className="cookCardFood">
         <img
@@ -126,6 +130,7 @@ const recipesPage = () => {
         </div>
         </div>
       </div>
+    </div>
       <Footer/>
       </div>
   )
