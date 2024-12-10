@@ -116,7 +116,20 @@
     justify-content: center;
     gap: 30px;
     border: 1px solid #6B4F31;
+    border-radius: 30px;
     padding-top: 30px;
     padding-bottom: 30px;
     margin-top: 100px;
+}
+
+.similarpiece{
+    padding-left: 250px;
+    padding-right: 250px;
+    display: flex;
+    flex-direction: column;
+    margin-top: 100px;
+}
+
+.simrecipes{
+    margin-bottom: -60px;
 }
