@@ -2,7 +2,6 @@ import Header from "../../components/header/header"
 import streetfood from "../../images/streetfood.jpg";
 import perfectiming from "../../images/perfecttime.png"
 import foodserving from "../../images/foodserving.png"
-import sushi from "../../images/foodsushi.jpg";
 import similarfood1 from "../../images/similarfood1.jpg"
 import similarfood2 from "../../images/similarfood2.jpg"
 import Footer from "../../components/footer/footer"
