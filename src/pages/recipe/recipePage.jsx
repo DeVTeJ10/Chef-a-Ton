@@ -49,7 +49,7 @@ const recipesPage = () => {
                   width={556}
                   height={370}
                   alt="pasta"
-                  className="cooking2tons"
+                  className="cooking2tonss"
               />
         </div>
         <div className="loremthekingsun">
@@ -91,7 +91,6 @@ const recipesPage = () => {
 
     <div className="similarpiece">
     <h2 className="simrecipes">Similar recipes</h2>
-
     <div className="similarRecipes">
       <div className="foodCards">
         <div className="cookCardFood">
@@ -99,7 +98,7 @@ const recipesPage = () => {
               src={similarfood1}
               width={350}
               height={234}
-              // className="cooking1ton"
+              className="cooking1ton"
               alt="Villa"
           />
         </div>
@@ -119,7 +118,7 @@ const recipesPage = () => {
               src={similarfood2}
               width={350}
               height={234}
-              // className="cooking1ton"
+              className="cooking1ton"
               alt="Villa"
           />
         </div>
