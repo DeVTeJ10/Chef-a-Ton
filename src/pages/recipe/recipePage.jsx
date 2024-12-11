@@ -13,32 +13,34 @@ const recipesPage = () => {
     <div>
       <Header/>
       <div className="firstrecipecontent">
-          <h1 className="foodingrecipe">Street food varieties</h1>
 
-          <div className="timeperfect">
-          <div className="perfectime">
+        <div className="">
+        <h1 className="foodingrecipe">Street food varieties</h1>
+        <div className="timeperfect">
+        <div className="perfectime">
         <img
-                  src={perfectiming}
-                  width={40}
-                  height={40}
-                  alt="pasta"
-                  className="cooking2tons"
-              />
-              <h4>1</h4>
-              <h4>Hour</h4>
+                src={perfectiming}
+                width={40}
+                height={40}
+                alt="pasta"
+                className="cooking2tons"
+            />
+            <h4>1</h4>
+            <h4>Hour</h4>
         </div>
         <div className="perfectime">
         <img
-                  src={foodserving}
-                  width={40}
-                  height={40}
-                  alt="pasta"
-                  className="cooking2tons"
-              />
-              <h3>4</h3>
-              <h3>Serves</h3>
+                src={foodserving}
+                width={40}
+                height={40}
+                alt="pasta"
+                className="cooking2tons"
+            />
+            <h3>4</h3>
+            <h3>Serves</h3>
         </div>
-          </div>
+        </div>
+                </div>
         <div className="cooking2ton">
         <img
                   src={streetfood}
