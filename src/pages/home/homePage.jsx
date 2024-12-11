@@ -56,6 +56,50 @@ const homepage = () => {
           <button className="viewRecipeBTN">VIEW RECIPE</button>
         </div>
         </div>
+
+        <div>
+          
+        </div>
+        <div className="foodCard">
+        <div className="cookCardFood">
+        <img
+              src={sushi}
+              width={350}
+              height={234}
+              className="cooking1ton"
+              alt="Villa"
+          />
+        </div>
+          <div className="savouryFish">
+          <h3>Savoury herb infused fish</h3>
+          <p className="indulgeFish">Indulge in the rich and savory symphony of<br></br> flavors with our Savory Herb-Infused Fish</p>
+          </div>
+
+        <div className="timePrepRecipe">
+          <p className="timePrep">40 Min - easy prep - 3 serves</p>
+          <button className="viewRecipeBTN">VIEW RECIPE</button>
+        </div>
+        </div>
+        <div className="foodCard">
+        <div className="cookCardFood">
+        <img
+              src={sushi}
+              width={350}
+              height={234}
+              className="cooking1ton"
+              alt="Villa"
+          />
+        </div>
+          <div className="savouryFish">
+          <h3>Savoury herb infused fish</h3>
+          <p className="indulgeFish">Indulge in the rich and savory symphony of<br></br> flavors with our Savory Herb-Infused Fish</p>
+          </div>
+
+        <div className="timePrepRecipe">
+          <p className="timePrep">40 Min - easy prep - 3 serves</p>
+          <button className="viewRecipeBTN">VIEW RECIPE</button>
+        </div>
+        </div>
       </div>
 
     <div className="railHeal">
