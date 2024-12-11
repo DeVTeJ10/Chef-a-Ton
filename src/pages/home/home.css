@@ -13,10 +13,11 @@ body{
 }
 
 
-.cooking1ton{
+.cookingteamton{
     padding-left: 50px;
     padding-right: 50px;
     border-radius: 5%;
+    filter: brightness(50%); /* Adjust the blur intensity */
 }
 
 
@@ -31,7 +32,7 @@ body{
     justify-content: center;
     align-items: center;
     margin-top: 60px;
-    border: 1px solid #6B4F31;
+    border: 0.5px solid #6B4F31;
     width: 800px;
     border-radius: 30px;
 }
@@ -44,7 +45,7 @@ body{
 
 
 .featTheRecipes{
-    border: 1px solid #6B4F31 ;
+    border: 0.5px solid #6B4F31 ;
     border-radius: 10px;
     padding-left: 20px;
     padding-right: 20px;
@@ -72,25 +73,25 @@ body{
 }
 
 .breakfast{
-    border: 1px solid #6B4F31;
+    border: 0.5px solid #6B4F31;
     padding: 5px;
     border-radius: 5px;
 }
 
 .lunch{
-    border: 1px solid #6B4F31;
+    border: 0.5px solid #6B4F31;
     padding: 5px;
     border-radius: 5px;
 }
 
 .dinner{
-    border: 1px solid #6B4F31;
+    border: 0.5px solid #6B4F31;
     padding: 5px;
     border-radius: 5px;
 }
 
 .viewRecipeBTN{
-    border: 1px solid white;
+    border: 0.5px solid white;
     border-radius: 30px;
     background-color: #6B4F31;
     color: white;
@@ -113,7 +114,7 @@ body{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border: 1px solid #6B4F31;
+    border: 0.5px solid #6B4F31;
     padding-top: 30px;
     padding-bottom: 30px;
     width: 400px;

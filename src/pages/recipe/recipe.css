@@ -10,8 +10,9 @@
     padding-right: 50px;
 }
 
-.cooking2tons{
+.cooking2tonss{
     border-radius: 30px;
+    box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.5);
 }
 
 .cooking2tonpasta{
@@ -128,9 +129,12 @@
     display: flex;
     flex-direction: column;
     margin-top: 100px;
+    /* border: 1px solid #6B4F31; */
 }
 
 .simrecipes{
+    display: flex;
+    justify-content: center;
     margin-bottom: -60px;
 }
 
@@ -144,4 +148,8 @@
     padding-left: 500px;
     padding-right: 500px;
     margin-bottom: 30px;
+}
+
+.cooking1ton{
+    box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.5);
 }
