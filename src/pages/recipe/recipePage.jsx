@@ -14,7 +14,8 @@ const recipesPage = () => {
       <Header/>
       <div className="firstrecipecontent">
 
-        <div className="">
+      <div className="foodtimelapse">
+      <div className="timefoodlapse">
         <h1 className="foodingrecipe">Street food varieties</h1>
         <div className="timeperfect">
         <div className="perfectime">
@@ -41,11 +42,12 @@ const recipesPage = () => {
         </div>
         </div>
                 </div>
+      </div>
         <div className="cooking2ton">
         <img
                   src={streetfood}
-                  width={1400}
-                  height={500}
+                  width={556}
+                  height={370}
                   alt="pasta"
                   className="cooking2tons"
               />
