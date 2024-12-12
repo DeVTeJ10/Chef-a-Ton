@@ -3,10 +3,41 @@ import Header from "../../components/header/header";
 import Footer from "../../components/footer/footer";
 import cooking1 from "../../images/cooking1.jpg";
 import sushi from "../../images/foodsushi.jpg";
+import axios from 'axios';
+
 
 
 
 const homepage = () => {
+
+    const [randomRecipe, setRandomRecipe] = useState(""); // Handle the random api call
+    const [recipeInput, setRecipeInput] = useState("")
+
+
+  const apiKey = '777f35740b9843339bcbd6fba66f28f0' // Api key needed for both apis to work
+
+
+
+      const handleSubmit = (e) => {
+        e.preventDefault();
+        // fetchTwoApis();
+      };
+
+
+      const handleChange = (e) => {
+        setWeatherInput(e.target.value);  // Update state with input value
+      };
+
+
+      const fetchRandomRecipeData = async () => {
+        console.log("random recipe api is being called");
+        if (!recipeInput) return;
+    
+        // const apiKey = "777f35740b9843339bcbd6fba66f28f0";
+        const randomrecipeapi = await axios.get(`https://api.spoonacular.com/recipes/random`);
+        return randomrecipeapi;
+    };
+
   return (
     <div>
         <Header/>
