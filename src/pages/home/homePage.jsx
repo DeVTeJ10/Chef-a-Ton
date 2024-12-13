@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import "./home.css"
 import Header from "../../components/header/header";
 import Footer from "../../components/footer/footer";
@@ -10,57 +11,63 @@ import axios from 'axios';
 
 const homepage = () => {
 
-    const [randomRecipe, setRandomRecipe] = useState(""); // Handle the random api call
-    const [recipeInput, setRecipeInput] = useState("")
+        const [randomRecipe, setRandomRecipe] = useState(""); // Handle the random api call
+        const [recipeInput, setRecipeInput] = useState("")
 
 
-  const apiKey = '777f35740b9843339bcbd6fba66f28f0' // Api key needed for both apis to work
+        const apiKey = '777f35740b9843339bcbd6fba66f28f0' // Api key needed for both apis to work
 
 
 
-      const handleSubmit = (e) => {
-        e.preventDefault();
-        fetchRandomRecipeData();
-      };
+          // const handleSubmit = (e) => {
+          //   e.preventDefault();
+          //   fetchRandomRecipeData();
+          // };
+          // const handleChange = (e) => {
+          //   setRecipeInput(e.target.value);  // Update state with input value
+          // };
 
 
-      const handleChange = (e) => {
-        setRecipeInput(e.target.value);  // Update state with input value
-      };
+          const fetchRandomRecipeData = async () => {
+            console.log("random recipe api is being called");
+            // if (!recipeInput) return;
+        
+            const apiKey = "777f35740b9843339bcbd6fba66f28f0";
+            const randomRecipe = await axios.get(`https://api.spoonacular.com/recipes/random/${apiKey}`);
 
+            // headers: { 'Content-Type' },
 
-      const fetchRandomRecipeData = async () => {
-        console.log("random recipe api is being called");
-        if (!recipeInput) return;
-    
-        const apiKey = "777f35740b9843339bcbd6fba66f28f0";
-        const randomrecipeapi = await axios.get(`https://api.spoonacular.com/recipes/random/${apiKey}`);
-        return randomrecipeapi;
-    };
+            console.log(randomRecipe)
+            return randomRecipe;
+        };
 
-      useEffect(() => {
-        if (recipeInput) {  // Only fetch data if there's input
-          fetchRandomRecipeData()
-        }
-    }, [weatherInput && weatherData2]);
-
-
-    const fetchAllApis = async () => {
-      Promise.all([fetchRandomRecipeData()])
-      .then (([response1])  => {
-          if (!recipeInput) return;
-              console.log('Data from 1st api:', response1);
-              setRandomRecipe(response1)
-      })
-          .catch(error => {
-              console.error('Error', error)
-          })
-  }
           useEffect(() => {
-              if (weatherInput) {  // Only fetch data if there's input
-                fetchAllApis()
-              }
-          }, [recipeInput]);
+              fetchRandomRecipeData()
+        },);
+
+
+
+
+
+      //   const fetchAllApis = async () => {
+      //     Promise.all([fetchRandomRecipeData()])
+      //     .then (([response1])  => {
+      //             console.log('Data from 1st api:', response1);
+      //             setRandomRecipe(response1.recipes)
+      //             console.log(randomRecipe)
+      //     })
+      //         .catch(error => {
+      //             console.error('Error', error)
+      //         })
+      // }
+      //         useEffect(() => {
+      //              {  // Only fetch data if there's input
+      //               fetchAllApis()
+      //             }
+      //         }, [recipeInput]);
+
+
+
 
   return (
     <div>
