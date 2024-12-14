@@ -1,10 +1,11 @@
+import axios from 'axios';
 import { useState, useEffect } from 'react';
-import "./home.css"
 import Header from "../../components/header/header";
 import Footer from "../../components/footer/footer";
 import cooking1 from "../../images/cooking1.jpg";
 import sushi from "../../images/foodsushi.jpg";
-import axios from 'axios';
+import "./home.css"
+
 
 
 
@@ -29,23 +30,32 @@ const homepage = () => {
 
 
           const fetchRandomRecipeData = async () => {
-            console.log("random recipe api is being called");
-            // if (!recipeInput) return;
-        
-            const apiKey = "777f35740b9843339bcbd6fba66f28f0";
-            const randomRecipe = await axios.get(`https://api.spoonacular.com/recipes/random/${apiKey}`);
-
-            // headers: { 'Content-Type' },
-
-            console.log(randomRecipe)
-            return randomRecipe;
-        };
-
+            try {
+              console.log("random recipe API is being called");
+          
+              const apiKey = "777f35740b9843339bcbd6fba66f28f0";
+          
+              // Axios GET request with headers
+              const randomRecipe = await axios.get(
+                `https://api.spoonacular.com/recipes/random?apiKey=${apiKey}`, // Corrected URL structure
+                {
+                  headers: {
+                    'Content-Type': 'application/json', // Added the header
+                  },
+                }
+              );
+          
+              setRandomRecipe(randomRecipe?.data?.recipes); // Accessed .data for the response
+              console.log(randomRecipe);
+            } catch (error) {
+              console.error("Error:", error.message); // Updated error handling
+            }
+          };
+          
           useEffect(() => {
-              fetchRandomRecipeData()
-        },);
-
-
+            fetchRandomRecipeData();
+          }, []); // Added empty dependency array
+          
 
 
 
@@ -133,7 +143,7 @@ const homepage = () => {
           />
         </div>
           <div className="savouryFish">
-          <h3>Savoury herb infused fish</h3>
+          <h3>{}</h3>
           <p className="indulgeFish">Indulge in the rich and savory symphony of<br></br> flavors with our Savory Herb-Infused Fish</p>
           </div>
 
@@ -153,7 +163,7 @@ const homepage = () => {
           />
         </div>
           <div className="savouryFish">
-          <h3>Savoury herb infused fish</h3>
+          <h3>{randomRecipe?.recipes?.[0]?.title}</h3>
           <p className="indulgeFish">Indulge in the rich and savory symphony of<br></br> flavors with our Savory Herb-Infused Fish</p>
           </div>
 
