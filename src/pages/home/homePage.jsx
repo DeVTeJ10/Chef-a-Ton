@@ -32,6 +32,7 @@ const homepage = () => {
           const fetchRandomRecipeData = async () => {
             try {
               console.log("random recipe API is being called");
+              
           
               const apiKey = "777f35740b9843339bcbd6fba66f28f0";
           
@@ -45,7 +46,7 @@ const homepage = () => {
                 }
               );
           
-              setRandomRecipe(randomRecipe?.data?.recipes); // Accessed .data for the response
+              setRandomRecipe(randomRecipe?.data?.recipes[0]); // Accessed .data for the response
               console.log(randomRecipe);
             } catch (error) {
               console.error("Error:", error.message); // Updated error handling
@@ -119,7 +120,7 @@ const homepage = () => {
           />
         </div>
           <div className="savouryFish">
-          <h3>Savoury herb infused fish</h3>
+          <h3>{randomRecipe?.title}</h3>
           <p className="indulgeFish">Indulge in the rich and savory symphony of<br></br> flavors with our Savory Herb-Infused Fish</p>
           </div>
 
@@ -143,7 +144,7 @@ const homepage = () => {
           />
         </div>
           <div className="savouryFish">
-          <h3>{}</h3>
+          <h3>{randomRecipe?.recipes?.[0]?.title}</h3>
           <p className="indulgeFish">Indulge in the rich and savory symphony of<br></br> flavors with our Savory Herb-Infused Fish</p>
           </div>
 
