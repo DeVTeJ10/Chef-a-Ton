@@ -38,7 +38,7 @@ const homepage = () => {
           
               // Axios GET request with headers
               const randomRecipe = await axios.get(
-                `https://api.spoonacular.com/recipes/random?number=10&apiKey=${apiKey}`, // Corrected URL structure
+                `https://api.spoonacular.com/recipes/random?number=6&apiKey=${apiKey}`, // Corrected URL structure
                 {
                   headers: {
                     'Content-Type': 'application/json', // Added the header
@@ -101,13 +101,6 @@ const homepage = () => {
         </div>
         <p className="healthWealth">Health is wealth they say yeah?, so have a Ton of recipe in your pocket.</p>
 
-        <div className="meals">
-        <h4 className="breakfast">Breakfast</h4>
-        <h4 className="lunch">Lunch</h4>
-        <h4 className="dinner">Dinner</h4>
-        </div>
-
-
       <div className="cardFood">
       <div className="foodCard">
         <div className="cookCardFood">
@@ -120,7 +113,7 @@ const homepage = () => {
           />
         </div>
           <div className="savouryFish">
-          <h3>{randomRecipe[1]?.title}</h3>
+          <h3>{randomRecipe[0]?.title}</h3>
           <p className="indulgeFish">Indulge in the rich and savory symphony of<br></br> flavors with our Savory Herb-Infused Fish</p>
           </div>
 
@@ -144,7 +137,7 @@ const homepage = () => {
           />
         </div>
           <div className="savouryFish">
-          <h3>{randomRecipe[2]?.title}</h3>
+          <h3>{randomRecipe[1]?.title}</h3>
           <p className="indulgeFish">Indulge in the rich and savory symphony of<br></br> flavors with our Savory Herb-Infused Fish</p>
           </div>
 
@@ -164,7 +157,147 @@ const homepage = () => {
           />
         </div>
           <div className="savouryFish">
+          <h3>{randomRecipe[2]?.title}</h3>
+          <p className="indulgeFish">Indulge in the rich and savory symphony of<br></br> flavors with our Savory Herb-Infused Fish</p>
+          </div>
+
+        <div className="timePrepRecipe">
+          <p className="timePrep">40 Min - easy prep - 3 serves</p>
+          <button className="viewRecipeBTN">VIEW RECIPE</button>
+        </div>
+        </div>
+      </div>
+      <div className="cardFood">
+      <div className="foodCard">
+        <div className="cookCardFood">
+        <img
+              src={sushi}
+              width={350}
+              height={234}
+              className="cooking1ton"
+              alt="Villa"
+          />
+        </div>
+          <div className="savouryFish">
           <h3>{randomRecipe[3]?.title}</h3>
+          <p className="indulgeFish">Indulge in the rich and savory symphony of<br></br> flavors with our Savory Herb-Infused Fish</p>
+          </div>
+
+        <div className="timePrepRecipe">
+          <p className="timePrep">40 Min - easy prep - 3 serves</p>
+          <button className="viewRecipeBTN">VIEW RECIPE</button>
+        </div>
+        </div>
+
+        <div>
+          
+        </div>
+        <div className="foodCard">
+        <div className="cookCardFood">
+        <img
+              src={sushi}
+              width={350}
+              height={234}
+              className="cooking1ton"
+              alt="Villa"
+          />
+        </div>
+          <div className="savouryFish">
+          <h3>{randomRecipe[4]?.title}</h3>
+          <p className="indulgeFish">Indulge in the rich and savory symphony of<br></br> flavors with our Savory Herb-Infused Fish</p>
+          </div>
+
+        <div className="timePrepRecipe">
+          <p className="timePrep">40 Min - easy prep - 3 serves</p>
+          <button className="viewRecipeBTN">VIEW RECIPE</button>
+        </div>
+        </div>
+        <div className="foodCard">
+        <div className="cookCardFood">
+        <img
+              src={sushi}
+              width={350}
+              height={234}
+              className="cooking1ton"
+              alt="Villa"
+          />
+        </div>
+          <div className="savouryFish">
+          <h3>{randomRecipe[5]?.title}</h3>
+          <p className="indulgeFish">Indulge in the rich and savory symphony of<br></br> flavors with our Savory Herb-Infused Fish</p>
+          </div>
+
+        <div className="timePrepRecipe">
+          <p className="timePrep">40 Min - easy prep - 3 serves</p>
+          <button className="viewRecipeBTN">VIEW RECIPE</button>
+        </div>
+        </div>
+      </div>
+
+      <div className="meals">
+        <h4 className="breakfast">Breakfast</h4>
+        <h4 className="lunch">Lunch</h4>
+        <h4 className="dinner">Dinner</h4>
+        </div>
+
+
+      <div className="cardFood">
+      <div className="foodCard">
+        <div className="cookCardFood">
+        <img
+              src={sushi}
+              width={350}
+              height={234}
+              className="cooking1ton"
+              alt="Villa"
+          />
+        </div>
+          <div className="savouryFish">
+          <h3>{randomRecipe[0]?.title}</h3>
+          <p className="indulgeFish">Indulge in the rich and savory symphony of<br></br> flavors with our Savory Herb-Infused Fish</p>
+          </div>
+
+        <div className="timePrepRecipe">
+          <p className="timePrep">40 Min - easy prep - 3 serves</p>
+          <button className="viewRecipeBTN">VIEW RECIPE</button>
+        </div>
+        </div>
+
+        <div>
+          
+        </div>
+        <div className="foodCard">
+        <div className="cookCardFood">
+        <img
+              src={sushi}
+              width={350}
+              height={234}
+              className="cooking1ton"
+              alt="Villa"
+          />
+        </div>
+          <div className="savouryFish">
+          <h3>{randomRecipe[1]?.title}</h3>
+          <p className="indulgeFish">Indulge in the rich and savory symphony of<br></br> flavors with our Savory Herb-Infused Fish</p>
+          </div>
+
+        <div className="timePrepRecipe">
+          <p className="timePrep">40 Min - easy prep - 3 serves</p>
+          <button className="viewRecipeBTN">VIEW RECIPE</button>
+        </div>
+        </div>
+        <div className="foodCard">
+        <div className="cookCardFood">
+        <img
+              src={sushi}
+              width={350}
+              height={234}
+              className="cooking1ton"
+              alt="Villa"
+          />
+        </div>
+          <div className="savouryFish">
+          <h3>{randomRecipe[2]?.title}</h3>
           <p className="indulgeFish">Indulge in the rich and savory symphony of<br></br> flavors with our Savory Herb-Infused Fish</p>
           </div>
 
