@@ -38,7 +38,7 @@ const homepage = () => {
           
               // Axios GET request with headers
               const randomRecipe = await axios.get(
-                `https://api.spoonacular.com/recipes/random?apiKey=${apiKey}`, // Corrected URL structure
+                `https://api.spoonacular.com/recipes/random?number=10&apiKey=${apiKey}`, // Corrected URL structure
                 {
                   headers: {
                     'Content-Type': 'application/json', // Added the header
@@ -46,7 +46,7 @@ const homepage = () => {
                 }
               );
           
-              setRandomRecipe(randomRecipe?.data?.recipes[0]); // Accessed .data for the response
+              setRandomRecipe(randomRecipe?.data?.recipes); // Accessed .data for the response
               console.log(randomRecipe);
             } catch (error) {
               console.error("Error:", error.message); // Updated error handling
@@ -120,7 +120,7 @@ const homepage = () => {
           />
         </div>
           <div className="savouryFish">
-          <h3>{randomRecipe?.title}</h3>
+          <h3>{randomRecipe[1]?.title}</h3>
           <p className="indulgeFish">Indulge in the rich and savory symphony of<br></br> flavors with our Savory Herb-Infused Fish</p>
           </div>
 
@@ -144,7 +144,7 @@ const homepage = () => {
           />
         </div>
           <div className="savouryFish">
-          <h3>{randomRecipe?.recipes?.[0]?.title}</h3>
+          <h3>{randomRecipe[2]?.title}</h3>
           <p className="indulgeFish">Indulge in the rich and savory symphony of<br></br> flavors with our Savory Herb-Infused Fish</p>
           </div>
 
@@ -164,7 +164,7 @@ const homepage = () => {
           />
         </div>
           <div className="savouryFish">
-          <h3>{randomRecipe?.recipes?.[0]?.title}</h3>
+          <h3>{randomRecipe[3]?.title}</h3>
           <p className="indulgeFish">Indulge in the rich and savory symphony of<br></br> flavors with our Savory Herb-Infused Fish</p>
           </div>
 
