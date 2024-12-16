@@ -14,10 +14,12 @@ const homepage = () => {
 
         const [randomRecipe, setRandomRecipe] = useState(""); // Handle the random api call
         const [recipeInput, setRecipeInput] = useState("")
+        // const [breakfastRecipe, setBreakfastRecipe] = useState("")
+        // const [lunchRecipe, setLunchRecipe] = useState("")
+        // const [dinnerRecipe, setDinnerRecipe] = useState("")
 
 
         const apiKey = '777f35740b9843339bcbd6fba66f28f0' // Api key needed for both apis to work
-
 
 
           // const handleSubmit = (e) => {
@@ -33,49 +35,28 @@ const homepage = () => {
             try {
               console.log("random recipe API is being called");
               
-          
               const apiKey = "777f35740b9843339bcbd6fba66f28f0";
           
               // Axios GET request with headers
               const randomRecipe = await axios.get(
-                `https://api.spoonacular.com/recipes/random?number=6&apiKey=${apiKey}`, // Corrected URL structure
+                `https://api.spoonacular.com/recipes/random?number=9&apiKey=${apiKey}`,
                 {
                   headers: {
                     'Content-Type': 'application/json', // Added the header
                   },
                 }
               );
-          
-              setRandomRecipe(randomRecipe); // Accessed .data for the response
+              setRandomRecipe(randomRecipe); // Accessed data for the response
               console.log(randomRecipe);
             } catch (error) {
-              console.error("Error:", error.message); // Updated error handling
+              console.error("Error:", error.message); //error handling
             }
           };
-          
           useEffect(() => {
             fetchRandomRecipeData();
-          }, []); // Added empty dependency array
+          },); // Added empty dependency array
           
 
-
-
-      //   const fetchAllApis = async () => {
-      //     Promise.all([fetchRandomRecipeData()])
-      //     .then (([response1])  => {
-      //             console.log('Data from 1st api:', response1);
-      //             setRandomRecipe(response1.recipes)
-      //             console.log(randomRecipe)
-      //     })
-      //         .catch(error => {
-      //             console.error('Error', error)
-      //         })
-      // }
-      //         useEffect(() => {
-      //              {  // Only fetch data if there's input
-      //               fetchAllApis()
-      //             }
-      //         }, [recipeInput]);
 
 
 
@@ -235,6 +216,78 @@ const homepage = () => {
 
         <div className="timePrepRecipe">
           <p className="timePrep">{randomRecipe?.data?.recipes[5].readyInMinutes}Min - easy prep - {randomRecipe?.data?.recipes[5].servings} serves</p>
+          <button className="viewRecipeBTN">VIEW RECIPE</button>
+        </div>
+        </div>
+      </div>
+      <div className="cardFood">
+      <div className="foodCard">
+        <div className="cookCardFood">
+        {
+          sushi &&
+        <img src={randomRecipe?.data?.recipes[6].image}
+              width={350}
+              height={234}
+              className="cooking1ton"
+              alt="Villa"
+          />}
+        </div>
+          <div className="savouryFish">
+          <h3>{randomRecipe?.data?.recipes[6].title}</h3>
+          <p className="indulgeFish">Indulge in the rich and savory symphony of<br></br> flavors with our Savory Herb-Infused Fish</p>
+          </div>
+
+        <div className="timePrepRecipe">
+          <p className="timePrep">{randomRecipe?.data?.recipes[6].readyInMinutes}Min - easy prep - {randomRecipe?.data?.recipes[6].servings} serves</p>
+          <button className="viewRecipeBTN">VIEW RECIPE</button>
+        </div>
+        </div>
+
+        <div>
+          
+        </div>
+        <div className="foodCard">
+        <div className="cookCardFood">
+        {
+            sushi &&
+            <img src={randomRecipe?.data?.recipes[7].image}
+              width={350}
+              height={234}
+              className="cooking1ton"
+              alt="Villa"
+          />}
+        </div>
+          <div className="savouryFish">
+          <h3>{randomRecipe?.data?.recipes[7].title}</h3>
+          <p className="indulgeFish">Indulge in the rich and savory symphony of<br></br> flavors with our Savory Herb-Infused Fish</p>
+          </div>
+
+        <div className="timePrepRecipe">
+          <p className="timePrep">{randomRecipe?.data?.recipes[7].readyInMinutes}Min - easy prep - {randomRecipe?.data?.recipes[7].servings} serves</p>
+          <button className="viewRecipeBTN">VIEW RECIPE</button>
+        </div>
+        </div>
+
+        <div className="foodCard">
+        <div className="cookCardFood">
+        {
+          sushi &&
+          <img src={randomRecipe?.data?.recipes[8].image}
+              width={350}
+              height={234}
+              className="cooking1ton"
+              alt="Villa"
+          />
+        }
+
+        </div>
+          <div className="savouryFish">
+          <h3>{randomRecipe?.data?.recipes[8].title}</h3>
+          <p className="indulgeFish">Indulge in the rich and savory symphony of<br></br> flavors with our Savory Herb-Infused Fish</p>
+          </div>
+
+        <div className="timePrepRecipe">
+          <p className="timePrep">{randomRecipe?.data?.recipes[8].readyInMinutes}Min - easy prep - {randomRecipe?.data?.recipes[8].servings} serves</p>
           <button className="viewRecipeBTN">VIEW RECIPE</button>
         </div>
         </div>
