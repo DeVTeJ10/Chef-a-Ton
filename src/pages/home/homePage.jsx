@@ -253,7 +253,7 @@ const homepage = () => {
           />
         </div>
           <div className="savouryFish">
-          <h3>{randomRecipe[0]?.title}</h3>
+          <h3>Savoury herb infused fish</h3>
           <p className="indulgeFish">Indulge in the rich and savory symphony of<br></br> flavors with our Savory Herb-Infused Fish</p>
           </div>
 
@@ -277,7 +277,7 @@ const homepage = () => {
           />
         </div>
           <div className="savouryFish">
-          <h3>{randomRecipe[1]?.title}</h3>
+          <h3>Savoury herb infused fish</h3>
           <p className="indulgeFish">Indulge in the rich and savory symphony of<br></br> flavors with our Savory Herb-Infused Fish</p>
           </div>
 
@@ -297,7 +297,7 @@ const homepage = () => {
           />
         </div>
           <div className="savouryFish">
-          <h3>{randomRecipe[2]?.title}</h3>
+          <h3>Savoury herb infused fish</h3>
           <p className="indulgeFish">Indulge in the rich and savory symphony of<br></br> flavors with our Savory Herb-Infused Fish</p>
           </div>
 
