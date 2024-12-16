@@ -46,7 +46,7 @@ const homepage = () => {
                 }
               );
           
-              setRandomRecipe(randomRecipe?.data?.recipes); // Accessed .data for the response
+              setRandomRecipe(randomRecipe); // Accessed .data for the response
               console.log(randomRecipe);
             } catch (error) {
               console.error("Error:", error.message); // Updated error handling
@@ -104,21 +104,21 @@ const homepage = () => {
       <div className="cardFood">
       <div className="foodCard">
         <div className="cookCardFood">
-        <img
-              src={sushi}
+        { sushi &&
+            <img src={randomRecipe?.data?.recipes[0].image}
               width={350}
               height={234}
               className="cooking1ton"
               alt="Villa"
-          />
+          />}
         </div>
           <div className="savouryFish">
-          <h3>{randomRecipe[0]?.title}</h3>
+          <h3>{randomRecipe?.data?.recipes[0].title}</h3>
           <p className="indulgeFish">Indulge in the rich and savory symphony of<br></br> flavors with our Savory Herb-Infused Fish</p>
           </div>
 
         <div className="timePrepRecipe">
-          <p className="timePrep">40 Min - easy prep - 3 serves</p>
+          <p className="timePrep">{randomRecipe?.data?.recipes[0].readyInMinutes}Min - easy prep - {randomRecipe?.data?.recipes[0].servings} serves</p>
           <button className="viewRecipeBTN">VIEW RECIPE</button>
         </div>
         </div>
@@ -128,41 +128,41 @@ const homepage = () => {
         </div>
         <div className="foodCard">
         <div className="cookCardFood">
-        <img
-              src={sushi}
+        { sushi &&
+            <img src={randomRecipe?.data?.recipes[1].image}
               width={350}
               height={234}
               className="cooking1ton"
               alt="Villa"
-          />
+          />}
         </div>
           <div className="savouryFish">
-          <h3>{randomRecipe[1]?.title}</h3>
+          <h3>{randomRecipe?.data?.recipes[1].title}</h3>
           <p className="indulgeFish">Indulge in the rich and savory symphony of<br></br> flavors with our Savory Herb-Infused Fish</p>
           </div>
 
         <div className="timePrepRecipe">
-          <p className="timePrep">40 Min - easy prep - 3 serves</p>
+          <p className="timePrep">{randomRecipe?.data?.recipes[1].readyInMinutes}Min - easy prep - {randomRecipe?.data?.recipes[1].servings} serves</p>
           <button className="viewRecipeBTN">VIEW RECIPE</button>
         </div>
         </div>
         <div className="foodCard">
         <div className="cookCardFood">
-        <img
-              src={sushi}
+       { sushi &&
+            <img src={randomRecipe?.data?.recipes[2].image}
               width={350}
               height={234}
               className="cooking1ton"
               alt="Villa"
-          />
+          />}
         </div>
           <div className="savouryFish">
-          <h3>{randomRecipe[2]?.title}</h3>
+          <h3>{randomRecipe?.data?.recipes[2].title}</h3>
           <p className="indulgeFish">Indulge in the rich and savory symphony of<br></br> flavors with our Savory Herb-Infused Fish</p>
           </div>
 
         <div className="timePrepRecipe">
-          <p className="timePrep">40 Min - easy prep - 3 serves</p>
+          <p className="timePrep">{randomRecipe?.data?.recipes[2].readyInMinutes}Min - easy prep - {randomRecipe?.data?.recipes[2].servings} serves</p>
           <button className="viewRecipeBTN">VIEW RECIPE</button>
         </div>
         </div>
@@ -170,21 +170,22 @@ const homepage = () => {
       <div className="cardFood">
       <div className="foodCard">
         <div className="cookCardFood">
-        <img
-              src={sushi}
+        {
+          sushi &&
+        <img src={randomRecipe?.data?.recipes[3].image}
               width={350}
               height={234}
               className="cooking1ton"
               alt="Villa"
-          />
+          />}
         </div>
           <div className="savouryFish">
-          <h3>{randomRecipe[3]?.title}</h3>
+          <h3>{randomRecipe?.data?.recipes[3].title}</h3>
           <p className="indulgeFish">Indulge in the rich and savory symphony of<br></br> flavors with our Savory Herb-Infused Fish</p>
           </div>
 
         <div className="timePrepRecipe">
-          <p className="timePrep">40 Min - easy prep - 3 serves</p>
+          <p className="timePrep">{randomRecipe?.data?.recipes[3].readyInMinutes}Min - easy prep - {randomRecipe?.data?.recipes[3].servings} serves</p>
           <button className="viewRecipeBTN">VIEW RECIPE</button>
         </div>
         </div>
@@ -194,41 +195,46 @@ const homepage = () => {
         </div>
         <div className="foodCard">
         <div className="cookCardFood">
-        <img
-              src={sushi}
+        {
+            sushi &&
+            <img src={randomRecipe?.data?.recipes[4].image}
               width={350}
               height={234}
               className="cooking1ton"
               alt="Villa"
-          />
+          />}
         </div>
           <div className="savouryFish">
-          <h3>{randomRecipe[4]?.title}</h3>
+          <h3>{randomRecipe?.data?.recipes[4].title}</h3>
           <p className="indulgeFish">Indulge in the rich and savory symphony of<br></br> flavors with our Savory Herb-Infused Fish</p>
           </div>
 
         <div className="timePrepRecipe">
-          <p className="timePrep">40 Min - easy prep - 3 serves</p>
+          <p className="timePrep">{randomRecipe?.data?.recipes[4].readyInMinutes}Min - easy prep - {randomRecipe?.data?.recipes[4].servings} serves</p>
           <button className="viewRecipeBTN">VIEW RECIPE</button>
         </div>
         </div>
+
         <div className="foodCard">
         <div className="cookCardFood">
-        <img
-              src={sushi}
+        {
+          sushi &&
+          <img src={randomRecipe?.data?.recipes[5].image}
               width={350}
               height={234}
               className="cooking1ton"
               alt="Villa"
           />
+        }
+
         </div>
           <div className="savouryFish">
-          <h3>{randomRecipe[5]?.title}</h3>
+          <h3>{randomRecipe?.data?.recipes[5].title}</h3>
           <p className="indulgeFish">Indulge in the rich and savory symphony of<br></br> flavors with our Savory Herb-Infused Fish</p>
           </div>
 
         <div className="timePrepRecipe">
-          <p className="timePrep">40 Min - easy prep - 3 serves</p>
+          <p className="timePrep">{randomRecipe?.data?.recipes[5].readyInMinutes}Min - easy prep - {randomRecipe?.data?.recipes[5].servings} serves</p>
           <button className="viewRecipeBTN">VIEW RECIPE</button>
         </div>
         </div>
