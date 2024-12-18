@@ -35,26 +35,28 @@ const homepage = () => {
             try {
               console.log("random recipe API is being called");
               
-              const apiKey = "d01c7efa797b4e24b36061525eadf1a8"
+              const apiKey = "f08cf4128f714b61b3601667358b3cd3"
 
               // Axios GET request with headers
-              const randomRecipe = await axios.get(
-                `https://api.spoonacular.com/recipes/random?number=80&apiKey=${apiKey}`,
+              const randomRecipes = await axios.get(
+                `https://api.spoonacular.com/recipes/random?number=12&apiKey=${apiKey}`,
                 {
                   headers: {
                     'Content-Type': 'application/json', // Added the header
                   },
                 }
               );
-
-              setRandomRecipe(randomRecipe); // Accessed data for the response
-              console.log(randomRecipe);
+              const  recipesRandom = randomRecipes
+              setRandomRecipe(recipesRandom); // Accessed data for the response
+              console.log(recipesRandom);
+              console.log("recipesRandom is an",typeof recipesRandom)
             } catch (error) {
               console.error("Error:", error.message); //error handling
             }
           };
           useEffect(() => {
             fetchRandomRecipeData();
+            console.log("array la recipes", randomRecipe)
           },[]); // Added empty dependency array
           
 
@@ -62,21 +64,19 @@ const homepage = () => {
           const dinnerType = () => {
             if (!randomRecipe) return
             if (randomRecipe){
-            const breakfastitem = randomRecipe.map(item => item.dishTypes === 'breakfast')
-
+            const changeToArray = Object.values(randomRecipe).flatMap(item => item.dishTypes === "soup")
+                console.log(typeof changeToArray)
+                console.log(changeToArray)
             }
 
-            console.log("breakfast recipes", breakfastitem)
-            setBreakfastRecipes(breakfastitem)
+            // setBreakfastRecipes(changeToArray)
+
             };
-
             useEffect(() => {
-              if (randomRecipe){
+              if (!randomRecipe) return
               dinnerType();
-              }
-            },[randomRecipe]); // Added empty dependency array
+            }); // Added empty dependency array
             
-
 
 
 
