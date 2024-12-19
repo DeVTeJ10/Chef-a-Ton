@@ -14,7 +14,7 @@ const homepage = () => {
 
         const [randomRecipe, setRandomRecipe] = useState(""); // Handle the random api call
         const [recipeInput, setRecipeInput] = useState("")
-        const [breakfastRecipes, setBreakfastRecipes] = useState("")
+        const [breakfastRecipes, setBreakfastRecipes] = useState([""])
         const [lunchRecipe, setLunchRecipes] = useState("")
         const [dinnerRecipe, setDinnerRecipes] = useState("")
 
@@ -48,8 +48,8 @@ const homepage = () => {
               );
               const  recipesRandom = randomRecipes
               setRandomRecipe(recipesRandom); // Accessed data for the response
-              console.log(recipesRandom);
-              console.log("recipesRandom is an",typeof recipesRandom)
+              // console.log("random recipes are:",randomRecipe);
+
             } catch (error) {
               console.error("Error:", error.message); //error handling
             }
@@ -61,21 +61,22 @@ const homepage = () => {
           
 
 
-          const dinnerType = () => {
-            if (!randomRecipe) return
-            if (randomRecipe){
-            const changeToArray = Object.values(randomRecipe).flatMap(item => item.dishTypes === "soup")
-                console.log(typeof changeToArray)
-                console.log(changeToArray)
-            }
+          // const dinnerType = () => {
+          //   if (!randomRecipe) return
+          //   if (randomRecipe){
+          //   const changeToArray = randomRecipe?.data?.recipes?.flatMap( array => array.map(item => item.dishTypes))
 
-            // setBreakfastRecipes(changeToArray)
+            
+          //       console.log(changeToArray)
+          //   }
 
-            };
-            useEffect(() => {
-              if (!randomRecipe) return
-              dinnerType();
-            }); // Added empty dependency array
+          //   // setBreakfastRecipes(changeToArray)
+
+          //   };
+          //   useEffect(() => {
+          //     if (!randomRecipe) return
+          //     dinnerType();
+          //   }); // Added empty dependency array
             
 
 
