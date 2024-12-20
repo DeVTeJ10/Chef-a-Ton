@@ -34,8 +34,7 @@ const homepage = () => {
           const fetchRandomRecipeData = async () => {
             try {
               console.log("random recipe API is being called");
-              
-              const apiKey = "f08cf4128f714b61b3601667358b3cd3"
+              const apiKey = "88531c2da7374db3b901bd5f5ecf8f80"
 
               // Axios GET request with headers
               const randomRecipes = await axios.get(
@@ -49,34 +48,38 @@ const homepage = () => {
               const  recipesRandom = randomRecipes
               setRandomRecipe(recipesRandom); // Accessed data for the response
               // console.log("random recipes are:",randomRecipe);
-
             } catch (error) {
               console.error("Error:", error.message); //error handling
             }
           };
           useEffect(() => {
-            fetchRandomRecipeData();
-            console.log("array la recipes", randomRecipe)
-          },[]); // Added empty dependency array
+            if (!randomRecipe)
+              fetchRandomRecipeData();
+              console.log("array la recipes", randomRecipe)
+          },[randomRecipe]); // Added empty dependency array
+
+
           
+          
+          // const dinnerTypes = () => {
 
-
-          // const dinnerType = () => {
-          //   if (!randomRecipe) return
-          //   if (randomRecipe){
-          //   const changeToArray = randomRecipe?.data?.recipes?.flatMap( array => array.map(item => item.dishTypes))
+          //   const dinnerTypes = Object.entries(randomRecipe?.data?.recipes || {}).reduce((result, [key, array]) => {
+          //     result[key] = array.filter(item => item.dishTypes?.includes("breakfast"));
+          //     return result;
+          // }, {});
+          
+          //   console.log(dinnerTypes)
 
             
-          //       console.log(changeToArray)
-          //   }
+          // }
+          // useEffect(() => {
+          //   if (!randomRecipe) return
+          //   dinnerTypes()
+          // })
 
-          //   // setBreakfastRecipes(changeToArray)
 
-          //   };
-          //   useEffect(() => {
-          //     if (!randomRecipe) return
-          //     dinnerType();
-          //   }); // Added empty dependency array
+
+            
             
 
 
