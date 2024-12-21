@@ -61,21 +61,21 @@ const homepage = () => {
 
           
           
-          // const dinnerTypes = () => {
+          const dinnerTypes = () => {
 
-          //   const dinnerTypes = Object.entries(randomRecipe?.data?.recipes || {}).reduce((result, [key, array]) => {
-          //     result[key] = array.filter(item => item.dishTypes?.includes("breakfast"));
-          //     return result;
-          // }, {});
+            const dinnerTypes = Object.entries(randomRecipe?.data?.recipes || {}).reduce((result, [key, array]) => {
+              result[key] = array.filter(item => item.dishTypes?.includes("breakfast"));
+              return result;
+          }, {});
           
-          //   console.log(dinnerTypes)
+            console.log(dinnerTypes)
 
             
-          // }
-          // useEffect(() => {
-          //   if (!randomRecipe) return
-          //   dinnerTypes()
-          // })
+          }
+          useEffect(() => {
+            if (!randomRecipe) return
+            dinnerTypes()
+          },[])
 
 
 
