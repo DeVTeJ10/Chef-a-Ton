@@ -63,19 +63,28 @@ const homepage = () => {
           
           const dinnerTypes = () => {
 
-            const dinnerTypes = Object.entries(randomRecipe?.data?.recipes || {}).reduce((result, [key, array]) => {
-              result[key] = array.filter(item => item.dishTypes?.includes("breakfast"));
-              return result;
-          }, {});
-          
-            console.log(dinnerTypes)
+            // let datas = JSON.parse(randomRecipe)
+
+            let breakfastDish = randomRecipe?.data?.recipes?.filter(breakfast => breakfast.dishTypes === "breakfast")
+
+            if (breakfastDish.length > 0) {
+              console.log("Found Bobs:", breakfastDish);
+              // If you want to log details about each breakfast
+              breakfastDish.forEach(breakfastDish => {
+                console.log(breakfastDish);
+              });
+            } else {
+              console.log("No breakfast dish found");
+            }
+            console.log("breakfast dishes",breakfastDish)
 
             
           }
           useEffect(() => {
             if (!randomRecipe) return
             dinnerTypes()
-          },[])
+            console.log("creating dinner type",randomRecipe)
+          },[randomRecipe])
 
 
 
