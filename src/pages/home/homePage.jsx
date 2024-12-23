@@ -34,7 +34,7 @@ const homepage = () => {
           const fetchRandomRecipeData = async () => {
             try {
               console.log("random recipe API is being called");
-              const apiKey = "88531c2da7374db3b901bd5f5ecf8f80"
+              const apiKey = "4c1b7541575b4643aecedcfb101fe614"
 
               // Axios GET request with headers
               const randomRecipes = await axios.get(
@@ -63,21 +63,18 @@ const homepage = () => {
           
           const dinnerTypes = () => {
 
-            // let datas = JSON.parse(randomRecipe)
+            if ( randomRecipe ){
 
-            let breakfastDish = randomRecipe?.data?.recipes?.filter(breakfast => breakfast.dishTypes === "breakfast")
+              // let dishtypes = JSON.stringify(randomRecipe)
 
-            if (breakfastDish.length > 0) {
-              console.log("Found Bobs:", breakfastDish);
-              // If you want to log details about each breakfast
-              breakfastDish.forEach(breakfastDish => {
-                console.log(breakfastDish);
-              });
-            } else {
-              console.log("No breakfast dish found");
+              let breakfastDish =randomRecipe?.data?.recipes?.filter(breakfast => breakfast?.dishTypes === "breakfast")
+              
+              let breakfastDishes = breakfastDish
+
+                console.log("Found Breakfast dish type:", breakfastDishes);
+            }else{
+              console.log("no available data")
             }
-            console.log("breakfast dishes",breakfastDish)
-
             
           }
           useEffect(() => {
