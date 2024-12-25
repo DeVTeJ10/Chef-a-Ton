@@ -65,21 +65,12 @@ const homepage = () => {
 
             if ( randomRecipe ){
 
-              // let dishtypes = JSON.stringify(randomRecipe)
-
-              // let breakfastDish =randomRecipe?.data?.recipes?.filter(breakfast => breakfast?.dishTypes === "breakfast")
+              let extractedData = randomRecipe?.data?.recipes.filter(recipe =>
+                recipe?.breakfast === true
+              ).map(recipe => ({
+                title: recipe.title
+              }))
               
-              // const breakfastDishes = breakfastDish
-
-              let extractedData = randomRecipe.data.recipes.filter(recipe => {
-                return {
-                  breakfastDish: recipe.dishTypes === "breakfast", // Assuming each recipe has a title
-                  // isHealthy: recipe.veryHealthy // Assuming this boolean exists
-                };
-              });
-              
-              console.log(extractedData);
-
                 console.log("Found Breakfast dish type:", extractedData);
             }else{
               console.log("no available data")
