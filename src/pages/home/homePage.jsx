@@ -65,16 +65,9 @@ const homepage = () => {
 
             if ( randomRecipe ){
 
-              let extractedData = randomRecipe?.data?.recipes.filter(recipe =>
-                recipe?.breakfast === true
-              ).map(recipe => ({
-                title: recipe.title
-              }))
               
-                console.log("Found Breakfast dish type:", extractedData);
-            }else{
-              console.log("no available data")
-            }
+              
+              console.log("Breakfast Recipe Titles:", breakfastRecipeTitles);
             
           }
           useEffect(() => {
