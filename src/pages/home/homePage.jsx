@@ -19,7 +19,7 @@ const homepage = () => {
         const [dinnerRecipe, setDinnerRecipes] = useState("")
 
 
-        const apiKey = '777f35740b9843339bcbd6fba66f28f0' // Api key needed for both apis to work
+        const apiKey = 'ef07c500fb934e78b69c85978bb5e0f0' // Api key needed for both apis to work
 
 
           // const handleSubmit = (e) => {
@@ -34,11 +34,11 @@ const homepage = () => {
           const fetchRandomRecipeData = async () => {
             try {
               console.log("random recipe API is being called");
-              const apiKey = "4c1b7541575b4643aecedcfb101fe614"
+              // const apiKey = "ef07c500fb934e78b69c85978bb5e0f0"
 
               // Axios GET request with headers
               const randomRecipes = await axios.get(
-                `https://api.spoonacular.com/recipes/random?number=90&apiKey=${apiKey}`,
+                `https://api.spoonacular.com/recipes/random?number=80&apiKey=${apiKey}`,
                 {
                   headers: {
                     'Content-Type': 'application/json', // Added the header
@@ -61,25 +61,34 @@ const homepage = () => {
 
           
           
-          const dinnerTypes = () => {
+          const dishTypes = () => {
 
             let checkrecipes = randomRecipe?.data?.recipes;
 
+            
+
               if (checkrecipes) {
-                console.log("this function works");
-                
-                // Filter recipes where 'breakfast' is in dishTypes
                 let breakfastRecipes = checkrecipes.filter(dish => 
                   dish.dishTypes && dish.dishTypes.includes("breakfast")
                 );
-                
                 console.log("Array of breakfast recipes:", breakfastRecipes);
+
+
+                let lunchRecipes = checkrecipes.filter(dish => 
+                  dish.dishTypes && dish.dishTypes.includes("lunch")
+                );
+                console.log("Array of lunch recipes:", lunchRecipes)
+
+                let dinnerRecipes = checkrecipes.filter(dish =>
+                  dish.dishTypes && dish.dishTypes.includes("dinner")
+                );
+                console.log("Array of dinner recipes", dinnerRecipes)
               }
 
         }
           useEffect(() => {
             if (!randomRecipe) return
-            dinnerTypes()
+            dishTypes()
             console.log("creating dinner type",randomRecipe)
           },[randomRecipe])
 
