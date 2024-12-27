@@ -38,7 +38,7 @@ const homepage = () => {
 
               // Axios GET request with headers
               const randomRecipes = await axios.get(
-                `https://api.spoonacular.com/recipes/random?number=12&apiKey=${apiKey}`,
+                `https://api.spoonacular.com/recipes/random?number=90&apiKey=${apiKey}`,
                 {
                   headers: {
                     'Content-Type': 'application/json', // Added the header
@@ -63,13 +63,20 @@ const homepage = () => {
           
           const dinnerTypes = () => {
 
-            if ( randomRecipe ){
+            let checkrecipes = randomRecipe?.data?.recipes;
 
-              
-              
-              console.log("Breakfast Recipe Titles:", breakfastRecipeTitles);
-            
-          }
+              if (checkrecipes) {
+                console.log("this function works");
+                
+                // Filter recipes where 'breakfast' is in dishTypes
+                let breakfastRecipes = checkrecipes.filter(dish => 
+                  dish.dishTypes && dish.dishTypes.includes("breakfast")
+                );
+                
+                console.log("Array of breakfast recipes:", breakfastRecipes);
+              }
+
+        }
           useEffect(() => {
             if (!randomRecipe) return
             dinnerTypes()
