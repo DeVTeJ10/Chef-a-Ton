@@ -19,7 +19,7 @@ const homepage = () => {
         const [dinnerRecipe, setDinnerRecipes] = useState("")
 
 
-        const apiKey = 'ef07c500fb934e78b69c85978bb5e0f0' // Api key needed for both apis to work
+        const apiKey = '4eb29920f4584c31a9b61ee35fc44229' // Api key needed for both apis to work
 
 
           // const handleSubmit = (e) => {
@@ -66,7 +66,7 @@ const homepage = () => {
               if (checkrecipes) {
 
                 let breakfastRecipes = checkrecipes.filter(dish => dish.dishTypes && dish.dishTypes.includes("breakfast"));
-                setBreakfastRecipes(breakfastRecipes)
+                
                 console.log("Array of breakfast recipes:", breakfastRecipes);
 
 
@@ -84,8 +84,36 @@ const homepage = () => {
           useEffect(() => {
             if (!randomRecipe) return
             dishTypes()
-            console.log("creating dinner type",randomRecipe)
+            console.log("creating dish types",randomRecipe)
           },[randomRecipe])
+
+
+
+
+          const getBreakfastRecipes = async () => {
+            try {
+              console.log("breakfast recipe API is being called");
+
+
+              const breakfastRecipe = await axios.get(
+                'https://api.spoonacular.com/recipes/complexSearch?apiKey=4eb29920f4584c31a9b61ee35fc44229&type="breakfast"',
+                {
+                  headers: {
+                    'Content-Type': 'application/json', 
+                  },
+                }
+              );
+                console.log("recipes for breakfast",breakfastRecipe)
+                setBreakfastRecipes(breakfastRecipe)
+            } catch (error) {
+              console.error("Error:", error.message); 
+            }
+          };
+          useEffect(() => {
+            if (!randomRecipe)
+              getBreakfastRecipes();
+              // console.log("breakfast recipes", breakfastRecipe)
+          },[randomRecipe]); // Added empty dependency array
 
 
 
