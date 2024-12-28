@@ -69,7 +69,8 @@ body{
     display: flex;
     justify-content: center;
     gap: 50px;
-    margin-top: 20px;
+    margin-top: 80px;
+    margin-bottom: 20px;
 }
 
 .breakfast{
@@ -145,4 +146,31 @@ body{
 
 .cooking1ton{
     border-radius: 5%;
+}
+
+.breakfast{
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    color: white;
+    background-color: #6B4F31;
+}
+
+.lunch{
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    color: white;
+    background-color: #6B4F31;
+}
+
+.dinner{
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    color: white;
+    background-color: #6B4F31;
 }
