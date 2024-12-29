@@ -33,8 +33,6 @@ const homepage = () => {
 
           const fetchRandomRecipeData = async () => {
             try {
-              console.log("random recipe API is being called");
-
 
               const randomRecipes = await axios.get(
                 `https://api.spoonacular.com/recipes/random?number=80&apiKey=${apiKey}`,
@@ -66,7 +64,7 @@ const homepage = () => {
               if (checkrecipes) {
 
                 let breakfastRecipes = checkrecipes.filter(dish => dish.dishTypes && dish.dishTypes.includes("breakfast"));
-                
+                setBreakfastRecipes(breakfastRecipes)
                 console.log("Array of breakfast recipes:", breakfastRecipes);
 
 
@@ -84,36 +82,10 @@ const homepage = () => {
           useEffect(() => {
             if (!randomRecipe) return
             dishTypes()
-            console.log("creating dish types",randomRecipe)
           },[randomRecipe])
 
 
 
-
-          const getBreakfastRecipes = async () => {
-            try {
-              console.log("breakfast recipe API is being called");
-
-
-              const breakfastRecipe = await axios.get(
-                'https://api.spoonacular.com/recipes/complexSearch?apiKey=4eb29920f4584c31a9b61ee35fc44229&type="breakfast"',
-                {
-                  headers: {
-                    'Content-Type': 'application/json', 
-                  },
-                }
-              );
-                console.log("recipes for breakfast",breakfastRecipe)
-                setBreakfastRecipes(breakfastRecipe)
-            } catch (error) {
-              console.error("Error:", error.message); 
-            }
-          };
-          useEffect(() => {
-            if (!randomRecipe)
-              getBreakfastRecipes();
-              // console.log("breakfast recipes", breakfastRecipe)
-          },[randomRecipe]); // Added empty dependency array
 
 
 
