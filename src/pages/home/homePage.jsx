@@ -6,10 +6,6 @@ import cooking1 from "../../images/cooking1.jpg";
 import sushi from "../../images/foodsushi.jpg";
 import "./home.css"
 
-
-
-
-
 const homepage = () => {
 
         const [randomRecipe, setRandomRecipe] = useState(""); // Handle the random api call
@@ -20,15 +16,6 @@ const homepage = () => {
 
 
         const apiKey = '4eb29920f4584c31a9b61ee35fc44229' // Api key needed for both apis to work
-
-
-          // const handleSubmit = (e) => {
-          //   e.preventDefault();
-          //   fetchRandomRecipeData();
-          // };
-          // const handleChange = (e) => {
-          //   setRecipeInput(e.target.value);  // Update state with input value
-          // };
 
 
           const fetchRandomRecipeData = async () => {
@@ -52,7 +39,7 @@ const homepage = () => {
             if (!randomRecipe)
               fetchRandomRecipeData();
               console.log("array la recipes", randomRecipe)
-          },[randomRecipe]); // Added empty dependency array
+          },[randomRecipe]);
 
 
           
@@ -67,17 +54,16 @@ const homepage = () => {
                 setBreakfastRecipes(breakfastRecipes)
                 console.log("Array of breakfast recipes:", breakfastRecipes);
 
-
                 let lunchRecipes = checkrecipes.filter(dish => dish.dishTypes && dish.dishTypes.includes("lunch"));
                 setLunchRecipes(lunchRecipes)
                 console.log("Array of lunch recipes:", lunchRecipes)
 
-
-                let dinnerRecipes = checkrecipes.filter(dish => dish.dishTypes && dish.dishTypes.includes("soup"));
+                let dinnerRecipes = checkrecipes.filter(dish => dish.dishTypes && dish.dishTypes.includes("dinner"));
                 setDinnerRecipes(dinnerRecipes)
                 console.log("Array of dinner recipes", dinnerRecipes)
 
               }
+
         }
           useEffect(() => {
             if (!randomRecipe) return
@@ -86,7 +72,14 @@ const homepage = () => {
 
 
 
+          const displayDishTypes = () => {
 
+            if (breakfastRecipes && lunchRecipe && dinnerRecipe){
+
+              let breakfastDisplay = breakfastRecipes.map()
+
+            }
+          }
 
 
             
