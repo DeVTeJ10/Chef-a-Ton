@@ -5,6 +5,7 @@ import Footer from "../../components/footer/footer";
 import cooking1 from "../../images/cooking1.jpg";
 import sushi from "../../images/foodsushi.jpg";
 import "./home.css"
+import _ from 'lodash';
 
 const homepage = () => {
 
@@ -13,6 +14,10 @@ const homepage = () => {
         const [breakfastRecipes, setBreakfastRecipes] = useState([""])
         const [lunchRecipe, setLunchRecipes] = useState("")
         const [dinnerRecipe, setDinnerRecipes] = useState("")
+        const [displayBreakfast, setDisplayBreakfast] = useState("")
+        const [displayLunch, setDisplayLunch] = useState("")
+        const [displayDinner, setDisplayDinner] = useState("")
+
 
 
         const apiKey = '4eb29920f4584c31a9b61ee35fc44229' // Api key needed for both apis to work
@@ -76,10 +81,25 @@ const homepage = () => {
 
             if (breakfastRecipes && lunchRecipe && dinnerRecipe){
 
-              let breakfastDisplay = breakfastRecipes.map()
+              const breakfastRecipeDisplays = _.sampleSize(breakfastRecipes, 3)
+              console.log("breakfasts to display",breakfastRecipeDisplays)
+              setDisplayBreakfast(breakfastRecipeDisplays)
+
+              const lunchRecipeDisplays = _.sampleSize(lunchRecipe, 3)
+              console.log("lunch to display",lunchRecipeDisplays)
+              setDisplayLunch(lunchRecipeDisplays)
+
+              const dinnerRecipeDisplays = _.sampleSize(dinnerRecipe, 3)
+              console.log("dinner to display",dinnerRecipeDisplays)
+              setDisplayDinner(dinnerRecipeDisplays)
 
             }
           }
+          useEffect(() => {
+            if (!randomRecipe) return
+            displayDishTypes()
+          },[randomRecipe, breakfastRecipes, lunchRecipe, dinnerRecipe])
+
 
 
             
