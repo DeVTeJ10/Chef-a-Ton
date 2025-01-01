@@ -11,7 +11,7 @@ const homepage = () => {
 
         const [randomRecipe, setRandomRecipe] = useState(""); // Handle the random api call
         const [recipeInput, setRecipeInput] = useState("")
-        const [breakfastRecipes, setBreakfastRecipes] = useState([""])
+        const [breakfastRecipe, setBreakfastRecipes] = useState([""])
         const [lunchRecipe, setLunchRecipes] = useState("")
         const [dinnerRecipe, setDinnerRecipes] = useState("")
         const [displayBreakfast, setDisplayBreakfast] = useState("")
@@ -20,7 +20,7 @@ const homepage = () => {
 
 
 
-        const apiKey = '4eb29920f4584c31a9b61ee35fc44229' // Api key needed for both apis to work
+        const apiKey = '3a7cb84f3e1442dfa248a7280f9611d2' // Api key needed for both apis to work
 
 
           const fetchRandomRecipeData = async () => {
@@ -79,9 +79,9 @@ const homepage = () => {
 
           const displayDishTypes = () => {
 
-            if (breakfastRecipes && lunchRecipe && dinnerRecipe){
+            if (breakfastRecipe && lunchRecipe && dinnerRecipe){
 
-              const breakfastRecipeDisplays = _.sampleSize(breakfastRecipes, 3)
+              const breakfastRecipeDisplays = _.sampleSize(breakfastRecipe, 3)
               console.log("breakfasts to display",breakfastRecipeDisplays)
               setDisplayBreakfast(breakfastRecipeDisplays)
 
@@ -98,7 +98,7 @@ const homepage = () => {
           useEffect(() => {
             if (!randomRecipe) return
             displayDishTypes()
-          },[randomRecipe, breakfastRecipes, lunchRecipe, dinnerRecipe])
+          },[randomRecipe, breakfastRecipe, lunchRecipe, dinnerRecipe])
 
 
 
@@ -338,25 +338,27 @@ const homepage = () => {
       </div>
 
       <div className="meals">
-        <button className="breakfast">Breakfast</button>
-        <button className="lunch">Lunch</button>
-        <button className="dinner">Dinner</button>
+        <button className="breakfast" id='breakfastBTN'>Breakfast</button>
+        <button className="lunch" id='lunchBTN'>Lunch</button>
+        <button className="dinner" id='dinnerBTN'>Dinner</button>
         </div>
 
 
       <div className="cardFood">
       <div className="foodCard">
         <div className="cookCardFood">
-        <img
-              src={sushi}
+        {
+          sushi &&
+          <img src={breakfastRecipe[0].image}
               width={350}
               height={234}
               className="cooking1ton"
               alt="Villa"
           />
+        }
         </div>
           <div className="savouryFish">
-          <h3>Savoury herb infused fish</h3>
+          <h3>{breakfastRecipe[0].title}</h3>
           <p className="indulgeFish">Indulge in the rich and savory symphony of<br></br> flavors with our Savory Herb-Infused Fish</p>
           </div>
 
@@ -371,16 +373,18 @@ const homepage = () => {
         </div>
         <div className="foodCard">
         <div className="cookCardFood">
-        <img
-              src={sushi}
+        {
+          sushi &&
+          <img src={breakfastRecipe[1]?.image}
               width={350}
               height={234}
               className="cooking1ton"
               alt="Villa"
           />
+        }
         </div>
           <div className="savouryFish">
-          <h3>Savoury herb infused fish</h3>
+          <h3>{breakfastRecipe[1]?.title}</h3>
           <p className="indulgeFish">Indulge in the rich and savory symphony of<br></br> flavors with our Savory Herb-Infused Fish</p>
           </div>
 
@@ -391,16 +395,18 @@ const homepage = () => {
         </div>
         <div className="foodCard">
         <div className="cookCardFood">
-        <img
-              src={sushi}
+        {
+          sushi &&
+          <img src={breakfastRecipe[2]?.image}
               width={350}
               height={234}
               className="cooking1ton"
               alt="Villa"
           />
+        }
         </div>
           <div className="savouryFish">
-          <h3>Savoury herb infused fish</h3>
+          <h3>{breakfastRecipe[2]?.title}</h3>
           <p className="indulgeFish">Indulge in the rich and savory symphony of<br></br> flavors with our Savory Herb-Infused Fish</p>
           </div>
 
