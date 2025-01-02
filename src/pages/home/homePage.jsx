@@ -17,10 +17,11 @@ const homepage = () => {
         const [displayBreakfast, setDisplayBreakfast] = useState("")
         const [displayLunch, setDisplayLunch] = useState("")
         const [displayDinner, setDisplayDinner] = useState("")
+        const [alltheDishTypes, setAllTheDishTypes] = useState([])
 
 
 
-        const apiKey = '3a7cb84f3e1442dfa248a7280f9611d2' // Api key needed for both apis to work
+        const apiKey = '1928847c07494cc69752a1dd02d1a095' // Api key needed for both apis to work
 
 
           const fetchRandomRecipeData = async () => {
@@ -77,7 +78,7 @@ const homepage = () => {
 
 
 
-          const displayDishTypes = () => {
+          const numberDishTypes = () => {
 
             if (breakfastRecipe && lunchRecipe && dinnerRecipe){
 
@@ -93,16 +94,29 @@ const homepage = () => {
               console.log("dinner to display",dinnerRecipeDisplays)
               setDisplayDinner(dinnerRecipeDisplays)
 
+              if (breakfastRecipeDisplays && lunchRecipeDisplays && dinnerRecipeDisplays){
+                const allDishTypes = [breakfastRecipeDisplays, lunchRecipeDisplays, dinnerRecipeDisplays]
+                console.log("displaying all at once",allDishTypes) 
+                setAllTheDishTypes(allDishTypes)
+              }
+
+              
             }
           }
           useEffect(() => {
             if (!randomRecipe) return
-            displayDishTypes()
+            numberDishTypes()
+            // console.log("displaying all the dish types",alltheDishTypes)
+            
           },[randomRecipe, breakfastRecipe, lunchRecipe, dinnerRecipe])
 
 
 
-            
+          const displayDishTypes = (index) => {
+
+            const display = document.getElementById(`dishtitle ${index}`)
+            let dataSet = 3[index]
+          }
             
 
   return (
@@ -358,7 +372,7 @@ const homepage = () => {
         }
         </div>
           <div className="savouryFish">
-          <h3>{breakfastRecipe[0].title}</h3>
+          <h3 id='dishtitle1'>{breakfastRecipe[0].title}</h3>
           <p className="indulgeFish">Indulge in the rich and savory symphony of<br></br> flavors with our Savory Herb-Infused Fish</p>
           </div>
 
