@@ -11,17 +11,17 @@ const homepage = () => {
 
         const [randomRecipe, setRandomRecipe] = useState(""); // Handle the random api call
         const [recipeInput, setRecipeInput] = useState("")
-        const [breakfastRecipe, setBreakfastRecipes] = useState([""])
+        const [breakfastRecipe, setBreakfastRecipes] = useState("")
         const [lunchRecipe, setLunchRecipes] = useState("")
         const [dinnerRecipe, setDinnerRecipes] = useState("")
-        const [displayBreakfast, setDisplayBreakfast] = useState("")
-        const [displayLunch, setDisplayLunch] = useState("")
-        const [displayDinner, setDisplayDinner] = useState("")
-        const [alltheDishTypes, setAllTheDishTypes] = useState([])
+        const [breakfastNumber, setBreakfastNumber] = useState([])
+        const [lunchNumber, setLunchNumber] = useState([])
+        const [dinnerNumber, setDinnerNumber] = useState([])
+        const [alltheDishTypes, setAllTheDishTypes] = useState("")
 
 
 
-        const apiKey = '1928847c07494cc69752a1dd02d1a095' // Api key needed for both apis to work
+        const apiKey = '016354f5050d4052b7425e33ab96f03c' // Api key needed for both apis to work
 
 
           const fetchRandomRecipeData = async () => {
@@ -83,40 +83,27 @@ const homepage = () => {
             if (breakfastRecipe && lunchRecipe && dinnerRecipe){
 
               const breakfastRecipeDisplays = _.sampleSize(breakfastRecipe, 3)
-              console.log("breakfasts to display",breakfastRecipeDisplays)
-              setDisplayBreakfast(breakfastRecipeDisplays)
+              console.log("breakfast display",breakfastRecipeDisplays)
 
               const lunchRecipeDisplays = _.sampleSize(lunchRecipe, 3)
-              console.log("lunch to display",lunchRecipeDisplays)
-              setDisplayLunch(lunchRecipeDisplays)
+              console.log("lunch display",lunchRecipeDisplays)
 
               const dinnerRecipeDisplays = _.sampleSize(dinnerRecipe, 3)
-              console.log("dinner to display",dinnerRecipeDisplays)
-              setDisplayDinner(dinnerRecipeDisplays)
+              console.log("dinner display",dinnerRecipeDisplays)
 
-              if (breakfastRecipeDisplays && lunchRecipeDisplays && dinnerRecipeDisplays){
-                const allDishTypes = [breakfastRecipeDisplays, lunchRecipeDisplays, dinnerRecipeDisplays]
-                console.log("displaying all at once",allDishTypes) 
-                setAllTheDishTypes(allDishTypes)
-              }
 
+              const allDishTypes = [breakfastRecipeDisplays, lunchRecipeDisplays, dinnerRecipeDisplays]
+              console.log("displaying all at once",allDishTypes) 
               
             }
           }
           useEffect(() => {
             if (!randomRecipe) return
             numberDishTypes()
-            // console.log("displaying all the dish types",alltheDishTypes)
-            
           },[randomRecipe, breakfastRecipe, lunchRecipe, dinnerRecipe])
 
 
 
-          const displayDishTypes = (index) => {
-
-            const display = document.getElementById(`dishtitle ${index}`)
-            let dataSet = 3[index]
-          }
             
 
   return (
@@ -363,7 +350,7 @@ const homepage = () => {
         <div className="cookCardFood">
         {
           sushi &&
-          <img src={breakfastRecipe[0].image}
+          <img src={breakfastRecipe[0]?.image}
               width={350}
               height={234}
               className="cooking1ton"
@@ -372,7 +359,7 @@ const homepage = () => {
         }
         </div>
           <div className="savouryFish">
-          <h3 id='dishtitle1'>{breakfastRecipe[0].title}</h3>
+          <h3 id='dishtitle1'>{breakfastRecipe[0]?.title}</h3>
           <p className="indulgeFish">Indulge in the rich and savory symphony of<br></br> flavors with our Savory Herb-Infused Fish</p>
           </div>
 
