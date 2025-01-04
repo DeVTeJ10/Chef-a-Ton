@@ -11,7 +11,7 @@ const homepage = () => {
 
         const [randomRecipe, setRandomRecipe] = useState(""); // Handle the random api call
         const [recipeInput, setRecipeInput] = useState("")
-        const [breakfastRecipe, setBreakfastRecipes] = useState("")
+        const [breakfastRecipe, setBreakfastRecipes] = useState([""])
         const [lunchRecipe, setLunchRecipes] = useState("")
         const [dinnerRecipe, setDinnerRecipes] = useState("")
         const [breakfastNumber, setBreakfastNumber] = useState([])
@@ -57,8 +57,9 @@ const homepage = () => {
               if (checkrecipes) {
 
                 let breakfastRecipes = checkrecipes.filter(dish => dish.dishTypes && dish.dishTypes.includes("breakfast"));
-                setBreakfastRecipes(breakfastRecipes)
-                console.log("Array of breakfast recipes:", breakfastRecipes);
+                const breakfastRecipeDisplays = _.sampleSize(breakfastRecipe, 3)
+                setBreakfastRecipes(breakfastRecipeDisplays)
+                console.log("Array of breakfast recipes:", breakfastRecipe);
 
                 let lunchRecipes = checkrecipes.filter(dish => dish.dishTypes && dish.dishTypes.includes("lunch"));
                 setLunchRecipes(lunchRecipes)
@@ -78,29 +79,31 @@ const homepage = () => {
 
 
 
-          const numberDishTypes = () => {
+          // const numberDishTypes = () => {
 
-            if (breakfastRecipe && lunchRecipe && dinnerRecipe){
+          //   if (breakfastRecipe && lunchRecipe && dinnerRecipe){
 
-              const breakfastRecipeDisplays = _.sampleSize(breakfastRecipe, 3)
-              console.log("breakfast display",breakfastRecipeDisplays)
+          //     // console.log("breakfast display",breakfastRecipeDisplays)
 
-              const lunchRecipeDisplays = _.sampleSize(lunchRecipe, 3)
-              console.log("lunch display",lunchRecipeDisplays)
+          //     const lunchRecipeDisplays = _.sampleSize(lunchRecipe, 3)
+          //     console.log("lunch display",lunchRecipeDisplays)
 
-              const dinnerRecipeDisplays = _.sampleSize(dinnerRecipe, 3)
-              console.log("dinner display",dinnerRecipeDisplays)
+          //     const dinnerRecipeDisplays = _.sampleSize(dinnerRecipe, 3)
+          //     console.log("dinner display",dinnerRecipeDisplays)
 
 
-              const allDishTypes = [breakfastRecipeDisplays, lunchRecipeDisplays, dinnerRecipeDisplays]
-              console.log("displaying all at once",allDishTypes) 
+          //     const allDishTypes = [breakfastRecipeDisplays, lunchRecipeDisplays, dinnerRecipeDisplays]
+          //     console.log("displaying all at once",allDishTypes)
+          //     console.log()
+          //     setAllTheDishTypes(allDishTypes)
+          //     console.log("displaying all at once",alltheDishTypes) 
               
-            }
-          }
-          useEffect(() => {
-            if (!randomRecipe) return
-            numberDishTypes()
-          },[randomRecipe, breakfastRecipe, lunchRecipe, dinnerRecipe])
+          //   }
+          // }
+          // useEffect(() => {
+          //   if (!randomRecipe) return
+          //   numberDishTypes()
+          // },[randomRecipe, breakfastRecipe, lunchRecipe, dinnerRecipe])
 
 
 
