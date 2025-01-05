@@ -14,14 +14,14 @@ const homepage = () => {
         const [breakfastRecipe, setBreakfastRecipes] = useState([""])
         const [lunchRecipe, setLunchRecipes] = useState("")
         const [dinnerRecipe, setDinnerRecipes] = useState("")
-        const [breakfastNumber, setBreakfastNumber] = useState([])
-        const [lunchNumber, setLunchNumber] = useState([])
-        const [dinnerNumber, setDinnerNumber] = useState([])
+        const [breakfastNumber, setBreakfastNumber] = useState("")
+        const [lunchNumber, setLunchNumber] = useState("")
+        const [dinnerNumber, setDinnerNumber] = useState("")
         const [alltheDishTypes, setAllTheDishTypes] = useState("")
 
 
 
-        const apiKey = '016354f5050d4052b7425e33ab96f03c' // Api key needed for both apis to work
+        const apiKey = '3ea83cfb4bf94f10a05ef9f0aec92a56' // Api key needed for both apis to work
 
 
           const fetchRandomRecipeData = async () => {
@@ -57,17 +57,16 @@ const homepage = () => {
               if (checkrecipes) {
 
                 let breakfastRecipes = checkrecipes.filter(dish => dish.dishTypes && dish.dishTypes.includes("breakfast"));
-                const breakfastRecipeDisplays = _.sampleSize(breakfastRecipe, 3)
-                setBreakfastRecipes(breakfastRecipeDisplays)
+                setBreakfastRecipes(breakfastRecipes)
                 console.log("Array of breakfast recipes:", breakfastRecipe);
 
                 let lunchRecipes = checkrecipes.filter(dish => dish.dishTypes && dish.dishTypes.includes("lunch"));
                 setLunchRecipes(lunchRecipes)
-                console.log("Array of lunch recipes:", lunchRecipes)
+                console.log("Array of lunch recipes:", lunchRecipe)
 
                 let dinnerRecipes = checkrecipes.filter(dish => dish.dishTypes && dish.dishTypes.includes("dinner"));
                 setDinnerRecipes(dinnerRecipes)
-                console.log("Array of dinner recipes", dinnerRecipes)
+                console.log("Array of dinner recipes", dinnerRecipe)
 
               }
 
@@ -79,31 +78,52 @@ const homepage = () => {
 
 
 
-          // const numberDishTypes = () => {
+          const numberDishTypes = () => {
 
-          //   if (breakfastRecipe && lunchRecipe && dinnerRecipe){
+            if (breakfastRecipe && lunchRecipe && dinnerRecipe){
 
-          //     // console.log("breakfast display",breakfastRecipeDisplays)
-
-          //     const lunchRecipeDisplays = _.sampleSize(lunchRecipe, 3)
-          //     console.log("lunch display",lunchRecipeDisplays)
-
-          //     const dinnerRecipeDisplays = _.sampleSize(dinnerRecipe, 3)
-          //     console.log("dinner display",dinnerRecipeDisplays)
-
-
-          //     const allDishTypes = [breakfastRecipeDisplays, lunchRecipeDisplays, dinnerRecipeDisplays]
-          //     console.log("displaying all at once",allDishTypes)
-          //     console.log()
-          //     setAllTheDishTypes(allDishTypes)
-          //     console.log("displaying all at once",alltheDishTypes) 
               
-          //   }
-          // }
-          // useEffect(() => {
-          //   if (!randomRecipe) return
-          //   numberDishTypes()
-          // },[randomRecipe, breakfastRecipe, lunchRecipe, dinnerRecipe])
+              const breakfastRecipeDisplays = _.sampleSize(breakfastRecipe, 3)
+              setBreakfastNumber(breakfastRecipeDisplays)
+              console.log("breakfast display",breakfastRecipeDisplays)
+
+
+              const lunchRecipeDisplays = _.sampleSize(lunchRecipe, 3)
+              setLunchNumber(lunchRecipeDisplays)
+              console.log("lunch display",lunchRecipeDisplays)
+
+
+              const dinnerRecipeDisplays = _.sampleSize(dinnerRecipe, 3)
+              setDinnerNumber(dinnerRecipeDisplays)
+              console.log("dinner display",dinnerRecipeDisplays)
+               
+              
+            }
+          }
+          useEffect(() => {
+            if (!randomRecipe) return
+              numberDishTypes()
+          },[randomRecipe, breakfastRecipe, lunchRecipe, dinnerRecipe])
+
+
+
+
+          const numberDishTypescheck = () => {
+
+            if (!randomRecipe) return
+
+              console.log("breakfast number display:",breakfastNumber)
+
+              console.log("lunch number display:",lunchNumber)
+
+              console.log("dinner number display:",dinnerNumber)
+               
+          }
+          useEffect(() => {
+            if (!randomRecipe && !breakfastRecipe && !lunchRecipe && !dinnerRecipe) return
+            numberDishTypescheck()
+
+          },[randomRecipe, breakfastNumber])
 
 
 
