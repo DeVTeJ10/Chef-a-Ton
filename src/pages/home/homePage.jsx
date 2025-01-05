@@ -21,7 +21,7 @@ const homepage = () => {
 
 
 
-        const apiKey = '3ea83cfb4bf94f10a05ef9f0aec92a56' // Api key needed for both apis to work
+        const apiKey = '91bde0f729c14d3b97ec965f4dbd1cd5' // Api key needed for both apis to work
 
 
           const fetchRandomRecipeData = async () => {
@@ -58,15 +58,12 @@ const homepage = () => {
 
                 let breakfastRecipes = checkrecipes.filter(dish => dish.dishTypes && dish.dishTypes.includes("breakfast"));
                 setBreakfastRecipes(breakfastRecipes)
-                console.log("Array of breakfast recipes:", breakfastRecipe);
 
                 let lunchRecipes = checkrecipes.filter(dish => dish.dishTypes && dish.dishTypes.includes("lunch"));
                 setLunchRecipes(lunchRecipes)
-                console.log("Array of lunch recipes:", lunchRecipe)
 
-                let dinnerRecipes = checkrecipes.filter(dish => dish.dishTypes && dish.dishTypes.includes("dinner"));
+                let dinnerRecipes = checkrecipes.filter(dish => dish.dishTypes && dish.dishTypes.includes("side dish"));
                 setDinnerRecipes(dinnerRecipes)
-                console.log("Array of dinner recipes", dinnerRecipe)
 
               }
 
@@ -82,22 +79,15 @@ const homepage = () => {
 
             if (breakfastRecipe && lunchRecipe && dinnerRecipe){
 
-              
               const breakfastRecipeDisplays = _.sampleSize(breakfastRecipe, 3)
               setBreakfastNumber(breakfastRecipeDisplays)
-              console.log("breakfast display",breakfastRecipeDisplays)
-
 
               const lunchRecipeDisplays = _.sampleSize(lunchRecipe, 3)
               setLunchNumber(lunchRecipeDisplays)
-              console.log("lunch display",lunchRecipeDisplays)
-
 
               const dinnerRecipeDisplays = _.sampleSize(dinnerRecipe, 3)
               setDinnerNumber(dinnerRecipeDisplays)
-              console.log("dinner display",dinnerRecipeDisplays)
                
-              
             }
           }
           useEffect(() => {
@@ -363,8 +353,7 @@ const homepage = () => {
 
       <div className="meals">
         <button className="breakfast" id='breakfastBTN'>Breakfast</button>
-        <button className="lunch" id='lunchBTN'>Lunch</button>
-        <button className="dinner" id='dinnerBTN'>Dinner</button>
+        <p>Some energy to start the day, dont you think?</p>
         </div>
 
 
@@ -431,6 +420,163 @@ const homepage = () => {
         </div>
           <div className="savouryFish">
           <h3>{breakfastRecipe[2]?.title}</h3>
+          <p className="indulgeFish">Indulge in the rich and savory symphony of<br></br> flavors with our Savory Herb-Infused Fish</p>
+          </div>
+
+        <div className="timePrepRecipe">
+          <p className="timePrep">40 Min - easy prep - 3 serves</p>
+          <button className="viewRecipeBTN">VIEW RECIPE</button>
+        </div>
+        </div>
+      </div>
+
+
+      <div className='lunchbtn'>
+        <button className="lunch" id='lunchBTN'>Lunch</button>
+      </div>
+
+      <div className="cardFood">
+      <div className="foodCard">
+        <div className="cookCardFood">
+        {
+          sushi &&
+          <img src={lunchRecipe[0]?.image}
+              width={350}
+              height={234}
+              className="cooking1ton"
+              alt="Villa"
+          />
+        }
+        </div>
+          <div className="savouryFish">
+          <h3 id='dishtitle1'>{lunchRecipe[0]?.title}</h3>
+          <p className="indulgeFish">Indulge in the rich and savory symphony of<br></br> flavors with our Savory Herb-Infused Fish</p>
+          </div>
+
+        <div className="timePrepRecipe">
+          <p className="timePrep">40 Min - easy prep - 3 serves</p>
+          <button className="viewRecipeBTN">VIEW RECIPE</button>
+        </div>
+        </div>
+
+        <div>
+          
+        </div>
+
+
+        <div className="foodCard">
+        <div className="cookCardFood">
+        {
+          sushi &&
+          <img src={lunchRecipe[1]?.image}
+              width={350}
+              height={234}
+              className="cooking1ton"
+              alt="Villa"
+          />
+        }
+        </div>
+          <div className="savouryFish">
+          <h3>{lunchRecipe[1]?.title}</h3>
+          <p className="indulgeFish">Indulge in the rich and savory symphony of<br></br> flavors with our Savory Herb-Infused Fish</p>
+          </div>
+
+        <div className="timePrepRecipe">
+          <p className="timePrep">40 Min - easy prep - 3 serves</p>
+          <button className="viewRecipeBTN">VIEW RECIPE</button>
+        </div>
+        </div>
+        <div className="foodCard">
+        <div className="cookCardFood">
+        {
+          sushi &&
+          <img src={lunchRecipe[2]?.image}
+              width={350}
+              height={234}
+              className="cooking1ton"
+              alt="Villa"
+          />
+        }
+        </div>
+          <div className="savouryFish">
+          <h3>{lunchRecipe[2]?.title}</h3>
+          <p className="indulgeFish">Indulge in the rich and savory symphony of<br></br> flavors with our Savory Herb-Infused Fish</p>
+          </div>
+
+        <div className="timePrepRecipe">
+          <p className="timePrep">40 Min - easy prep - 3 serves</p>
+          <button className="viewRecipeBTN">VIEW RECIPE</button>
+        </div>
+        </div>
+      </div>
+
+      <div className='dinnerbtn'>
+        <button className="dinner" id='dinnerBTN'>Dinner</button>
+      </div>
+
+      <div className="cardFood">
+      <div className="foodCard">
+        <div className="cookCardFood">
+        {
+          sushi &&
+          <img src={dinnerRecipe[0]?.image}
+              width={350}
+              height={234}
+              className="cooking1ton"
+              alt="Villa"
+          />
+        }
+        </div>
+          <div className="savouryFish">
+          <h3 id='dishtitle1'>{dinnerRecipe[0]?.title}</h3>
+          <p className="indulgeFish">Indulge in the rich and savory symphony of<br></br> flavors with our Savory Herb-Infused Fish</p>
+          </div>
+
+        <div className="timePrepRecipe">
+          <p className="timePrep">40 Min - easy prep - 3 serves</p>
+          <button className="viewRecipeBTN">VIEW RECIPE</button>
+        </div>
+        </div>
+
+        <div>
+          
+        </div>
+        <div className="foodCard">
+        <div className="cookCardFood">
+        {
+          sushi &&
+          <img src={dinnerRecipe[1]?.image}
+              width={350}
+              height={234}
+              className="cooking1ton"
+              alt="Villa"
+          />
+        }
+        </div>
+          <div className="savouryFish">
+          <h3>{dinnerRecipe[1]?.title}</h3>
+          <p className="indulgeFish">Indulge in the rich and savory symphony of<br></br> flavors with our Savory Herb-Infused Fish</p>
+          </div>
+
+        <div className="timePrepRecipe">
+          <p className="timePrep">40 Min - easy prep - 3 serves</p>
+          <button className="viewRecipeBTN">VIEW RECIPE</button>
+        </div>
+        </div>
+        <div className="foodCard">
+        <div className="cookCardFood">
+        {
+          sushi &&
+          <img src={dinnerRecipe[2]?.image}
+              width={350}
+              height={234}
+              className="cooking1ton"
+              alt="Villa"
+          />
+        }
+        </div>
+          <div className="savouryFish">
+          <h3>{dinnerRecipe[2]?.title}</h3>
           <p className="indulgeFish">Indulge in the rich and savory symphony of<br></br> flavors with our Savory Herb-Infused Fish</p>
           </div>
 
