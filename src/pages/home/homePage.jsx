@@ -98,25 +98,6 @@ const homepage = () => {
 
 
 
-          const numberDishTypescheck = () => {
-
-            if (!randomRecipe) return
-
-              console.log("breakfast number display:",breakfastNumber)
-
-              console.log("lunch number display:",lunchNumber)
-
-              console.log("dinner number display:",dinnerNumber)
-               
-          }
-          useEffect(() => {
-            if (!randomRecipe && !breakfastRecipe && !lunchRecipe && !dinnerRecipe) return
-            numberDishTypescheck()
-
-          },[randomRecipe, breakfastNumber])
-
-
-
           const changeBreakfast = async () => {
 
               if (!randomRecipe) return
@@ -128,7 +109,6 @@ const homepage = () => {
               setBreakfastNumber(breakfastRecipeDisplays)
 
               }
-
           };
 
           const changeLunch = async () => {
@@ -142,23 +122,21 @@ const homepage = () => {
               setLunchNumber(lunchRecipeDisplays)
 
             }
-
         };
 
 
-        const changeDinner = async () => {
+          const changeDinner = async () => {
 
-          if (!randomRecipe) return
+            if (!randomRecipe) return
 
-          const datatyped = await randomRecipe
+            const datatyped = await randomRecipe
 
-          if(datatyped){
-            const dinnerRecipeDisplays = _.sampleSize(dinnerRecipe, 3)
-            setDinnerNumber(dinnerRecipeDisplays)
+            if(datatyped){
+              const dinnerRecipeDisplays = _.sampleSize(dinnerRecipe, 3)
+              setDinnerNumber(dinnerRecipeDisplays)
 
-          }
-
-      };
+            }
+        };
 
 
 
