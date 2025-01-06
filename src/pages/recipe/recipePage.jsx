@@ -1,4 +1,5 @@
 import Header from "../../components/header/header"
+import { useParams, useLocation } from "react-router-dom";
 import streetfood from "../../images/streetfood.jpg";
 import perfectiming from "../../images/perfecttime.png"
 import foodserving from "../../images/foodserving.png"
@@ -9,6 +10,33 @@ import "./recipe.css"
 
 
 const recipesPage = () => {
+
+
+  // const [post, setPost] = useState(null);
+  const { id } = useParams();
+  const location = useLocation();  // <== Added location for URL debugging
+  const apiKey = '462524d9de454ecfb30efcb7307411cb' // Api key needed for both apis to work
+
+
+        const showFullRecipe = async () =>{
+
+          // try{
+            const response = await axios.get(
+              `https://api.spoonacular.com/recipes/${id}/analyzedInstructions${apiKey}`,
+              {
+                headers: {
+                'Content-Type': 'application/json',
+                },
+              }
+              
+            );
+            
+          // }
+            
+        }
+
+
+
   return (
     <div>
       <Header/>
