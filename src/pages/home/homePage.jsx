@@ -6,6 +6,7 @@ import cooking1 from "../../images/cooking1.jpg";
 import sushi from "../../images/foodsushi.jpg";
 import "./home.css"
 import _ from 'lodash';
+import { Link } from 'react-router-dom';
 
 const homepage = () => {
 
@@ -181,7 +182,9 @@ const homepage = () => {
 
         <div className="timePrepRecipe">
           <p className="timePrep">{randomRecipe?.data?.recipes[0].readyInMinutes}Min - easy prep - {randomRecipe?.data?.recipes[0].servings} serves</p>
+          <Link to={`/recipe-page/${randomRecipe?.data?.recipes[0]?.id}` }>
           <button className="viewRecipeBTN">VIEW RECIPE</button>
+          </Link>
         </div>
         </div>
 
@@ -205,7 +208,9 @@ const homepage = () => {
 
         <div className="timePrepRecipe">
           <p className="timePrep">{randomRecipe?.data?.recipes[1].readyInMinutes}Min - easy prep - {randomRecipe?.data?.recipes[1].servings} serves</p>
+          <Link to={`/recipe-page/${randomRecipe?.data?.recipes[1]?.id}` }>
           <button className="viewRecipeBTN">VIEW RECIPE</button>
+          </Link>
         </div>
         </div>
         <div className="foodCard">

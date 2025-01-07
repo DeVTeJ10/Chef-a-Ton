@@ -1,5 +1,9 @@
 import Header from "../../components/header/header"
-import { useParams, useLocation } from "react-router-dom";
+import axios from "axios";
+import { useParams } from "react-router-dom";
+import { useState } from "react";
+import { useLocation } from "react-router-dom";
+import { useEffect } from "react";
 import streetfood from "../../images/streetfood.jpg";
 import perfectiming from "../../images/perfecttime.png"
 import foodserving from "../../images/foodserving.png"
@@ -12,28 +16,50 @@ import "./recipe.css"
 const recipesPage = () => {
 
 
-  // const [post, setPost] = useState(null);
+  const [post, setPost] = useState(null);
   const { id } = useParams();
   const location = useLocation();  // <== Added location for URL debugging
   const apiKey = '462524d9de454ecfb30efcb7307411cb' // Api key needed for both apis to work
+  // let stepBreakdown = false
 
 
-        const showFullRecipe = async () =>{
+  console.log("check post", post)
 
-          // try{
-            const response = await axios.get(
-              `https://api.spoonacular.com/recipes/${id}/analyzedInstructions${apiKey}`,
+
+  useEffect(() => {
+
+
+    if (!id) {
+      console.error("No ID found in URL parameters");  // <== Handle missing or undefined ID
+      return;
+    }
+
+        const fetchRandomRecipeDatas = async () => {
+          try {
+
+            const recipeDetails = await axios.get(
+              `https://api.spoonacular.com/recipes/${id}/analyzedInstructions/${apiKey}`,
               {
                 headers: {
-                'Content-Type': 'application/json',
+                  'Content-Type': 'application/json', 
                 },
               }
-              
             );
-            
-          // }
-            
-        }
+            // if (recipeDetails){
+              // stepBreakdown = true
+
+              console.log("check this value for the ids",recipeDetails?.steps)
+              setPost(recipeDetails?.recipes?.steps); 
+            // }
+          } catch (error) {
+            console.error("Error:", error.message); 
+          }
+        };
+        
+  fetchRandomRecipeDatas()
+  }, []);
+
+
 
 
 
