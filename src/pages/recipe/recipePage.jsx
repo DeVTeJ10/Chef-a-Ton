@@ -16,14 +16,13 @@ import "./recipe.css"
 const recipesPage = () => {
 
 
-  const [post, setPost] = useState(null);
+  const [post, setPost] = useState("");
   const { id } = useParams();
   const location = useLocation();  // <== Added location for URL debugging
   const apiKey = '462524d9de454ecfb30efcb7307411cb' // Api key needed for both apis to work
   // let stepBreakdown = false
 
 
-  console.log("check post", post)
 
 
   useEffect(() => {
@@ -37,8 +36,10 @@ const recipesPage = () => {
         const fetchRandomRecipeDatas = async () => {
           try {
 
+            if (!id) return
+
             const recipeDetails = await axios.get(
-              `https://api.spoonacular.com/recipes/${id}/analyzedInstructions/${apiKey}`,
+              `https://api.spoonacular.com/recipes/${id}/analyzedInstructions?apiKey=${apiKey}`,
               {
                 headers: {
                   'Content-Type': 'application/json', 
@@ -47,9 +48,8 @@ const recipesPage = () => {
             );
             // if (recipeDetails){
               // stepBreakdown = true
-
-              console.log("check this value for the ids",recipeDetails?.steps)
-              setPost(recipeDetails?.recipes?.steps); 
+              console.log("check this value for the ids",recipeDetails)
+              setPost(recipeDetails); 
             // }
           } catch (error) {
             console.error("Error:", error.message); 
@@ -57,8 +57,7 @@ const recipesPage = () => {
         };
         
   fetchRandomRecipeDatas()
-  }, []);
-
+  }, [id, location]);
 
 
 
