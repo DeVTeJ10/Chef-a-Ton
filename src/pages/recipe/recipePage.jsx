@@ -19,7 +19,7 @@ const recipesPage = () => {
   const [post, setPost] = useState("");
   const { id } = useParams();
   const location = useLocation();  // <== Added location for URL debugging
-  const apiKey = '462524d9de454ecfb30efcb7307411cb' // Api key needed for both apis to work
+  const apiKey = 'a2a10b94d6dc474c90bce2b023888ede' // Api key needed for both apis to work
   // let stepBreakdown = false
 
 

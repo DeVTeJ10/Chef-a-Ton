@@ -22,7 +22,7 @@ const homepage = () => {
 
 
 
-        const apiKey = '462524d9de454ecfb30efcb7307411cb' // Api key needed for both apis to work
+        const apiKey = 'a2a10b94d6dc474c90bce2b023888ede' // Api key needed for both apis to work
 
 
           const fetchRandomRecipeData = async () => {
@@ -230,7 +230,9 @@ const homepage = () => {
 
         <div className="timePrepRecipe">
           <p className="timePrep">{randomRecipe?.data?.recipes[2].readyInMinutes}Min - easy prep - {randomRecipe?.data?.recipes[2].servings} serves</p>
+          <Link to={`/recipe-page/${randomRecipe?.data?.recipes[2]?.id}` }>
           <button className="viewRecipeBTN">VIEW RECIPE</button>
+          </Link>
         </div>
         </div>
       </div>
@@ -253,7 +255,9 @@ const homepage = () => {
 
         <div className="timePrepRecipe">
           <p className="timePrep">{randomRecipe?.data?.recipes[3].readyInMinutes}Min - easy prep - {randomRecipe?.data?.recipes[3].servings} serves</p>
+          <Link to={`/recipe-page/${randomRecipe?.data?.recipes[3]?.id}` }>
           <button className="viewRecipeBTN">VIEW RECIPE</button>
+          </Link>
         </div>
         </div>
 
@@ -278,7 +282,9 @@ const homepage = () => {
 
         <div className="timePrepRecipe">
           <p className="timePrep">{randomRecipe?.data?.recipes[4].readyInMinutes}Min - easy prep - {randomRecipe?.data?.recipes[4].servings} serves</p>
+          <Link to={`/recipe-page/${randomRecipe?.data?.recipes[4]?.id}` }>
           <button className="viewRecipeBTN">VIEW RECIPE</button>
+          </Link>
         </div>
         </div>
 
@@ -302,7 +308,9 @@ const homepage = () => {
 
         <div className="timePrepRecipe">
           <p className="timePrep">{randomRecipe?.data?.recipes[5].readyInMinutes}Min - easy prep - {randomRecipe?.data?.recipes[5].servings} serves</p>
+          <Link to={`/recipe-page/${randomRecipe?.data?.recipes[5]?.id}` }>
           <button className="viewRecipeBTN">VIEW RECIPE</button>
+          </Link>
         </div>
         </div>
       </div>
@@ -325,7 +333,9 @@ const homepage = () => {
 
         <div className="timePrepRecipe">
           <p className="timePrep">{randomRecipe?.data?.recipes[6].readyInMinutes}Min - easy prep - {randomRecipe?.data?.recipes[6].servings} serves</p>
+          <Link to={`/recipe-page/${randomRecipe?.data?.recipes[6]?.id}` }>
           <button className="viewRecipeBTN">VIEW RECIPE</button>
+          </Link>
         </div>
         </div>
 
@@ -350,7 +360,9 @@ const homepage = () => {
 
         <div className="timePrepRecipe">
           <p className="timePrep">{randomRecipe?.data?.recipes[7].readyInMinutes}Min - easy prep - {randomRecipe?.data?.recipes[7].servings} serves</p>
+          <Link to={`/recipe-page/${randomRecipe?.data?.recipes[7]?.id}` }>
           <button className="viewRecipeBTN">VIEW RECIPE</button>
+          </Link>
         </div>
         </div>
 
@@ -374,7 +386,9 @@ const homepage = () => {
 
         <div className="timePrepRecipe">
           <p className="timePrep">{randomRecipe?.data?.recipes[8].readyInMinutes}Min - easy prep - {randomRecipe?.data?.recipes[8].servings} serves</p>
+          <Link to={`/recipe-page/${randomRecipe?.data?.recipes[8]?.id}` }>
           <button className="viewRecipeBTN">VIEW RECIPE</button>
+          </Link>
         </div>
         </div>
       </div>
@@ -405,7 +419,9 @@ const homepage = () => {
 
         <div className="timePrepRecipe">
           <p className="timePrep">40 Min - easy prep - 3 serves</p>
+          <Link to={`/recipe-page/${breakfastNumber[0]?.id}` }>
           <button className="viewRecipeBTN">VIEW RECIPE</button>
+          </Link>
         </div>
         </div>
 
@@ -431,7 +447,9 @@ const homepage = () => {
 
         <div className="timePrepRecipe">
           <p className="timePrep">40 Min - easy prep - 3 serves</p>
+          <Link to={`/recipe-page/${breakfastNumber[1]?.id}` }>
           <button className="viewRecipeBTN">VIEW RECIPE</button>
+          </Link>
         </div>
         </div>
         <div className="foodCard">
@@ -453,7 +471,9 @@ const homepage = () => {
 
         <div className="timePrepRecipe">
           <p className="timePrep">40 Min - easy prep - 3 serves</p>
+          <Link to={`/recipe-page/${breakfastNumber[2]?.id}` }>
           <button className="viewRecipeBTN">VIEW RECIPE</button>
+          </Link>
         </div>
         </div>
       </div>
@@ -483,7 +503,9 @@ const homepage = () => {
 
         <div className="timePrepRecipe">
           <p className="timePrep">40 Min - easy prep - 3 serves</p>
+          <Link to={`/recipe-page/${lunchNumber[0]?.id}` }>
           <button className="viewRecipeBTN">VIEW RECIPE</button>
+          </Link>
         </div>
         </div>
 
@@ -511,7 +533,9 @@ const homepage = () => {
 
         <div className="timePrepRecipe">
           <p className="timePrep">40 Min - easy prep - 3 serves</p>
+          <Link to={`/recipe-page/${lunchNumber[1]?.id}` }>
           <button className="viewRecipeBTN">VIEW RECIPE</button>
+          </Link>
         </div>
         </div>
         <div className="foodCard">
@@ -533,7 +557,9 @@ const homepage = () => {
 
         <div className="timePrepRecipe">
           <p className="timePrep">40 Min - easy prep - 3 serves</p>
+          <Link to={`/recipe-page/${lunchNumber[2]?.id}` }>
           <button className="viewRecipeBTN">VIEW RECIPE</button>
+          </Link>
         </div>
         </div>
       </div>
@@ -562,7 +588,9 @@ const homepage = () => {
 
         <div className="timePrepRecipe">
           <p className="timePrep">40 Min - easy prep - 3 serves</p>
+          <Link to={`/recipe-page/${dinnerNumber[0]?.id}` }>
           <button className="viewRecipeBTN">VIEW RECIPE</button>
+          </Link>
         </div>
         </div>
 
@@ -588,7 +616,9 @@ const homepage = () => {
 
         <div className="timePrepRecipe">
           <p className="timePrep">40 Min - easy prep - 3 serves</p>
+          <Link to={`/recipe-page/${dinnerNumber[1]?.id}` }>
           <button className="viewRecipeBTN">VIEW RECIPE</button>
+          </Link>
         </div>
         </div>
         <div className="foodCard">
@@ -610,7 +640,9 @@ const homepage = () => {
 
         <div className="timePrepRecipe">
           <p className="timePrep">40 Min - easy prep - 3 serves</p>
+          <Link to={`/recipe-page/${dinnerNumber[2]?.id}` }>
           <button className="viewRecipeBTN">VIEW RECIPE</button>
+          </Link>
         </div>
         </div>
       </div>
