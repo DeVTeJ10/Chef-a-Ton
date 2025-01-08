@@ -18,8 +18,11 @@ const recipesPage = () => {
 
   const [post, setPost] = useState("");
   const { id } = useParams();
+  const { title } = useParams()
+  const { recipeImage } = useParams()
   const location = useLocation();  // <== Added location for URL debugging
-  const apiKey = 'a2a10b94d6dc474c90bce2b023888ede' // Api key needed for both apis to work
+  const apiKey = 'd01945f6327f491da7d16b5d19b3155c' // Api key needed for both apis to work
+  const decodeImageUrl1 = decodeURIComponent(recipeImage)
   // let stepBreakdown = false
 
 
@@ -46,9 +49,10 @@ const recipesPage = () => {
                 },
               }
             );
-            // if (recipeDetails){
-              // stepBreakdown = true
               console.log("check this value for the ids",recipeDetails)
+              console.log(id)
+              console.log(title)
+              console.log(recipeImage)
               setPost(recipeDetails); 
             // }
           } catch (error) {
