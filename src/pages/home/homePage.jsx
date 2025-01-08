@@ -18,11 +18,13 @@ const homepage = () => {
         const [breakfastNumber, setBreakfastNumber] = useState("")
         const [lunchNumber, setLunchNumber] = useState("")
         const [dinnerNumber, setDinnerNumber] = useState("")
+        const recipeImage = randomRecipe?.data?.recipes[0]?.image
 
 
 
 
-        const apiKey = 'a2a10b94d6dc474c90bce2b023888ede' // Api key needed for both apis to work
+
+        const apiKey = 'd01945f6327f491da7d16b5d19b3155c' // Api key needed for both apis to work
 
 
           const fetchRandomRecipeData = async () => {
@@ -182,7 +184,9 @@ const homepage = () => {
 
         <div className="timePrepRecipe">
           <p className="timePrep">{randomRecipe?.data?.recipes[0].readyInMinutes}Min - easy prep - {randomRecipe?.data?.recipes[0].servings} serves</p>
-          <Link to={`/recipe-page/${randomRecipe?.data?.recipes[0]?.id}` }>
+          <Link to={`/recipe-page/${randomRecipe?.data?.recipes[0]?.id}/
+              ${randomRecipe?.data?.recipes[0]?.title}/
+              ${encodeURIComponent(recipeImage)}`}>
           <button className="viewRecipeBTN">VIEW RECIPE</button>
           </Link>
         </div>
@@ -481,6 +485,7 @@ const homepage = () => {
 
       <div className='lunchbtn'>
         <button className="lunch" id='lunchBTN' onClick={changeLunch}>Lunch</button>
+        <p>Little more to power through the day</p>
       </div>
 
       <div className="cardFood">
@@ -566,6 +571,7 @@ const homepage = () => {
 
       <div className='dinnerbtn'>
         <button className="dinner" id='dinnerBTN' onClick={changeDinner}>Dinner</button>
+        <p> A light refreshment before bedtime might be needed</p>
       </div>
 
       <div className="cardFood">
