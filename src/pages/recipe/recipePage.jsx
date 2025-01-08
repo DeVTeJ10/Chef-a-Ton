@@ -50,9 +50,9 @@ const recipesPage = () => {
               }
             );
               console.log("check this value for the ids",recipeDetails)
-              console.log(id)
-              console.log(title)
-              console.log(recipeImage)
+              // console.log(id)
+              // console.log(title)
+              // console.log(recipeImage)
               setPost(recipeDetails); 
             // }
           } catch (error) {
@@ -63,6 +63,33 @@ const recipesPage = () => {
   fetchRandomRecipeDatas()
   }, [id, location]);
 
+
+
+
+          const fetchSimilarRecipeData = async () => {
+            try {
+
+              if (!id && !post) return
+
+              const similarReecipeDetails = await axios.get(
+                `https://api.spoonacular.com/recipes/${id}/similar?apiKey=${apiKey}`,
+                {
+                  headers: {
+                    'Content-Type': 'application/json', 
+                  },
+                }
+              );
+                console.log("similar recipe data",similarReecipeDetails)
+                // setPost(recipeDetails); 
+              // }
+            } catch (error) {
+              console.error("Error:", error.message); 
+            }
+          };
+          
+  useEffect(() => {
+    fetchSimilarRecipeData();
+  }, [id, location]);
 
 
 
