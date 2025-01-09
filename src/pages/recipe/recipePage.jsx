@@ -17,13 +17,15 @@ const recipesPage = () => {
 
 
   const [post, setPost] = useState("");
+  const [similarPost, setSimilarPost] = useState("")
+  const [similarPostInfo, setSimilarPostInfo] = useState("")
   const { id } = useParams();
   const { title } = useParams()
   const { recipeImage } = useParams()
   const location = useLocation();  // <== Added location for URL debugging
-  const apiKey = 'd01945f6327f491da7d16b5d19b3155c' // Api key needed for both apis to work
+  const apiKey = 'c01c98e1f9ed4adfa1e886d6d8e69c2e' // Api key needed for both apis to work
   const decodeImageUrl1 = decodeURIComponent(recipeImage)
-  // let stepBreakdown = false
+
 
 
 
@@ -36,7 +38,7 @@ const recipesPage = () => {
       return;
     }
 
-        const fetchRandomRecipeDatas = async () => {
+        const fetchMoreRecipeDatas = async () => {
           try {
 
             if (!id) return
@@ -54,13 +56,14 @@ const recipesPage = () => {
               // console.log(title)
               // console.log(recipeImage)
               setPost(recipeDetails); 
+              console.log("post available?",post)
             // }
           } catch (error) {
             console.error("Error:", error.message); 
           }
         };
         
-  fetchRandomRecipeDatas()
+  fetchMoreRecipeDatas()
   }, [id, location]);
 
 
@@ -71,7 +74,7 @@ const recipesPage = () => {
 
               if (!id && !post) return
 
-              const similarReecipeDetails = await axios.get(
+              const similarRecipe = await axios.get(
                 `https://api.spoonacular.com/recipes/${id}/similar?apiKey=${apiKey}`,
                 {
                   headers: {
@@ -79,10 +82,13 @@ const recipesPage = () => {
                   },
                 }
               );
-                console.log("similar recipe data",similarReecipeDetails)
-                // setPost(recipeDetails); 
-              // }
-            } catch (error) {
+                setSimilarPost(similarRecipe)
+                if (id && similarRecipe){
+
+                  let result = similarRecipe.data.map(obj => ({id: obj.id}));
+                  console.log("IDs:", result);
+                }
+            } catch (error){
               console.error("Error:", error.message); 
             }
           };
@@ -90,6 +96,34 @@ const recipesPage = () => {
   useEffect(() => {
     fetchSimilarRecipeData();
   }, [id, location]);
+
+
+
+
+          const fetchSimilarRecipeDataExtraData = async () => {
+            try {
+
+              if (!id && !post && !similarPost) return
+
+              const similarRecipeXData = await axios.get(
+                `https://api.spoonacular.com/recipes/${id}/similar?apiKey=${apiKey}`,
+                {
+                  headers: {
+                    'Content-Type': 'application/json', 
+                  },
+                }
+              );
+              setSimilarPostInfo(similarRecipeXData)
+            } catch (error){
+              console.error("Error:", error.message); 
+            }
+          };
+  
+  useEffect(() => {
+  fetchSimilarRecipeDataExtraData();
+  console.log("similar recipe data",similarPostInfo)
+  console.log("similar recipe post data",similarPost)
+}, [id, location, similarPost]);
 
 
 
