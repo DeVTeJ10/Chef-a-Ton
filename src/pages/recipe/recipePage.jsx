@@ -20,11 +20,16 @@ const recipesPage = () => {
   const [similarPost, setSimilarPost] = useState("")
   const [similarPostInfo, setSimilarPostInfo] = useState("")
   const { id } = useParams();
-  const [ids, setNewIds] = useState()
+  const [ids, setNewIds] = useState([])
   const { title } = useParams()
   const { recipeImage } = useParams()
   const location = useLocation();  // <== Added location for URL debugging
-  const apiKey = '41cc291fa4094d859b3dcbee08f9b1ec' // Api key needed for both apis to work
+  const apiKey = '29454dece80e4986879d2ee664847d2a' // Api key needed for both apis to work
+
+
+  const urlParams = new URLSearchParams();
+  urlParams.append('apiKey', apiKey);
+  urlParams.append('ids', ids.join(','));
 
 
 
@@ -90,7 +95,8 @@ const recipesPage = () => {
                 if (id && similarRecipe){
 
                   let result = similarRecipe?.data?.map(obj => ( {id: obj.id}));
-                  const ideas = result?.id
+                  const flattenIds = result.filter(idds => idds.id).map(idds => idds.id)
+                  const ideas = flattenIds
                   setNewIds(ideas)
                   console.log("IDs:", ideas);
                   
@@ -119,22 +125,20 @@ const recipesPage = () => {
                   },
                 }
               );
-              setSimilarPostInfo(similarRecipeXData);
-              console.log("are ids available here", ids)
-              console.log("similar recipe data",similarRecipeXData)
+                setSimilarPostInfo(similarRecipeXData);
+                console.log("idea guy",similarPostInfo)
             } catch (error) {
               console.error("Error:", error.message); 
             }
           };
   
   useEffect(() => {
-  fetchSimilarRecipeDataExtraData();
-  if(ids && post && similarPost && similarPostInfo){
-    console.log("similar recipe data",similarPostInfo)
-    console.log("are ids available here", ids)
-  }
-  
-}, [id, location, similarPost, ids, post ]);
+
+    if(ids && similarPost, id && post){
+      fetchSimilarRecipeDataExtraData();
+      console.log("idea guy",similarPostInfo)
+    }
+}, [id, location, similarPost, ids, post]);
 
 
 
