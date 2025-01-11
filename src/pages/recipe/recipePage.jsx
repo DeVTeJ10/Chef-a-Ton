@@ -24,7 +24,7 @@ const recipesPage = () => {
   const { title } = useParams()
   const { recipeImage } = useParams()
   const location = useLocation();  // <== Added location for URL debugging
-  const apiKey = '29454dece80e4986879d2ee664847d2a' // Api key needed for both apis to work
+  const apiKey = '00ea918fda47450bbe0e1922ca6e0d7f' // Api key needed for both apis to work
 
 
   const urlParams = new URLSearchParams();
@@ -61,9 +61,9 @@ const recipesPage = () => {
               }
             );
               console.log("check this value for the ids",recipeDetails)
-              // console.log(id)
-              // console.log("recipe title",title)
-              // console.log(recipeImage)
+              console.log(id)
+              console.log("recipe title",title)
+              console.log(recipeImage)
               setPost(recipeDetails); 
               console.log("post available?",post)
             // }
@@ -126,7 +126,6 @@ const recipesPage = () => {
                 }
               );
                 setSimilarPostInfo(similarRecipeXData);
-                console.log("idea guy",similarPostInfo)
             } catch (error) {
               console.error("Error:", error.message); 
             }
@@ -136,11 +135,11 @@ const recipesPage = () => {
 
     if(ids && similarPost, id && post){
       fetchSimilarRecipeDataExtraData();
-      console.log("idea guy",similarPostInfo)
     }
 }, [id, location, similarPost, ids, post]);
 
 
+console.log("idea guy",similarPostInfo)
 
   return (
     <div>
