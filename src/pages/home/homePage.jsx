@@ -24,7 +24,7 @@ const homepage = () => {
 
 
 
-        const apiKey = 'c697c20f68c643b7a34f1b6a1449630e' // Api key needed for both apis to work
+        const apiKey = '00ea918fda47450bbe0e1922ca6e0d7f' // Api key needed for both apis to work
 
 
           const fetchRandomRecipeData = async () => {
@@ -212,7 +212,9 @@ const homepage = () => {
 
         <div className="timePrepRecipe">
           <p className="timePrep">{randomRecipe?.data?.recipes[1].readyInMinutes}Min - easy prep - {randomRecipe?.data?.recipes[1].servings} serves</p>
-          <Link to={`/recipe-page/${randomRecipe?.data?.recipes[1]?.id}` }>
+          <Link to={`/recipe-page/${randomRecipe?.data?.recipes[1]?.id}/
+          ${randomRecipe?.data?.recipes[1]?.title}/
+          ${encodeURIComponent(recipeImage)}}` }>
           <button className="viewRecipeBTN">VIEW RECIPE</button>
           </Link>
         </div>
@@ -234,7 +236,9 @@ const homepage = () => {
 
         <div className="timePrepRecipe">
           <p className="timePrep">{randomRecipe?.data?.recipes[2].readyInMinutes}Min - easy prep - {randomRecipe?.data?.recipes[2].servings} serves</p>
-          <Link to={`/recipe-page/${randomRecipe?.data?.recipes[2]?.id}` }>
+          <Link to={`/recipe-page/${randomRecipe?.data?.recipes[2]?.id}/
+          ${randomRecipe?.data?.recipes[2]?.title}/
+          ${encodeURIComponent(recipeImage)}}` }>
           <button className="viewRecipeBTN">VIEW RECIPE</button>
           </Link>
         </div>
@@ -259,7 +263,9 @@ const homepage = () => {
 
         <div className="timePrepRecipe">
           <p className="timePrep">{randomRecipe?.data?.recipes[3].readyInMinutes}Min - easy prep - {randomRecipe?.data?.recipes[3].servings} serves</p>
-          <Link to={`/recipe-page/${randomRecipe?.data?.recipes[3]?.id}` }>
+          <Link to={`/recipe-page/${randomRecipe?.data?.recipes[3]?.id}/
+          ${randomRecipe?.data?.recipes[3]?.title}/
+          ${encodeURIComponent(recipeImage)}}` }>`
           <button className="viewRecipeBTN">VIEW RECIPE</button>
           </Link>
         </div>
@@ -286,7 +292,9 @@ const homepage = () => {
 
         <div className="timePrepRecipe">
           <p className="timePrep">{randomRecipe?.data?.recipes[4].readyInMinutes}Min - easy prep - {randomRecipe?.data?.recipes[4].servings} serves</p>
-          <Link to={`/recipe-page/${randomRecipe?.data?.recipes[4]?.id}` }>
+          <Link to={`/recipe-page/${randomRecipe?.data?.recipes[4]?.id}/
+          ${randomRecipe?.data?.recipes[4]?.title}/
+          ${encodeURIComponent(recipeImage)}}` }>` 
           <button className="viewRecipeBTN">VIEW RECIPE</button>
           </Link>
         </div>
@@ -312,7 +320,9 @@ const homepage = () => {
 
         <div className="timePrepRecipe">
           <p className="timePrep">{randomRecipe?.data?.recipes[5].readyInMinutes}Min - easy prep - {randomRecipe?.data?.recipes[5].servings} serves</p>
-          <Link to={`/recipe-page/${randomRecipe?.data?.recipes[5]?.id}` }>
+          <Link to={`/recipe-page/${randomRecipe?.data?.recipes[5]?.id}/
+           ${randomRecipe?.data?.recipes[5]?.title}/
+          ${encodeURIComponent(recipeImage)}}` }>
           <button className="viewRecipeBTN">VIEW RECIPE</button>
           </Link>
         </div>
@@ -337,7 +347,9 @@ const homepage = () => {
 
         <div className="timePrepRecipe">
           <p className="timePrep">{randomRecipe?.data?.recipes[6].readyInMinutes}Min - easy prep - {randomRecipe?.data?.recipes[6].servings} serves</p>
-          <Link to={`/recipe-page/${randomRecipe?.data?.recipes[6]?.id}` }>
+          <Link to={`/recipe-page/${randomRecipe?.data?.recipes[6]?.id}/
+           ${randomRecipe?.data?.recipes[6]?.title}/
+          ${encodeURIComponent(recipeImage)}}` }>
           <button className="viewRecipeBTN">VIEW RECIPE</button>
           </Link>
         </div>
@@ -364,7 +376,9 @@ const homepage = () => {
 
         <div className="timePrepRecipe">
           <p className="timePrep">{randomRecipe?.data?.recipes[7].readyInMinutes}Min - easy prep - {randomRecipe?.data?.recipes[7].servings} serves</p>
-          <Link to={`/recipe-page/${randomRecipe?.data?.recipes[7]?.id}` }>
+          <Link to={`/recipe-page/${randomRecipe?.data?.recipes[7]?.id}/
+           ${randomRecipe?.data?.recipes[7]?.title}/
+          ${encodeURIComponent(recipeImage)}}`  }>
           <button className="viewRecipeBTN">VIEW RECIPE</button>
           </Link>
         </div>
@@ -390,7 +404,9 @@ const homepage = () => {
 
         <div className="timePrepRecipe">
           <p className="timePrep">{randomRecipe?.data?.recipes[8].readyInMinutes}Min - easy prep - {randomRecipe?.data?.recipes[8].servings} serves</p>
-          <Link to={`/recipe-page/${randomRecipe?.data?.recipes[8]?.id}` }>
+          <Link to={`/recipe-page/${randomRecipe?.data?.recipes[8]?.id}/
+           ${randomRecipe?.data?.recipes[8]?.title}/
+          ${encodeURIComponent(recipeImage)}}`}>
           <button className="viewRecipeBTN">VIEW RECIPE</button>
           </Link>
         </div>
@@ -423,7 +439,9 @@ const homepage = () => {
 
         <div className="timePrepRecipe">
           <p className="timePrep">40 Min - easy prep - 3 serves</p>
-          <Link to={`/recipe-page/${breakfastNumber[0]?.id}` }>
+          <Link to={`/recipe-page/${breakfastNumber[0]?.id}/
+           ${breakfastNumber[0]?.title}/
+          ${encodeURIComponent(recipeImage)}}`}>
           <button className="viewRecipeBTN">VIEW RECIPE</button>
           </Link>
         </div>
@@ -451,7 +469,9 @@ const homepage = () => {
 
         <div className="timePrepRecipe">
           <p className="timePrep">40 Min - easy prep - 3 serves</p>
-          <Link to={`/recipe-page/${breakfastNumber[1]?.id}` }>
+          <Link to={`/recipe-page/${breakfastNumber[1]?.id}/
+          ${breakfastNumber[1]?.title}/
+          ${encodeURIComponent(recipeImage)}}` }>
           <button className="viewRecipeBTN">VIEW RECIPE</button>
           </Link>
         </div>
@@ -475,7 +495,9 @@ const homepage = () => {
 
         <div className="timePrepRecipe">
           <p className="timePrep">40 Min - easy prep - 3 serves</p>
-          <Link to={`/recipe-page/${breakfastNumber[2]?.id}` }>
+          <Link to={`/recipe-page/${breakfastNumber[2]?.id}/
+          ${breakfastNumber[2]?.title}/
+          ${encodeURIComponent(recipeImage)}}`}>
           <button className="viewRecipeBTN">VIEW RECIPE</button>
           </Link>
         </div>
@@ -508,7 +530,9 @@ const homepage = () => {
 
         <div className="timePrepRecipe">
           <p className="timePrep">40 Min - easy prep - 3 serves</p>
-          <Link to={`/recipe-page/${lunchNumber[0]?.id}` }>
+          <Link to={`/recipe-page/${lunchNumber[0]?.id}/
+          ${lunchNumber[0]?.title}/
+          ${encodeURIComponent(recipeImage)}}`}>`
           <button className="viewRecipeBTN">VIEW RECIPE</button>
           </Link>
         </div>
@@ -538,7 +562,9 @@ const homepage = () => {
 
         <div className="timePrepRecipe">
           <p className="timePrep">40 Min - easy prep - 3 serves</p>
-          <Link to={`/recipe-page/${lunchNumber[1]?.id}` }>
+          <Link to={`/recipe-page/${lunchNumber[1]?.id}/
+          ${lunchNumber[1]?.title}/
+          ${encodeURIComponent(recipeImage)}}`}>
           <button className="viewRecipeBTN">VIEW RECIPE</button>
           </Link>
         </div>
@@ -562,7 +588,9 @@ const homepage = () => {
 
         <div className="timePrepRecipe">
           <p className="timePrep">40 Min - easy prep - 3 serves</p>
-          <Link to={`/recipe-page/${lunchNumber[2]?.id}` }>
+          <Link to={`/recipe-page/${lunchNumber[2]?.id}/
+          ${lunchNumber[2]?.title}/
+          ${encodeURIComponent(recipeImage)}}`}>
           <button className="viewRecipeBTN">VIEW RECIPE</button>
           </Link>
         </div>
@@ -594,7 +622,9 @@ const homepage = () => {
 
         <div className="timePrepRecipe">
           <p className="timePrep">40 Min - easy prep - 3 serves</p>
-          <Link to={`/recipe-page/${dinnerNumber[0]?.id}` }>
+          <Link to={`/recipe-page/${dinnerNumber[0]?.id}/
+          ${dinnerNumber[0]?.title}/
+          ${encodeURIComponent(recipeImage)}}`}>
           <button className="viewRecipeBTN">VIEW RECIPE</button>
           </Link>
         </div>
@@ -622,7 +652,9 @@ const homepage = () => {
 
         <div className="timePrepRecipe">
           <p className="timePrep">40 Min - easy prep - 3 serves</p>
-          <Link to={`/recipe-page/${dinnerNumber[1]?.id}` }>
+          <Link to={`/recipe-page/${dinnerNumber[1]?.id}/
+          ${dinnerNumber[1]?.title}/
+          ${encodeURIComponent(recipeImage)}}`}>
           <button className="viewRecipeBTN">VIEW RECIPE</button>
           </Link>
         </div>
@@ -646,7 +678,9 @@ const homepage = () => {
 
         <div className="timePrepRecipe">
           <p className="timePrep">40 Min - easy prep - 3 serves</p>
-          <Link to={`/recipe-page/${dinnerNumber[2]?.id}` }>
+          <Link to={`/recipe-page/${dinnerNumber[2]?.id}/
+          ${dinnerNumber[2]?.title}/
+          ${encodeURIComponent(recipeImage)}}`}>
           <button className="viewRecipeBTN">VIEW RECIPE</button>
           </Link>
         </div>
