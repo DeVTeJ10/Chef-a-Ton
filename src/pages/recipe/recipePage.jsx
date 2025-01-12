@@ -24,7 +24,7 @@ const recipesPage = () => {
   const { id } = useParams();
   const [ids, setNewIds] = useState([])
   const { title } = useParams()
-  const { recipeImage } = useParams()
+  // const { recipeImage } = useParams()
   const location = useLocation();  // <== Added location for URL debugging
   const apiKey = '64d816f9e15245c5ad0af3009204f54f' // Api key needed for both apis to work
 
@@ -35,7 +35,7 @@ const recipesPage = () => {
 
 
 
-  const decodeImageUrl1 = decodeURIComponent(recipeImage)
+  // const decodeImageUrl1 = decodeURIComponent(recipeImage)
 
 
 
@@ -168,6 +168,7 @@ const recipesPage = () => {
 
 console.log("idea guy",similarPostInfo)
 console.log("bad man getting the info yeah?", postInfo)
+console.log("post available?",post)
 
   return (
     <div>
