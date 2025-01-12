@@ -9,6 +9,7 @@ import perfectiming from "../../images/perfecttime.png"
 import foodserving from "../../images/foodserving.png"
 import similarfood1 from "../../images/similarfood1.jpg"
 import similarfood2 from "../../images/similarfood2.jpg"
+import sushi from "../../images/foodsushi.jpg";
 import Footer from "../../components/footer/footer"
 import "./recipe.css"
 
@@ -17,6 +18,7 @@ const recipesPage = () => {
 
 
   const [post, setPost] = useState("");
+  const [postInfo, setPostInfo] = useState("")
   const [similarPost, setSimilarPost] = useState("")
   const [similarPostInfo, setSimilarPostInfo] = useState("")
   const { id } = useParams();
@@ -24,7 +26,7 @@ const recipesPage = () => {
   const { title } = useParams()
   const { recipeImage } = useParams()
   const location = useLocation();  // <== Added location for URL debugging
-  const apiKey = '00ea918fda47450bbe0e1922ca6e0d7f' // Api key needed for both apis to work
+  const apiKey = '64d816f9e15245c5ad0af3009204f54f' // Api key needed for both apis to work
 
 
   const urlParams = new URLSearchParams();
@@ -60,10 +62,6 @@ const recipesPage = () => {
                 },
               }
             );
-              console.log("check this value for the ids",recipeDetails)
-              console.log(id)
-              console.log("recipe title",title)
-              console.log(recipeImage)
               setPost(recipeDetails); 
               console.log("post available?",post)
             // }
@@ -139,7 +137,37 @@ const recipesPage = () => {
 }, [id, location, similarPost, ids, post]);
 
 
+
+          const fetchRecipeInformation = async () => {
+            try {
+              if (!id && !post) return;
+
+              const recipeInfo = await axios.get(
+                `https://api.spoonacular.com/recipes/${id}/information?apiKey=${apiKey}`,
+                {
+                  headers: {
+                    'Content-Type': 'application/json', 
+                  },
+                }
+              );
+                setPostInfo(recipeInfo);
+            } catch (error) {
+              console.error("Error:", error.message); 
+            }
+          };
+
+  useEffect(() => {
+
+    if( id && post){
+      fetchRecipeInformation();
+      console.log("bad man getting the info yeah?", postInfo)
+    }
+  }, [id, location, post, ]);
+
+
+
 console.log("idea guy",similarPostInfo)
+console.log("bad man getting the info yeah?", postInfo)
 
   return (
     <div>
@@ -169,20 +197,20 @@ console.log("idea guy",similarPostInfo)
                 alt="pasta"
                 className="cooking2tons"
             />
-            <h3>4</h3>
+          <h3>{postInfo?.data?.recipe?.title}</h3>
             <h3>Serves</h3>
         </div>
         </div>
                 </div>
       </div>
         <div className="cooking2ton">
-        <img
-                  src={streetfood}
-                  width={556}
-                  height={370}
-                  alt="pasta"
-                  className="cooking2tonss"
-              />
+        { sushi &&
+            <img src={postInfo?.data?.image}
+              width={350}
+              height={234}
+              className="cooking1ton"
+              alt="Villa"
+          />}
         </div>
         <div className="loremthekingsun">
         <div className="loremkingsun">
