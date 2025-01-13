@@ -26,7 +26,7 @@ const recipesPage = () => {
   const { title } = useParams()
   // const { recipeImage } = useParams()
   const location = useLocation();  // <== Added location for URL debugging
-  const apiKey = '64d816f9e15245c5ad0af3009204f54f' // Api key needed for both apis to work
+  const apiKey = '5a8e497cfb5c42e2b58fb7f4a2e22282' // Updated API key
 
 
   const urlParams = new URLSearchParams();
@@ -167,7 +167,7 @@ const recipesPage = () => {
 
 
 console.log("idea guy",similarPostInfo)
-console.log("bad man getting the info yeah?", postInfo)
+console.log("bad man getting the postinfo yeah?", postInfo)
 console.log("post available?",post)
 
   return (
@@ -177,7 +177,7 @@ console.log("post available?",post)
 
       <div className="foodtimelapse">
       <div className="timefoodlapse">
-        <h1 className="foodingrecipe">Street food varieties</h1>
+        <h1 className="foodingrecipe">{postInfo?.data?.title}</h1>
         <div className="timeperfect">
         <div className="perfectime">
         <img
@@ -187,8 +187,8 @@ console.log("post available?",post)
                 alt="pasta"
                 className="cooking2tons"
             />
-            <h4>1</h4>
-            <h4>Hour</h4>
+            <h4>{postInfo?.data?.readyInMinutes}</h4>
+            <h4>Mins</h4>
         </div>
         <div className="perfectime">
         <img
@@ -198,8 +198,8 @@ console.log("post available?",post)
                 alt="pasta"
                 className="cooking2tons"
             />
-          <h3>{postInfo?.data?.recipe?.title}</h3>
-            <h3>Serves</h3>
+          <h3>{postInfo?.data?.servings}</h3>
+            <h3>Servings</h3>
         </div>
         </div>
                 </div>
@@ -240,9 +240,21 @@ console.log("post available?",post)
                   sunt in culpa qui officia<br></br> deserunt mollit anim id est laborum.
               </p>
         </div>
-              <div className="lorempisum">
-              <h2> 1. Ingredients</h2>
-                <h2> 2. Equipment needed for preparation </h2>
+              <div>
+                <h2 className=""> 1. Ingredients:
+                  <p>{postInfo?.data?.extendedIngredients?.map((ingredient) => (
+                    <li key={ingredient?.id}>
+                      {ingredient?.name}
+                    </li>
+                  ))}</p>
+                </h2>
+                <h2> 2. Equipment needed for preparation 
+                <p>{postInfo?.data?.analyzedInstructions?.[0]?.steps?.map((equipments) => (
+                  <li key={equipments?.equipment?.id}>
+                    {equipments?.name}
+                  </li>
+                ))}</p>
+                </h2>
                 <h2> 3. Nutritional value</h2>
               </div>
         </div>
