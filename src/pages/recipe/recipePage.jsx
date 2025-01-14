@@ -26,7 +26,7 @@ const recipesPage = () => {
   const { title } = useParams()
   // const { recipeImage } = useParams()
   const location = useLocation();  // <== Added location for URL debugging
-  const apiKey = '5a8e497cfb5c42e2b58fb7f4a2e22282' // Updated API key
+  const apiKey = '42ff4ceaa9bf42a5a949604155ebbab8' // Updated API key
 
 
   const urlParams = new URLSearchParams();
@@ -215,51 +215,42 @@ console.log("post available?",post)
         </div>
         <div className="loremthekingsun">
         <div className="loremkingsun">
-        <p>Lorem ipsum dolor sit amet,<br></br> consectetur adipiscing elit, 
-                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<br></br>
-
-                Ut enim ad minim veniam,<br></br> quis nostrud exercitation,<br></br> ullamco laboris 
-                nisi ut aliquip ex ea commodo consequat. 
-
-                Duis aute irure dolor in<br></br> reprehenderit in voluptate <br></br>
-                velit esse cillum dolore eu fugiat nulla pariatur. 
-
-                Excepteur sint occaecat<br></br> cupidatat non proident, <br></br>
-                sunt in culpa qui officia deserunt mollit anim id est laborum.
-
-                Lorem ipsum dolor sit amet,<br></br> consectetur adipiscing elit, 
-                  sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-
-                  Ut enim ad minim veniam,<br></br> quis nostrud exercitation ullamco laboris <br></br>
-                  nisi ut aliquip ex ea commodo consequat. 
-
-                  Duis aute irure dolor in reprehenderit<br></br> in voluptate 
-                  velit esse<br></br> cillum dolore eu fugiat nulla pariatur. 
-
-                  Excepteur sint occaecat<br></br> cupidatat non proident, 
-                  sunt in culpa qui officia<br></br> deserunt mollit anim id est laborum.
+        <p>
+          {postInfo?.data?.summary}
               </p>
         </div>
-              <div>
-                <h2 className=""> 1. Ingredients:
-                  <p>{postInfo?.data?.extendedIngredients?.map((ingredient) => (
-                    <li key={ingredient?.id}>
-                      {ingredient?.name}
-                    </li>
-                  ))}</p>
-                </h2>
-                <h2> 2. Equipment needed for preparation 
+              <div className="equipIngr">
+                <div>
+                  <h2 className=""> 1. Ingredients:</h2>
+                    <p>{postInfo?.data?.extendedIngredients?.map((ingredients) => (
+                      <li key={ingredients?.id}>
+                        {ingredients?.name}
+                      </li>
+                    ))}</p>
+                  
+                </div>
+                <div>
+                <h2> 2. Equipments: </h2>
                 <p>{postInfo?.data?.analyzedInstructions?.[0]?.steps?.map((equipments) => (
-                  <li key={equipments?.equipment?.id}>
-                    {equipments?.name}
+                  <li key={equipments.equipment[0]?.id}>
+                    {equipments?.equipment[0]?.name}
                   </li>
                 ))}</p>
-                </h2>
-                <h2> 3. Nutritional value</h2>
+                
+                </div>
               </div>
         </div>
       </div>
+
+      <div className="insructionSteps">
       <h1 className="instructions">Instructions</h1>
+      <p>{post?.data?.[0]?.steps?.map((instructions) => (
+        <li key={instructions?.number}>
+            {instructions?.step}
+        </li>
+      ))}</p>
+      </div>
+      
 
 
     <div className="similarpiece">
