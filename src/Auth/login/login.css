@@ -1,0 +1,36 @@
+.loginContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logo {
+  width: 100px; /* Adjust the size as needed */
+  height: 100px; /* Adjust the size as needed */
+}
+
+h1 {
+  color: #6B4F31; /* Adjust the color as needed */
+}
+
+.inputField {
+  padding: 10px;
+  margin: 10px;
+  border-radius: 5px;
+  border: 1px solid #786C3B; /* Adjust the color as needed */
+  display: block; /* Make input fields stack on top of each other */
+  width: 200px; /* Make the input fields twice as long */
+}
+
+.loginButton {
+  padding: 10px 20px;
+  background-color: #6B4F31; /* Adjust the color as needed */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.loginButton:hover {
+  background-color: #786C3B; /* Adjust the color as needed */
+}

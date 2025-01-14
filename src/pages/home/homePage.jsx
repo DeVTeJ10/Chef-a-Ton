@@ -24,7 +24,7 @@ const homepage = () => {
 
 
 
-        const apiKey = '42ff4ceaa9bf42a5a949604155ebbab8' // Api key needed for both apis to work
+        const apiKey = '57a16c48bf22416292e179fa9e893098' // Api key needed for both apis to work
 
 
           const fetchRandomRecipeData = async () => {

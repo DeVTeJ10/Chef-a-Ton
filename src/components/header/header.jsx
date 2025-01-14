@@ -43,7 +43,9 @@ const header = () => {
         className='inputRecipe'/>
 
       <div className="authentication">
+      <Link to={"/login"}>
         <button className="login">Login</button>
+      </Link>
         <button className="signUp">Sign up</button>
       </div>
         </div>
