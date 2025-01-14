@@ -2,6 +2,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  height: 100vh;
 }
 
 .logo {
@@ -15,11 +17,11 @@ h1 {
 
 .inputField {
   padding: 10px;
-  margin: 10px;
+  margin: 5px 0; /* Reduce the margin between input fields */
   border-radius: 5px;
   border: 1px solid #786C3B; /* Adjust the color as needed */
   display: block; /* Make input fields stack on top of each other */
-  width: 200px; /* Make the input fields twice as long */
+  width: 250px; /* Increase the width of the input field by a quarter */
 }
 
 .loginButton {
@@ -29,6 +31,7 @@ h1 {
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  margin-top: 10px; /* Adjust the margin as needed */
 }
 
 .loginButton:hover {
