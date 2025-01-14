@@ -26,7 +26,7 @@ const recipesPage = () => {
   const { title } = useParams()
   // const { recipeImage } = useParams()
   const location = useLocation();  // <== Added location for URL debugging
-  const apiKey = '42ff4ceaa9bf42a5a949604155ebbab8' // Updated API key
+  const apiKey = '57a16c48bf22416292e179fa9e893098' // Updated API key
 
 
   const urlParams = new URLSearchParams();
@@ -169,6 +169,7 @@ const recipesPage = () => {
 console.log("idea guy",similarPostInfo)
 console.log("bad man getting the postinfo yeah?", postInfo)
 console.log("post available?",post)
+console.log("similar post info", similarPost)
 
   return (
     <div>
@@ -221,7 +222,7 @@ console.log("post available?",post)
         </div>
               <div className="equipIngr">
                 <div>
-                  <h2 className=""> 1. Ingredients:</h2>
+                  <h2 className="">Ingredients:</h2>
                     <p>{postInfo?.data?.extendedIngredients?.map((ingredients) => (
                       <li key={ingredients?.id}>
                         {ingredients?.name}
@@ -230,7 +231,7 @@ console.log("post available?",post)
                   
                 </div>
                 <div>
-                <h2> 2. Equipments: </h2>
+                <h2>Equipments: </h2>
                 <p>{postInfo?.data?.analyzedInstructions?.[0]?.steps?.map((equipments) => (
                   <li key={equipments.equipment[0]?.id}>
                     {equipments?.equipment[0]?.name}
@@ -258,17 +259,17 @@ console.log("post available?",post)
     <div className="similarRecipes">
       <div className="foodCards">
         <div className="cookCardFood">
-        <img
-              src={similarfood1}
+        { sushi &&
+            <img src={similarPostInfo?.data?.[0]?.image}
               width={350}
               height={234}
               className="cooking1ton"
               alt="Villa"
-          />
+          />}
         </div>
           <div className="savouryFishs">
-          <h3>Savoury herb infused fish</h3>
-          <p className="indulgeFishs">Indulge in the rich and savory symphony of<br></br> flavors with our Savory Herb-Infused Fish</p>
+          <h3>{similarPostInfo?.data?.[0]?.title}</h3>
+          <p className="indulgeFishs">{similarPostInfo?.data?.[0]?.readyInMinutes}Min - easy prep - {similarPostInfo?.data?.[0]?.servings}</p>
           </div>
 
         <div className="timePrepRecipes">
@@ -278,17 +279,17 @@ console.log("post available?",post)
         </div>
         <div className="foodCards">
         <div className="cookCardFood">
-        <img
-              src={similarfood2}
+        { sushi &&
+            <img src={similarPostInfo?.data?.[1]?.image}
               width={350}
               height={234}
               className="cooking1ton"
               alt="Villa"
-          />
+          />}
         </div>
           <div className="savouryFishs">
-          <h3>Savoury herb infused fish</h3>
-          <p className="indulgeFishs">Indulge in the rich and savory symphony of<br></br> flavors with our Savory Herb-Infused Fish</p>
+          <h3>{similarPostInfo?.data?.[1]?.title}</h3>
+          <p className="indulgeFishs"> {similarPostInfo?.data?.[1]?.readyInMinutes}Min - easy prep - {similarPostInfo?.data?.[1]?.servings}</p>
           </div>
 
         <div className="timePrepRecipes">
