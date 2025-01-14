@@ -57,13 +57,16 @@
 
 .loremthekingsun{
     display: flex;
-    gap: 40px;
+    /* flex-direction: column; */
+    justify-content: space-between;
+    gap: 10px;
     padding-left: 50px;
-    padding-right: 50px;
+    padding-right: 100px;
     margin-top: 30px;
 }
 
 .loremkingsun{
+    display: flex;
     border: 0.5px solid #6B4F31;
     padding-left: 30px;
     border-radius: 20px;
@@ -152,4 +155,15 @@
 
 .cooking1ton{
     box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.5);
+}
+
+.insructionSteps{
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+.equipIngr{
+    display: flex;
+    justify-content: center;
+    gap: 10px;
 }
