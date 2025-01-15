@@ -4,15 +4,17 @@
   align-items: center;
   justify-content: center;
   height: 100vh;
+  margin-top: -30px;
 }
 
 .logo {
-  width: 100px; /* Adjust the size as needed */
-  height: 100px; /* Adjust the size as needed */
+  width: 150px; /* Increase the size of the logo */
+  height: 150px; /* Increase the size of the logo */
 }
 
 h1 {
   color: #6B4F31; /* Adjust the color as needed */
+  margin-top: -30px; /* Reduce the margin top of the welcome message */
 }
 
 .inputField {
@@ -36,4 +38,8 @@ h1 {
 
 .loginButton:hover {
   background-color: #786C3B; /* Adjust the color as needed */
+}
+
+.loginBTN{
+    
 }
