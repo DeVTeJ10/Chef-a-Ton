@@ -1,9 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import logoImg from "../../images/cookaton.png";
+import {getAuth, signInWithEmailAndPassword} from "firebase/auth"
 import './login.css'; // Import the CSS file for login page styling
 
+
+
 const LoginPage = () => {
+
+
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState()
+
+
+
+
+
+
+
+
+
   return (
     <div className="loginContainer">
         <Link to = {"/"}>
