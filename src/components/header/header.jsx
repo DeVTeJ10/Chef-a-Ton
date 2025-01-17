@@ -46,7 +46,9 @@ const header = () => {
       <Link to={"/login"}>
         <button className="login">Login</button>
       </Link>
+      <Link to={"/signup"}>
         <button className="signUp">Sign up</button>
+      </Link>
       </div>
         </div>
         </div>
