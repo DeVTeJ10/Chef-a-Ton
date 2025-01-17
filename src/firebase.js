@@ -1,23 +1,26 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-import {getStorage} from "firebase/storage"
-// TODO: Add SDKs for Firebase products that you want to use
+import { GoogleAuthProvider } from "firebase/auth";
+// import { getAnalytics } from "firebase/analytics";
+
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyDaKIPRPCnSAjndP9m7ObsdBjMwYB7GJ20",
-  authDomain: "chef-a-ton.firebaseapp.com",
-  projectId: "chef-a-ton",
-  storageBucket: "chef-a-ton.firebasestorage.app",
-  messagingSenderId: "668548791730",
-  appId: "1:668548791730:web:cb7e48cb5a2809dc2938ab",
-  measurementId: "G-248LS6EHVH"
+  apiKey: "AIzaSyB1ExQ8egDsVhDWEf4USa7zAIvk8EoruQw",
+  authDomain: "chef-a-ton-da920.firebaseapp.com",
+  projectId: "chef-a-ton-da920",
+  storageBucket: "chef-a-ton-da920.firebasestorage.app",
+  messagingSenderId: "655136236485",
+  appId: "1:655136236485:web:821ce36972cb5291a921ac",
+  measurementId: "G-8XWQ4LNWJN"
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
-const storage = getStorage()
+const provider = new GoogleAuthProvider(app);
+export {app, provider}
+// const analytics = getAnalytics(app);
+
+
