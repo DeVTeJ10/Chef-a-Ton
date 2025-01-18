@@ -4,24 +4,32 @@ import logoImg from "../../images/cookaton.png";
 import './signup.css'; // Import the CSS file for signup page styling
 import { useLocation } from 'react-router-dom';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { provider } from '../../firebase';
+import { getAuth } from 'firebase/auth';
 
 const SignupPage = () => {
   
-  const [formData, setFormData] = useState({
-    email: '',
-    password: '',
-    confirmPassword: '',
-    name: ''
-  });
+  const [email, setEmail] = useState()
+  const [password, setPassword] = useState()
 
-  const handleInputChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
-  };
+
+
+//   const handleInputChange = (e) => {
+//     setFormData({
+//       ...formData,
+//       [e.target.name]: e.target.value
+//     });
+//   };
 
   const handleSignup = () => {
+
+    const auth = getAuth()
+
+        createUserWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+            const user = userCredential.user
+            console.log("user is signed up", user)
+        })
     // Add signup logic here
   };
 
@@ -32,16 +40,24 @@ const SignupPage = () => {
       </Link>
       <h1>Create an Account</h1>
       <form>
-        <input type="text" placeholder="Email" name="email" value={formData.email} onChange={handleInputChange} className="inputField" />
-        <input type="password" placeholder="Password" name="password" value={formData.password} onChange={handleInputChange} className="inputField" />
-        <input type="password" placeholder="Confirm Password" name="confirmPassword" value={formData.confirmPassword} onChange={handleInputChange} className="inputField" />
-        <input type="text" placeholder="Name" name="name" value={formData.name} onChange={handleInputChange} className="inputField" />
+        <input type="email" 
+        placeholder="email" 
+        name="email" 
+        value={email} 
+        onChange={(e) => setEmail(e.target.value)} 
+        className="inputField" 
+        required/>
+
+        <input type="password" 
+        placeholder="password" 
+        name="password" 
+        value={password} 
+        onChange={(e) => setPassword(e.target.value)} 
+        className="inputField" 
+        required/>
 
         <div className='signupBTN'>
-
-        <button type="button" className="loginButton" onClick={handleSignup}></button>
         <button type="button" className="signupButton" onClick={handleSignup}>Sign Up</button>
-            
         </div>
       </form>
     </div>
