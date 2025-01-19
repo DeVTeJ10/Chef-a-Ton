@@ -2,9 +2,8 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import logoImg from "../../images/cookaton.png";
 import './login.css'; // Import the CSS file for login page styling
-import { getAuth, signInWithPopup, signInWithEmailAndPassword, ProviderId} from "firebase/auth"
+import { getAuth, signInWithPopup, signInWithEmailAndPassword} from "firebase/auth"
 import { provider } from '../../firebase';
-import { useLocation } from 'react-router-dom';
 
 const LoginPage = () => {
   
@@ -24,9 +23,9 @@ const LoginPage = () => {
         console.log("getting users?", user)
         setUser(user);
 
-        if(user){
-            window.location.href = "/";
-        }
+        // if(user){
+        //     window.location.href = "/";
+        // }
 
       }).catch((error) => {
         console.error("Error during Google login:", error);
@@ -42,6 +41,9 @@ const LoginPage = () => {
     signInWithEmailAndPassword(auth, email, password )
     .then((result) => {
         const user = result.user;
+        if(user){
+            window.location.href="/"
+        }
         console.log("getting user with email not gmail yeah?", user)
     }).catch((error) => {
         console.log("Error during email login", error)
@@ -68,7 +70,7 @@ const LoginPage = () => {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}/>
 
-                
+
         <div className='loginBTN'>
 
           <button type="button" 
