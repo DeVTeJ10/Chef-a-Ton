@@ -67,9 +67,18 @@ const LoginPage = () => {
                 className="inputField" 
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}/>
+
+                
         <div className='loginBTN'>
-          <button type="button" className="loginButton" onClick={handleEmailPasswordLogin}>Login</button>
-          <button type="button" className='loginButtons' onClick={handleGoogleLogin}>Login with Google</button>
+
+          <button type="button" 
+          className="loginButton" 
+          onClick={handleEmailPasswordLogin}>Login</button>
+
+          <button type="button" 
+          className='loginButtons' 
+          onClick={handleGoogleLogin}>Login with Google</button>
+
         </div>
       </form>
     </div>
