@@ -29,7 +29,12 @@ const SignupPage = () => {
         .then((userCredential) => {
             const user = userCredential.user
             console.log("user is signed up", user)
+
+            if(user){
+                window.location.href = "/"
+            }
         })
+            
     // Add signup logic here
   };
 
