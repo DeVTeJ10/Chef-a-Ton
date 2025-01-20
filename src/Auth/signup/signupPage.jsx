@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import logoImg from "../../images/cookaton.png";
 import './signup.css'; // Import the CSS file for signup page styling
-import { createUserWithEmailAndPassword, getAuth } from 'firebase/auth';
+import { createUserWithEmailAndPassword, getAuth, updateProfile } from 'firebase/auth';
 import { doc, setDoc } from 'firebase/firestore';
 import { db } from '../../firebase.js';
 
@@ -11,23 +11,28 @@ const SignupPage = () => {
   const [email, setEmail] = useState()
   const [password, setPassword] = useState()
   const [username, setUserName] = useState()
+  const [error, setError] = useState()
 
 
 
-//   const handleInputChange = (e) => {
-//     setFormData({
-//       ...formData,
-//       [e.target.name]: e.target.value
-//     });
-//   };
+  const handleInputChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
 
   const handleSignup = async () => {
+
+    console.log("signup button called")
 
     const auth = getAuth()
 
     try {
         const userCredential = await createUserWithEmailAndPassword(auth, email, password, username);
         const user = userCredential.user;
+        
+        await updateProfile(user, { displayName: username})
         console.log("user is signed up", user);
 
         // if (user) {
@@ -38,8 +43,9 @@ const SignupPage = () => {
             username: username,
             email: email,
         });
-
-        console.log("User signed up and data stored:", user.uid);
+        if(userCredential){
+          console.log("User signed up and data stored:", user.uid, user.displayName);
+        }
     } catch (error) {
         setError(error.message);
         console.error("Error signing up:", error);
