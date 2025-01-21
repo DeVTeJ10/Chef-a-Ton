@@ -11,16 +11,16 @@ const SignupPage = () => {
   const [email, setEmail] = useState()
   const [password, setPassword] = useState()
   const [username, setUserName] = useState()
-  const [error, setError] = useState()
 
 
 
-  const handleInputChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
-  };
+
+  // const handleInputChange = (e) => {
+  //   setFormData({
+  //     ...formData,
+  //     [e.target.name]: e.target.value
+  //   });
+  // };
 
   const handleSignup = async () => {
 
@@ -35,9 +35,9 @@ const SignupPage = () => {
         await updateProfile(user, { displayName: username})
         console.log("user is signed up", user);
 
-        // if (user) {
-        //     window.location.href = "/";
-        // }
+        if (user) {
+            window.location.href = "/";
+        }
 
         await setDoc(doc(db, "users", user.uid), {
             username: username,
