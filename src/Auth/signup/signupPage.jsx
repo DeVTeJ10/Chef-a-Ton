@@ -34,6 +34,7 @@ const SignupPage = () => {
         
         await updateProfile(user, { displayName: username})
         console.log("user is signed up", user);
+        console.log("checking if user display name is showing?", user.displayName)
 
         if (user) {
             window.location.href = "/";
@@ -45,12 +46,15 @@ const SignupPage = () => {
         });
         if(userCredential){
           console.log("User signed up and data stored:", user.uid, user.displayName);
+          const userId = user.displayName
         }
     } catch (error) {
         setError(error.message);
         console.error("Error signing up:", error);
     }
+
   };
+
 
 
 
