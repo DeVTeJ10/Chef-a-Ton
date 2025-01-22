@@ -3,19 +3,24 @@ import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { getAuth } from 'firebase/auth'
 import { useState } from 'react';
 
-const useUserName = () => {
-    const [user, setUser] = useState('');
 
-    const handleSignup = async (email, password, username) => {
+
+
+const useUserName = () => {
+    const [user, setUser] = useState({ users: '' });
+
+    const handleSignups = async (email, password, username) => {
         console.log("signup button called");
 
         const auth = getAuth();
 
         try {
             const userCredential = await createUserWithEmailAndPassword(auth, email, password, username);
-            const user = userCredential.user;
+            
             
             await updateProfile(user, { displayName: username})
+            const users = userCredential;
+            setUser(users?.user?.displayName)
             console.log("user is signed up", user);
 
             await setDoc(doc(db, "users", user.uid), {
@@ -33,7 +38,7 @@ const useUserName = () => {
         return user;
     }
 
-    return { user, handleSignup };
+    return { user, handleSignups };
 };
 
 export default useUserName;
