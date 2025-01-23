@@ -32,7 +32,7 @@ const Header = () => {
                             <h3>Recipe</h3>
                             {/* </Link> */}
                             <Link to={"/aboutUs-page"} className="aboutUsTag">
-                                <h3>{user.username}</h3>
+                                <h3>{user.displayName}</h3>
                             </Link>
                             <Link to={"/favourites-page"} className="favouritesTag">
                                 <h3>Favourites</h3>
