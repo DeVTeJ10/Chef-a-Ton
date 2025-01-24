@@ -4,10 +4,21 @@ import { useParams } from "react-router-dom";
 import "./header.css"
 import logoImg from "../../images/cookaton.png";
 import { useState } from "react";
+import axios from "axios";
 
 const Header = () => {
     const { user } = useUserName();
     console.log(user);
+
+
+    const searchRecipe = async () => {
+
+      try{
+
+        const searchRecipe = await axios.get(``)
+
+      }
+    }
 
     return (
         <div>
@@ -43,7 +54,8 @@ const Header = () => {
                     <div className="inputinup">
                         <input
                             placeholder='Search for recipe' 
-                            className='inputRecipe'/>
+                            className='inputRecipe'
+                            type="text"/>
 
                         {
                             <div className="authentication">
