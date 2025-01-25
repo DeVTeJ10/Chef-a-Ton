@@ -8,6 +8,8 @@ import axios from "axios";
 
 const Header = () => {
     const { user } = useUserName();
+    const [searchRecipe, setSearchRecipe] = useState()
+
     console.log(user);
 
 
@@ -15,10 +17,18 @@ const Header = () => {
 
       try{
 
-        const searchRecipe = await axios.get(``)
-
+        const searchRecipes = await axios.get(`https://api.spoonacular.com/recipes/complexSearch`, {
+            headers: {
+              'Content-Type': 'application/json', 
+            }
+          }
+        );
+        const searchedRecipe = searchRecipes
+        setSearchRecipe(searchedRecipe)
+      } catch (error) {
+        console.error("Error:", error.message);
       }
-    }
+    };
 
     return (
         <div>
