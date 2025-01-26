@@ -26,7 +26,7 @@ const recipesPage = () => {
   const { title } = useParams()
   // const { recipeImage } = useParams()
   const location = useLocation();  // <== Added location for URL debugging
-  const apiKey = '57a16c48bf22416292e179fa9e893098' // Updated API key
+  const apiKey = '3991d0a3bf7e4bfc9189dc2d5c9c7ad5' // Updated API key
 
 
   const urlParams = new URLSearchParams();
