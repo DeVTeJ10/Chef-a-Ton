@@ -12,7 +12,7 @@ const Header = () => {
     const [searchForRecipes, setSearchForRecipes] = useState()
     const [inputValue, setInputValue] = useState('')
 
-    const apiKey = '57a16c48bf22416292e179fa9e893098'
+    const apiKey = '3991d0a3bf7e4bfc9189dc2d5c9c7ad5'
 
     console.log(user);
 
@@ -21,7 +21,7 @@ const Header = () => {
 
       try{
 
-        const searchRecipes = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?number=80&apiKey=${apiKey}`, {
+        const searchRecipes = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?query=${inputValue}apiKey=${apiKey}`, {
             headers: {
               'Content-Type': 'application/json', 
             }
@@ -39,6 +39,7 @@ const Header = () => {
 
         if (event.key === 'Enter'){
             console.log("You got it TeJ", inputValue)
+            event.preventDefault();
             searchRecipe()
             console.log("Found the value yeah?",searchForRecipes)
         }
