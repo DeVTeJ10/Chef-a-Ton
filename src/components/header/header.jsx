@@ -5,10 +5,14 @@ import "./header.css"
 import logoImg from "../../images/cookaton.png";
 import { useState } from "react";
 import axios from "axios";
+import { assign } from "lodash";
 
 const Header = () => {
     const { user } = useUserName();
-    const [searchRecipe, setSearchRecipe] = useState()
+    const [searchForRecipes, setSearchForRecipes] = useState()
+    const [inputValue, setInputValue] = useState('')
+
+    const apiKey = '57a16c48bf22416292e179fa9e893098'
 
     console.log(user);
 
@@ -17,18 +21,29 @@ const Header = () => {
 
       try{
 
-        const searchRecipes = await axios.get(`https://api.spoonacular.com/recipes/complexSearch`, {
+        const searchRecipes = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?number=80&apiKey=${apiKey}`, {
             headers: {
               'Content-Type': 'application/json', 
             }
           }
         );
         const searchedRecipe = searchRecipes
-        setSearchRecipe(searchedRecipe)
+        setSearchForRecipes(searchedRecipe)
       } catch (error) {
         console.error("Error:", error.message);
       }
     };
+
+
+    const handleKeyPress = async (event) => {
+
+        if (event.key === 'Enter'){
+            console.log("You got it TeJ", inputValue)
+            searchRecipe()
+            console.log("Found the value yeah?",searchForRecipes)
+        }
+
+    }
 
     return (
         <div>
@@ -58,6 +73,9 @@ const Header = () => {
                             <Link to={"/favourites-page"} className="favouritesTag">
                                 <h3>Favourites</h3>
                             </Link>
+                            {/* <Link to={"/favourites-page"} className="favouritesTag"> */}
+                                <h3>Searched recipe</h3>
+                            {/* </Link> */}
                         </div>
                     </div>
 
@@ -65,7 +83,10 @@ const Header = () => {
                         <input
                             placeholder='Search for recipe' 
                             className='inputRecipe'
-                            type="text"/>
+                            type="text"
+                            value={inputValue}
+                            onChange={(e) => setInputValue(e.target.value)}
+                            onKeyDown={handleKeyPress}/>
 
                         {
                             <div className="authentication">
