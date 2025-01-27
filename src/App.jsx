@@ -3,7 +3,7 @@ import HomePage from "./pages/home/homePage";
 import RecipePage from "./pages/recipe/recipePage";
 import LoginPage from "./Auth/login/loginPage"
 import SignupPage from "./Auth/signup/signupPage"
-// import AboutUsPage from "./"
+import SearchedRecipePage from "./pages/searched/searchRecipes"
 import './input.css'
 
 
@@ -16,6 +16,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage/>} />
         <Route path="/recipe-page/:id/:title" element={<RecipePage/>} />
+        <Route path="/searched-page" element={<SearchedRecipePage/>} />
         {/* <Route path="/about-us" element={<AboutUsPage/>} /> */}
         {/* <Route path="/services-page" element={<ServicesPage/>} />  */}
         <Route path="/login" element={<LoginPage/>}/>
