@@ -3,7 +3,7 @@ import useUserName from "../../userNameHook";
 import { useParams } from "react-router-dom";
 import "./header.css"
 import logoImg from "../../images/cookaton.png";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import { assign } from "lodash";
 
@@ -16,6 +16,11 @@ const Header = () => {
 
     console.log(user);
 
+    useEffect(() => {
+        if (searchForRecipes) {
+            console.log("Search results updated:", searchForRecipes);
+        }
+    }, [searchForRecipes]);
 
     const searchRecipe = async () => {
 
@@ -38,9 +43,9 @@ const Header = () => {
     const handleKeyPress = async (event) => {
 
         if (event.key === 'Enter'){
-            console.log("You got it TeJ", inputValue)
+            // console.log("You got it TeJ", inputValue)
             event.preventDefault();
-            searchRecipe()
+           await searchRecipe()
             console.log("Found the value yeah?",searchForRecipes)
         }
 
