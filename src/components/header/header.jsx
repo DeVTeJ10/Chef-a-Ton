@@ -1,6 +1,5 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useUserName from "../../userNameHook";
-import { useParams } from "react-router-dom";
 import "./header.css"
 import logoImg from "../../images/cookaton.png";
 import { useState, useEffect } from "react";
@@ -9,6 +8,7 @@ import { assign } from "lodash";
 
 const Header = () => {
     const { user } = useUserName();
+    const navigate = useNavigate()
     const [searchForRecipes, setSearchForRecipes] = useState()
     const [inputValue, setInputValue] = useState('')
 
@@ -41,14 +41,13 @@ const Header = () => {
 
 
     const handleKeyPress = async (event) => {
-
-        if (event.key === 'Enter'){
-            // console.log("You got it TeJ", inputValue)
+        if (event.key === 'Enter') {
             event.preventDefault();
-           await searchRecipe()
-            console.log("Found the value yeah?",searchForRecipes)
+            await searchRecipe();
+            // Navigate to search results page with the search query
+            navigate('/searched-page', { state: { searchResults: searchForRecipes, searchQuery: inputValue } });
+            
         }
-
     }
 
     return (
