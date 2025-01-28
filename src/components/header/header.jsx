@@ -11,16 +11,18 @@ const Header = () => {
     const navigate = useNavigate()
     const [searchForRecipes, setSearchForRecipes] = useState()
     const [inputValue, setInputValue] = useState('')
-
     const apiKey = 'ad501590243a4ad2951d9582a731d140'
+    
 
     console.log(user);
+
 
     useEffect(() => {
         if (searchForRecipes) {
             console.log("Search results updated:", searchForRecipes);
         }
     }, [searchForRecipes]);
+
 
     const searchRecipe = async () => {
 
@@ -46,7 +48,7 @@ const Header = () => {
             await searchRecipe();
             // Navigate to search results page with the search query
             navigate('/searched-page', { state: { searchResults: searchForRecipes, searchQuery: inputValue } });
-            
+
         }
     }
 
