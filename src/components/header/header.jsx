@@ -12,7 +12,7 @@ const Header = () => {
     const [searchForRecipes, setSearchForRecipes] = useState()
     const [inputValue, setInputValue] = useState('')
     const apiKey = 'ad501590243a4ad2951d9582a731d140'
-    
+
 
     console.log(user);
 
