@@ -16,7 +16,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage/>} />
         <Route path="/recipe-page/:id/:title" element={<RecipePage/>} />
-        <Route path="/searched-page/: state: { searchResults: searchForRecipes, searchQuery: inputValue } " element={<SearchedRecipePage/>} />
+        <Route path="/searched-page" element={<SearchedRecipePage/>} />
         <Route path="/login" element={<LoginPage/>}/>
         <Route path="/signup" element={<SignupPage/>}/>
       </Routes>
