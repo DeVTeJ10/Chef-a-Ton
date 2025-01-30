@@ -1,13 +1,15 @@
 import Header from "../../components/header/header";
 import Footer from "../../components/footer/footer";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import "./searchedRecipe.css";
 
 const SearchRecipes = () => {
   const location = useLocation();
-  const searchResults = location.state?.searchResults?.data?.results || [];
-  const searchQuery = location.state?.searchQuery || '';
+  console.log("Full location state:", location.state); // Debug full state
+  console.log("Search results:", location.state?.searchResults); // Debug results
 
+  const searchResults = location.state?.searchResults || [];
+  const searchQuery = location.state?.searchQuery || '';
 
   console.log("found searched recipe on searched recipe page", searchResults)
 

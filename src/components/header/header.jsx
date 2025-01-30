@@ -20,37 +20,45 @@ const Header = () => {
     useEffect(() => {
         if (searchForRecipes) {
             console.log("Search results updated:", searchForRecipes);
+            // navigate('/searched-page', { state: { searchResults: searchForRecipes, searchQuery: inputValue } });
         }
     }, [searchForRecipes]);
 
 
     const searchRecipe = async () => {
-
-      try{
-
-        const searchRecipes = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?query=${inputValue}&apiKey=${apiKey}&number=30`, {
-            headers: {
-              'Content-Type': 'application/json', 
-            }
-          }
-        );
-        const searchedRecipe = searchRecipes
-        setSearchForRecipes(searchedRecipe)
-      } catch (error) {
-        console.error("Error:", error.message);
-      }
+        try {
+            const response = await axios.get(
+                `https://api.spoonacular.com/recipes/complexSearch?query=${inputValue}&apiKey=${apiKey}&number=30`,
+                {
+                    headers: {
+                        'Content-Type': 'application/json', 
+                    }
+                }
+            );
+            setSearchForRecipes(response.data.results);
+            return response; // Return the full response
+        } catch (error) {
+            console.error("Error:", error.message);
+            return null;
+        }
     };
 
 
     const handleKeyPress = async (event) => {
         if (event.key === 'Enter') {
             event.preventDefault();
-            await searchRecipe();
-            // Navigate to search results page with the search query
-            navigate('/searched-page', { state: { searchResults: searchForRecipes, searchQuery: inputValue } });
-
+            const searchResults = await searchRecipe();
+            if (searchResults) {
+                navigate('/searched-page', { 
+                    state: { 
+                        searchResults: searchResults.data.results, 
+                        searchQuery: inputValue 
+                    } 
+                });
+            }
         }
     }
+
 
     return (
         <div>
