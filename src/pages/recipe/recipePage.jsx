@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { useState } from "react";
 import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
 import streetfood from "../../images/streetfood.jpg";
 import perfectiming from "../../images/perfecttime.png"
 import foodserving from "../../images/foodserving.png"
@@ -274,7 +275,9 @@ console.log("similar post info", similarPost)
 
         <div className="timePrepRecipes">
           <p className="timePrep">40 Min - easy prep - 3 serves</p>
+          <Link to={`/recipe-page/${similarPostInfo[0]?.id}/${similarPostInfo[0]?.title}`}>
           <button className="viewRecipeBTNs">VIEW RECIPE</button>
+          </Link>
         </div>
         </div>
         <div className="foodCards">
@@ -294,7 +297,9 @@ console.log("similar post info", similarPost)
 
         <div className="timePrepRecipes">
           <p className="timePrep">40 Min - easy prep - 3 serves</p>
+          <Link to={`/recipe-page/${similarPostInfo[1]?.id}/${similarPostInfo[1]?.title}`}>
           <button className="viewRecipeBTNs">VIEW RECIPE</button>
+          </Link>
         </div>
         </div>
       </div>
