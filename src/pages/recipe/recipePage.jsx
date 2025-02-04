@@ -25,9 +25,8 @@ const recipesPage = () => {
   const { id } = useParams();
   const [ids, setNewIds] = useState([])
   const { title } = useParams()
-  // const { recipeImage } = useParams()
   const location = useLocation();  // <== Added location for URL debugging
-  const apiKey = 'ad501590243a4ad2951d9582a731d140' // Updated API key
+  const apiKey = 'd051b53827fa45388a11d1d1e8d7b6c5' // Updated API key
 
 
   const urlParams = new URLSearchParams();
@@ -171,10 +170,12 @@ console.log("idea guy",similarPostInfo)
 console.log("bad man getting the postinfo yeah?", postInfo)
 console.log("post available?",post)
 console.log("similar post info", similarPost)
+console
 
   return (
     <div>
       <Header/>
+    
       <div className="firstrecipecontent">
 
       <div className="foodtimelapse">
@@ -253,7 +254,8 @@ console.log("similar post info", similarPost)
       ))}</p>
       </div>
       
-
+        :
+    
 
     <div className="similarpiece">
     <h2 className="simrecipes">Similar recipes</h2>
@@ -290,6 +292,7 @@ console.log("similar post info", similarPost)
               alt="Villa"
           />}
         </div>
+
           <div className="savouryFishs">
           <h3>{similarPostInfo?.data?.[1]?.title}</h3>
           <p className="indulgeFishs"> {similarPostInfo?.data?.[1]?.readyInMinutes}Min - easy prep - {similarPostInfo?.data?.[1]?.servings}</p>
