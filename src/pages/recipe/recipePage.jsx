@@ -257,8 +257,6 @@ console.log("similar post info", similarPost)
         </li>
       ))}</p>
       </div>
-      
-        :
     
 
     <div className="similarpiece">
