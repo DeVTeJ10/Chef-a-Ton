@@ -64,6 +64,10 @@ const recipesPage = () => {
             );
               setPost(recipeDetails); 
               console.log("post available?",post)
+
+              // Set postInfo with similarPost data
+              setPostInfo(similarPostInfo);
+
             // }
           } catch (error) {
             console.error("Error:", error.message); 
@@ -170,7 +174,7 @@ console.log("idea guy",similarPostInfo)
 console.log("bad man getting the postinfo yeah?", postInfo)
 console.log("post available?",post)
 console.log("similar post info", similarPost)
-console
+
 
   return (
     <div>
