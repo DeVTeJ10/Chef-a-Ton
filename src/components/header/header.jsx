@@ -79,12 +79,9 @@ const Header = () => {
                             <Link to={"/"} className="homeTag">
                                 <h3>Home</h3>
                             </Link>
-                            {/* <Link to={"/recipe-page"} className="recipeTag"> */}
+
                             <h3>Recipe</h3>
-                            {/* </Link> */}
-                            <Link to={"/aboutUs-page"} className="aboutUsTag">
-                                <h3>{user.displayName}</h3>
-                            </Link>
+                            
                             <Link to={"/favourites-page"} className="favouritesTag">
                                 <h3>Favourites</h3>
                             </Link>
@@ -104,6 +101,16 @@ const Header = () => {
                             onKeyDown={handleKeyPress}/>
 
                         {
+                            user?.displayName ? 
+                            <span>
+                              Welcome: {user?.displayName}
+                            <Link to={"/login"}>
+                              <button className="contactUS">sign out</button>
+                            </Link>
+                            </span>
+
+                            :
+                            
                             <div className="authentication">
                                 <Link to={"/login"}>
                                     <button className="login">Login</button>
