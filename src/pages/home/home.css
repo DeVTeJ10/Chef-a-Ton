@@ -195,3 +195,15 @@ body{
     margin-bottom: 10px;
 
 }
+
+.addRecipeBTN {
+    border: none;
+    background-color: #6B4F31;
+    color: white;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    font-size: 20px;
+    cursor: pointer;
+    margin-left: 10px; /* Space between the view button and plus button */
+}

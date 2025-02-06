@@ -188,6 +188,7 @@ const homepage = () => {
               ${randomRecipe?.data?.recipes[0]?.title}`}>
           <button className="viewRecipeBTN">VIEW RECIPE</button>
           </Link>
+          <button className="addRecipeBTN" onClick={() => {/* Add functionality here later */}}>+</button>
         </div>
         </div>
 
@@ -215,6 +216,7 @@ const homepage = () => {
           ${randomRecipe?.data?.recipes[1]?.title}}` }>
           <button className="viewRecipeBTN">VIEW RECIPE</button>
           </Link>
+          <button className="addRecipeBTN" onClick={() => {/* Add functionality here later */}}>+</button>
         </div>
         </div>
         <div className="foodCard">
@@ -238,6 +240,7 @@ const homepage = () => {
           ${randomRecipe?.data?.recipes[2]?.title}}` }>
           <button className="viewRecipeBTN">VIEW RECIPE</button>
           </Link>
+          <button className="addRecipeBTN" onClick={() => {/* Add functionality here later */}}>+</button>
         </div>
         </div>
       </div>
@@ -264,6 +267,7 @@ const homepage = () => {
           ${randomRecipe?.data?.recipes[3]?.title}}` }>`
           <button className="viewRecipeBTN">VIEW RECIPE</button>
           </Link>
+          <button className="addRecipeBTN" onClick={() => {/* Add functionality here later */}}>+</button>
         </div>
         </div>
 
@@ -292,6 +296,7 @@ const homepage = () => {
           ${randomRecipe?.data?.recipes[4]?.title}}` }>` 
           <button className="viewRecipeBTN">VIEW RECIPE</button>
           </Link>
+          <button className="addRecipeBTN" onClick={() => {/* Add functionality here later */}}>+</button>
         </div>
         </div>
 
@@ -319,6 +324,7 @@ const homepage = () => {
            ${randomRecipe?.data?.recipes[5]?.title}}` }>
           <button className="viewRecipeBTN">VIEW RECIPE</button>
           </Link>
+          <button className="addRecipeBTN" onClick={() => {/* Add functionality here later */}}>+</button>
         </div>
         </div>
       </div>
@@ -345,6 +351,7 @@ const homepage = () => {
            ${randomRecipe?.data?.recipes[6]?.title}}` }>
           <button className="viewRecipeBTN">VIEW RECIPE</button>
           </Link>
+          <button className="addRecipeBTN" onClick={() => {/* Add functionality here later */}}>+</button>
         </div>
         </div>
 
@@ -373,6 +380,7 @@ const homepage = () => {
            ${randomRecipe?.data?.recipes[7]?.title}}`  }>
           <button className="viewRecipeBTN">VIEW RECIPE</button>
           </Link>
+          <button className="addRecipeBTN" onClick={() => {/* Add functionality here later */}}>+</button>
         </div>
         </div>
 
@@ -400,6 +408,7 @@ const homepage = () => {
            ${randomRecipe?.data?.recipes[8]?.title}}`}>
           <button className="viewRecipeBTN">VIEW RECIPE</button>
           </Link>
+          <button className="addRecipeBTN" onClick={() => {/* Add functionality here later */}}>+</button>
         </div>
         </div>
       </div>
@@ -434,6 +443,7 @@ const homepage = () => {
            ${breakfastNumber[0]?.title}}`}>
           <button className="viewRecipeBTN">VIEW RECIPE</button>
           </Link>
+          <button className="addRecipeBTN" onClick={() => {/* Add functionality here later */}}>+</button>
         </div>
         </div>
 
@@ -463,6 +473,7 @@ const homepage = () => {
           ${breakfastNumber[1]?.title}}` }>
           <button className="viewRecipeBTN">VIEW RECIPE</button>
           </Link>
+          <button className="addRecipeBTN" onClick={() => {/* Add functionality here later */}}>+</button>
         </div>
         </div>
         <div className="foodCard">
@@ -488,6 +499,7 @@ const homepage = () => {
           ${breakfastNumber[2]?.title}}`}>
           <button className="viewRecipeBTN">VIEW RECIPE</button>
           </Link>
+          <button className="addRecipeBTN" onClick={() => {/* Add functionality here later */}}>+</button>
         </div>
         </div>
       </div>
@@ -522,6 +534,7 @@ const homepage = () => {
           ${lunchNumber[0]?.title}}`}>`
           <button className="viewRecipeBTN">VIEW RECIPE</button>
           </Link>
+          <button className="addRecipeBTN" onClick={() => {/* Add functionality here later */}}>+</button>
         </div>
         </div>
 
@@ -553,6 +566,7 @@ const homepage = () => {
           ${lunchNumber[1]?.title}}`}>
           <button className="viewRecipeBTN">VIEW RECIPE</button>
           </Link>
+          <button className="addRecipeBTN" onClick={() => {/* Add functionality here later */}}>+</button>
         </div>
         </div>
         <div className="foodCard">
@@ -578,6 +592,7 @@ const homepage = () => {
           ${lunchNumber[2]?.title}}`}>
           <button className="viewRecipeBTN">VIEW RECIPE</button>
           </Link>
+          <button className="addRecipeBTN" onClick={() => {/* Add functionality here later */}}>+</button>
         </div>
         </div>
       </div>
@@ -611,6 +626,7 @@ const homepage = () => {
           ${dinnerNumber[0]?.title}}`}>
           <button className="viewRecipeBTN">VIEW RECIPE</button>
           </Link>
+          <button className="addRecipeBTN" onClick={() => {/* Add functionality here later */}}>+</button>
         </div>
         </div>
 
@@ -640,6 +656,7 @@ const homepage = () => {
           ${dinnerNumber[1]?.title}}`}>
           <button className="viewRecipeBTN">VIEW RECIPE</button>
           </Link>
+          <button className="addRecipeBTN" onClick={() => {/* Add functionality here later */}}>+</button>
         </div>
         </div>
         <div className="foodCard">
@@ -665,6 +682,7 @@ const homepage = () => {
           ${dinnerNumber[2]?.title}}`}>
           <button className="viewRecipeBTN">VIEW RECIPE</button>
           </Link>
+          <button className="addRecipeBTN" onClick={() => {/* Add functionality here later */}}>+</button>
         </div>
         </div>
       </div>
