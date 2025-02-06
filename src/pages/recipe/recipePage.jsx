@@ -279,8 +279,8 @@ console.log("similar post info", similarPost)
 
         <div className="timePrepRecipes">
           <p className="timePrep">40 Min - easy prep - 3 serves</p>
-          <Link to={`/recipe-page/${similarPostInfo[0]?.id}/${similarPostInfo[0]?.title}`}>
-          <button className="viewRecipeBTNs">VIEW RECIPE</button>
+          <Link>
+          <button className="viewRecipeBTNs" onClick={() => handleViewSimilarRecipe(similarPostInfo[0]?.id)}>VIEW RECIPE</button>
           </Link>
         </div>
         </div>
@@ -302,7 +302,7 @@ console.log("similar post info", similarPost)
 
         <div className="timePrepRecipes">
           <p className="timePrep">40 Min - easy prep - 3 serves</p>
-          <Link to={`/recipe-page/${similarPostInfo[1]?.id}/${similarPostInfo[1]?.title}`}>
+          <Link>
           <button className="viewRecipeBTNs">VIEW RECIPE</button>
           </Link>
         </div>
