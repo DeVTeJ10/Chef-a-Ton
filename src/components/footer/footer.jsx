@@ -19,6 +19,7 @@ const header = () => {
             alt="Villa"
         />
         </div>
+
         <div className="headers1">
           <Link to={"/"} className="homeTag">
               <h3>Home</h3>
@@ -33,6 +34,7 @@ const header = () => {
                 <h3>Favourites</h3>
               </Link>
         </div>
+
 
         <div className="inputinup">
         <input

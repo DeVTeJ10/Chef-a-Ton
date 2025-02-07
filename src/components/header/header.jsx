@@ -11,7 +11,7 @@ const Header = () => {
     const navigate = useNavigate()
     const [searchForRecipes, setSearchForRecipes] = useState()
     const [inputValue, setInputValue] = useState('')
-    const apiKey = 'd051b53827fa45388a11d1d1e8d7b6c5'
+    const apiKey = '30430d7614344b1eb66b9d17e3f6d634'
 
 
     console.log(user);
@@ -59,6 +59,10 @@ const Header = () => {
         }
     }
 
+    const handleLogout = async () => {
+        
+    }
+
 
     return (
         <div>
@@ -81,7 +85,7 @@ const Header = () => {
                             </Link>
 
                             <h3>Recipe</h3>
-                            
+
                             <Link to={"/favourites-page"} className="favouritesTag">
                                 <h3>Favourites</h3>
                             </Link>
