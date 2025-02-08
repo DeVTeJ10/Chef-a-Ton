@@ -49,7 +49,7 @@ const SignupPage = () => {
           const userId = user.displayName
         }
     } catch (error) {
-        setError(error.message);
+        console.error(error.message);
         console.error("Error signing up:", error);
     }
 
