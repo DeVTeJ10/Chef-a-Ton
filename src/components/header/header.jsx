@@ -5,6 +5,7 @@ import logoImg from "../../images/cookaton.png";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { assign } from "lodash";
+import { getAuth, signOut } from "firebase/auth";
 
 const Header = () => {
     const { user } = useUserName();
@@ -60,7 +61,17 @@ const Header = () => {
     }
 
     const handleLogout = async () => {
-        
+
+        const auth = getAuth()
+        if (user) {
+            try {
+                await signOut(auth)
+                console.log("User signed out")
+                navigate ('/login')
+            } catch (error){
+                console.error("Error signing out")
+            }
+        }
     }
 
 
@@ -109,7 +120,7 @@ const Header = () => {
                             <span>
                               Welcome: {user?.displayName}
                             <Link to={"/login"}>
-                              <button className="contactUS">sign out</button>
+                              <button className="contactUS" onClick={handleLogout}>sign out</button>
                             </Link>
                             </span>
 
