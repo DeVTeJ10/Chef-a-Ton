@@ -7,6 +7,7 @@ import sushi from "../../images/foodsushi.jpg";
 import "./home.css"
 import _ from 'lodash';
 import { Link } from 'react-router-dom';
+import { Firestore } from 'firebase/firestore';
 
 const homepage = () => {
 
@@ -140,6 +141,21 @@ const homepage = () => {
 
             }
         };
+
+
+        const saveRecipes = async () => {
+
+          try {
+
+            const saveRecipe = await axios.get(`https://api.spoonacular.com/recipes/random?number=80&apiKey=${apiKey}`,
+                {
+                  headers: {
+                    'Content-Type': 'application/json', 
+                  },
+                })
+          }
+
+        }
 
 
 
