@@ -19,7 +19,9 @@ const homepage = () => {
         const [breakfastNumber, setBreakfastNumber] = useState("")
         const [lunchNumber, setLunchNumber] = useState("")
         const [dinnerNumber, setDinnerNumber] = useState("")
-        // const recipeImage = randomRecipe?.data?.recipes[0]?.image
+
+        const [userSavedRecipe, setUserSavedRecipe] = useState([])
+
 
 
 
@@ -50,6 +52,26 @@ const homepage = () => {
               fetchRandomRecipeData();
               console.log("array la recipes", randomRecipe)
           },[randomRecipe]);
+
+
+
+          const saveRecipes = async () => {
+
+            try {
+  
+              const saveRecipe = await axios.get(`https://api.spoonacular.com/recipes/${id}/analyzedInstructions?apiKey=${apiKey}`,
+                  {
+                    headers: {
+                      'Content-Type': 'application/json', 
+                    },
+                  }
+                );
+                const savedRecipe = saveRecipe
+                setUserSavedRecipe(savedRecipe)
+            }
+  
+          }
+  
 
 
           
@@ -143,20 +165,7 @@ const homepage = () => {
         };
 
 
-        const saveRecipes = async () => {
-
-          try {
-
-            const saveRecipe = await axios.get(`https://api.spoonacular.com/recipes/random?number=80&apiKey=${apiKey}`,
-                {
-                  headers: {
-                    'Content-Type': 'application/json', 
-                  },
-                })
-          }
-
-        }
-
+        
 
 
             
