@@ -23,9 +23,9 @@ const LoginPage = () => {
         console.log("getting users?", user)
         setUser(user);
 
-        // if(user){
-        //     window.location.href = "/";
-        // }
+        if(user){
+            window.location.href = "/";
+        }
 
       }).catch((error) => {
         console.error("Error during Google login:", error);

@@ -7,7 +7,7 @@ import sushi from "../../images/foodsushi.jpg";
 import "./home.css"
 import _ from 'lodash';
 import { Link } from 'react-router-dom';
-import { Firestore } from 'firebase/firestore';
+import { Firestore, addDoc, collection } from 'firebase/firestore';
 
 const homepage = () => {
 
@@ -21,6 +21,8 @@ const homepage = () => {
         const [dinnerNumber, setDinnerNumber] = useState("")
 
         const [userSavedRecipe, setUserSavedRecipe] = useState([])
+
+        const db = Firestore(app)
 
 
 
@@ -68,6 +70,8 @@ const homepage = () => {
                 );
                 const savedRecipe = saveRecipe
                 setUserSavedRecipe(savedRecipe)
+            } catch (error) {
+              console.error("Error:", error.message); 
             }
   
           }
