@@ -8,11 +8,11 @@ import "./home.css"
 import _ from 'lodash';
 import { Link } from 'react-router-dom';
 import { Firestore, addDoc, collection } from 'firebase/firestore';
+import useUserName from "../../userNameHook";
 
 const homepage = () => {
 
         const [randomRecipe, setRandomRecipe] = useState(""); // Holding the api data called.
-        const [recipeInput, setRecipeInput] = useState(""); // Searches for recipe based on data inputed.
         const [breakfastRecipe, setBreakfastRecipes] = useState([""]); // Holding breakfast filtered recipes.
         const [lunchRecipe, setLunchRecipes] = useState("")
         const [dinnerRecipe, setDinnerRecipes] = useState("")
@@ -21,8 +21,11 @@ const homepage = () => {
         const [dinnerNumber, setDinnerNumber] = useState("")
 
         const [userSavedRecipe, setUserSavedRecipe] = useState([])
+        const { user } = useUserName();
 
-        const db = Firestore(app)
+
+
+        // console.log(" checking user on homepage", user)
 
 
 
