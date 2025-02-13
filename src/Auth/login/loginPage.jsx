@@ -41,9 +41,9 @@ const LoginPage = () => {
     signInWithEmailAndPassword(auth, email, password )
     .then((result) => {
         const user = result.user;
-        // if(user){
-        //     window.location.href="/"
-        // }
+        if(user){
+            window.location.href="/"
+        }
         console.log("getting user with email not gmail yeah?", user)
     }).catch((error) => {
         console.log("Error during email login", error)
