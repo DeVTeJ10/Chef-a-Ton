@@ -25,7 +25,7 @@ const homepage = () => {
 
 
 
-        // console.log(" checking user on homepage", user)
+        console.log(" checking user on homepage", user)
 
 
 
