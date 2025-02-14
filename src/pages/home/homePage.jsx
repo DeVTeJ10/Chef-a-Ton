@@ -7,8 +7,12 @@ import sushi from "../../images/foodsushi.jpg";
 import "./home.css"
 import _ from 'lodash';
 import { Link } from 'react-router-dom';
-import { Firestore, addDoc, collection } from 'firebase/firestore';
+import { getFirestore, setDoc, addDoc, doc, collection, Firestore } from 'firebase/firestore';
+
 import useUserName from "../../userNameHook";
+
+
+
 
 const homepage = () => {
 
@@ -22,6 +26,7 @@ const homepage = () => {
 
         const [userSavedRecipe, setUserSavedRecipe] = useState([])
         const { user } = useUserName();
+        // const db = Firestore(app)
 
 
 
@@ -60,7 +65,7 @@ const homepage = () => {
 
 
 
-          const saveRecipes = async () => {
+          const saveRecipes = async (user, randomRecipe) => {
 
             try {
   
