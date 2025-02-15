@@ -6,7 +6,7 @@ import { createUserWithEmailAndPassword, getAuth, updateProfile, signInWithPopup
 import { doc, setDoc } from 'firebase/firestore';
 import { db } from '../../firebase.js';
 import { provider } from '../../firebase.js';
-import { Navigate } from 'react-router-dom';
+
 
 const SignupPage = () => {
   
@@ -56,9 +56,9 @@ const SignupPage = () => {
 
         const handleGoogleSignup = () => {
 
-          signInWithPopup( provider, auth) 
+          signInWithPopup( auth, provider) 
           .then((result) => {
-            const user = result.user
+            const user = result?.user
 
             if(user){
               console.log("signed up user", user)
