@@ -176,6 +176,26 @@ console.log("post available?",post)
 console.log("similar post info", similarPost)
 
 
+  const saveRecipe = async () => {
+    try {
+      const recipeData = {
+        id: postInfo?.data?.id,
+        title: postInfo?.data?.title,
+        image: postInfo?.data?.image,
+        readyInMinutes: postInfo?.data?.readyInMinutes,
+        servings: postInfo?.data?.servings,
+      };
+
+      // Example POST request to save the recipe (replace with your actual endpoint)
+      await axios.post('/api/save-recipe', recipeData);
+      alert("Recipe saved successfully!");
+    } catch (error) {
+      console.error("Error saving recipe:", error.message);
+      alert("Failed to save recipe.");
+    }
+  };
+
+
   return (
     <div>
       <Header/>
@@ -209,6 +229,9 @@ console.log("similar post info", similarPost)
             <h3>Servings</h3>
         </div>
         </div>
+        <button className="saveRecipeButton">
+          Save Recipe
+        </button>
                 </div>
       </div>
         <div className="cooking2ton">

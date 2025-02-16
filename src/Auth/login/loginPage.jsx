@@ -55,7 +55,7 @@ const LoginPage = () => {
       <Link to="/">
         <img src={logoImg} alt="Cookaton Logo" className="logo" />
       </Link>
-      <h1>Welcome to Cookaton</h1>
+      <h1>Welcome back to Cookaton</h1>
       <form>
         <input 
                 type="email" 
@@ -70,6 +70,10 @@ const LoginPage = () => {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}/>
 
+
+    <Link to={"/signup"} className='signingup'>
+    <h3>Sign up?</h3>
+    </Link>
 
         <div className='loginBTN'>
 
