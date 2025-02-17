@@ -167,3 +167,14 @@
     justify-content: center;
     gap: 10px;
 }
+
+.saveRecipeButton {
+    padding: 10px 20px;
+    background-color: #6B4F31; /* Same color as the Sign Out button */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: block; /* Make it a block element */
+    margin: 0 auto; /* Center the button */
+}
