@@ -212,7 +212,7 @@ const homepage = () => {
         </div>
           <div className="savouryFish">
           <h3>{randomRecipe?.data?.recipes[0].title}</h3>
-          <p className="indulgeFish">Indulge in the rich and savory symphony of<br></br> flavors with our Savory Herb-Infused Fish</p>
+          {/* <p className="indulgeFish">Indulge in the rich and savory symphony of<br></br> flavors with our Savory Herb-Infused Fish</p> */}
           </div>
 
         <div className="timePrepRecipe">
@@ -240,7 +240,7 @@ const homepage = () => {
         </div>
           <div className="savouryFish">
           <h3>{randomRecipe?.data?.recipes[1].title}</h3>
-          <p className="indulgeFish">Indulge in the rich and savory symphony of<br></br> flavors with our Savory Herb-Infused Fish</p>
+          {/* <p className="indulgeFish">Indulge in the rich and savory symphony of<br></br> flavors with our Savory Herb-Infused Fish</p> */}
           </div>
 
         <div className="timePrepRecipe">
@@ -264,7 +264,7 @@ const homepage = () => {
         </div>
           <div className="savouryFish">
           <h3>{randomRecipe?.data?.recipes[2].title}</h3>
-          <p className="indulgeFish">Indulge in the rich and savory symphony of<br></br> flavors with our Savory Herb-Infused Fish</p>
+          {/* <p className="indulgeFish">Indulge in the rich and savory symphony of<br></br> flavors with our Savory Herb-Infused Fish</p> */}
           </div>
 
         <div className="timePrepRecipe">
@@ -291,7 +291,7 @@ const homepage = () => {
         </div>
           <div className="savouryFish">
           <h3>{randomRecipe?.data?.recipes[3].title}</h3>
-          <p className="indulgeFish">Indulge in the rich and savory symphony of<br></br> flavors with our Savory Herb-Infused Fish</p>
+          {/* <p className="indulgeFish">Indulge in the rich and savory symphony of<br></br> flavors with our Savory Herb-Infused Fish</p> */}
           </div>
 
         <div className="timePrepRecipe">
@@ -320,7 +320,7 @@ const homepage = () => {
         </div>
           <div className="savouryFish">
           <h3>{randomRecipe?.data?.recipes[4].title}</h3>
-          <p className="indulgeFish">Indulge in the rich and savory symphony of<br></br> flavors with our Savory Herb-Infused Fish</p>
+          {/* <p className="indulgeFish">Indulge in the rich and savory symphony of<br></br> flavors with our Savory Herb-Infused Fish</p> */}
           </div>
 
         <div className="timePrepRecipe">
@@ -348,7 +348,7 @@ const homepage = () => {
         </div>
           <div className="savouryFish">
           <h3>{randomRecipe?.data?.recipes[5].title}</h3>
-          <p className="indulgeFish">Indulge in the rich and savory symphony of<br></br> flavors with our Savory Herb-Infused Fish</p>
+          {/* <p className="indulgeFish">Indulge in the rich and savory symphony of<br></br> flavors with our Savory Herb-Infused Fish</p> */}
           </div>
 
         <div className="timePrepRecipe">
@@ -375,7 +375,7 @@ const homepage = () => {
         </div>
           <div className="savouryFish">
           <h3>{randomRecipe?.data?.recipes[6].title}</h3>
-          <p className="indulgeFish">Indulge in the rich and savory symphony of<br></br> flavors with our Savory Herb-Infused Fish</p>
+          {/* <p className="indulgeFish">Indulge in the rich and savory symphony of<br></br> flavors with our Savory Herb-Infused Fish</p> */}
           </div>
 
         <div className="timePrepRecipe">
@@ -404,7 +404,7 @@ const homepage = () => {
         </div>
           <div className="savouryFish">
           <h3>{randomRecipe?.data?.recipes[7].title}</h3>
-          <p className="indulgeFish">Indulge in the rich and savory symphony of<br></br> flavors with our Savory Herb-Infused Fish</p>
+          {/* <p className="indulgeFish">Indulge in the rich and savory symphony of<br></br> flavors with our Savory Herb-Infused Fish</p> */}
           </div>
 
         <div className="timePrepRecipe">
@@ -432,7 +432,7 @@ const homepage = () => {
         </div>
           <div className="savouryFish">
           <h3>{randomRecipe?.data?.recipes[8].title}</h3>
-          <p className="indulgeFish">Indulge in the rich and savory symphony of<br></br> flavors with our Savory Herb-Infused Fish</p>
+          {/* <p className="indulgeFish">Indulge in the rich and savory symphony of<br></br> flavors with our Savory Herb-Infused Fish</p> */}
           </div>
 
         <div className="timePrepRecipe">
@@ -467,7 +467,7 @@ const homepage = () => {
         </div>
           <div className="savouryFish">
           <h3 id='dishtitle1'>{breakfastNumber[0]?.title}</h3>
-          <p className="indulgeFish">Indulge in the rich and savory symphony of<br></br> flavors with our Savory Herb-Infused Fish</p>
+          {/* <p className="indulgeFish">Indulge in the rich and savory symphony of<br></br> flavors with our Savory Herb-Infused Fish</p> */}
           </div>
 
         <div className="timePrepRecipe">
@@ -497,7 +497,7 @@ const homepage = () => {
         </div>
           <div className="savouryFish">
           <h3>{breakfastNumber[1]?.title}</h3>
-          <p className="indulgeFish">Indulge in the rich and savory symphony of<br></br> flavors with our Savory Herb-Infused Fish</p>
+          {/* <p className="indulgeFish">Indulge in the rich and savory symphony of<br></br> flavors with our Savory Herb-Infused Fish</p> */}
           </div>
 
         <div className="timePrepRecipe">
@@ -523,7 +523,7 @@ const homepage = () => {
         </div>
           <div className="savouryFish">
           <h3>{breakfastNumber[2]?.title}</h3>
-          <p className="indulgeFish">Indulge in the rich and savory symphony of<br></br> flavors with our Savory Herb-Infused Fish</p>
+          {/* <p className="indulgeFish">Indulge in the rich and savory symphony of<br></br> flavors with our Savory Herb-Infused Fish</p> */}
           </div>
 
         <div className="timePrepRecipe">
@@ -558,7 +558,7 @@ const homepage = () => {
         </div>
           <div className="savouryFish">
           <h3 id='dishtitle1'>{lunchNumber[0]?.title}</h3>
-          <p className="indulgeFish">Indulge in the rich and savory symphony of<br></br> flavors with our Savory Herb-Infused Fish</p>
+          {/* <p className="indulgeFish">Indulge in the rich and savory symphony of<br></br> flavors with our Savory Herb-Infused Fish</p> */}
           </div>
 
         <div className="timePrepRecipe">
@@ -590,7 +590,7 @@ const homepage = () => {
         </div>
           <div className="savouryFish">
           <h3>{lunchNumber[1]?.title}</h3>
-          <p className="indulgeFish">Indulge in the rich and savory symphony of<br></br> flavors with our Savory Herb-Infused Fish</p>
+          {/* <p className="indulgeFish">Indulge in the rich and savory symphony of<br></br> flavors with our Savory Herb-Infused Fish</p> */}
           </div>
 
         <div className="timePrepRecipe">
@@ -616,7 +616,7 @@ const homepage = () => {
         </div>
           <div className="savouryFish">
           <h3>{lunchNumber[2]?.title}</h3>
-          <p className="indulgeFish">Indulge in the rich and savory symphony of<br></br> flavors with our Savory Herb-Infused Fish</p>
+          {/* <p className="indulgeFish">Indulge in the rich and savory symphony of<br></br> flavors with our Savory Herb-Infused Fish</p> */}
           </div>
 
         <div className="timePrepRecipe">
@@ -650,7 +650,7 @@ const homepage = () => {
         </div>
           <div className="savouryFish">
           <h3 id='dishtitle1'>{dinnerNumber[0]?.title}</h3>
-          <p className="indulgeFish">Indulge in the rich and savory symphony of<br></br> flavors with our Savory Herb-Infused Fish</p>
+          {/* <p className="indulgeFish">Indulge in the rich and savory symphony of<br></br> flavors with our Savory Herb-Infused Fish</p> */}
           </div>
 
         <div className="timePrepRecipe">
@@ -680,7 +680,7 @@ const homepage = () => {
         </div>
           <div className="savouryFish">
           <h3>{dinnerNumber[1]?.title}</h3>
-          <p className="indulgeFish">Indulge in the rich and savory symphony of<br></br> flavors with our Savory Herb-Infused Fish</p>
+          {/* <p className="indulgeFish">Indulge in the rich and savory symphony of<br></br> flavors with our Savory Herb-Infused Fish</p> */}
           </div>
 
         <div className="timePrepRecipe">
@@ -706,7 +706,7 @@ const homepage = () => {
         </div>
           <div className="savouryFish">
           <h3>{dinnerNumber[2]?.title}</h3>
-          <p className="indulgeFish">Indulge in the rich and savory symphony of<br></br> flavors with our Savory Herb-Infused Fish</p>
+          {/* <p className="indulgeFish">Indulge in the rich and savory symphony of<br></br> flavors with our Savory Herb-Infused Fish</p> */}
           </div>
 
         <div className="timePrepRecipe">

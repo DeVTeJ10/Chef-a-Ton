@@ -67,7 +67,7 @@
 
 .loremkingsun{
     display: flex;
-    border: 0.5px solid #6B4F31;
+    /* border: 0.5px solid #6B4F31; */
     padding-left: 30px;
     border-radius: 20px;
 }
@@ -142,7 +142,7 @@
 }
 
 .timefoodlapse{
-    border: 0.5px solid #6B4F31;
+    /* border: 0.5px solid #6B4F31; */
     border-radius: 30px;
 
 }
