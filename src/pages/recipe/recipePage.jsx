@@ -12,6 +12,7 @@ import similarfood1 from "../../images/similarfood1.jpg"
 import similarfood2 from "../../images/similarfood2.jpg"
 import sushi from "../../images/foodsushi.jpg";
 import Footer from "../../components/footer/footer"
+import useUserName from "../../userNameHook";
 import "./recipe.css"
 
 
@@ -33,10 +34,9 @@ const recipesPage = () => {
   urlParams.append('apiKey', apiKey);
   urlParams.append('ids', ids.join(','));
 
+  const { user } = useUserName();
 
-
-  // const decodeImageUrl1 = decodeURIComponent(recipeImage)
-
+  console.log("checking user on recipe page",user)
 
 
 
@@ -176,7 +176,7 @@ console.log("post available?",post)
 console.log("similar post info", similarPost)
 
 
-  const saveRecipe = async () => {
+  const saveRecipe = async (id, ) => {
     try {
       const recipeData = {
         id: postInfo?.data?.id,
