@@ -33,7 +33,7 @@ const homepage = () => {
         console.log(" checking user on homepage", user)
 
 
-        const apiKey = '30430d7614344b1eb66b9d17e3f6d634' // Api key needed for both apis to work
+        const apiKey = 'f6fd6564459e467abbab59b6311ea1f2' // Api key needed for both apis to work
 
 
           const fetchRandomRecipeData = async () => {
