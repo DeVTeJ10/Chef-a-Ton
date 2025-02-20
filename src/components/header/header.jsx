@@ -15,7 +15,7 @@ const Header = () => {
     const apiKey = '30430d7614344b1eb66b9d17e3f6d634'
 
 
-    console.log(user);
+    console.log("checking availability of users",user);
 
 
     useEffect(() => {
