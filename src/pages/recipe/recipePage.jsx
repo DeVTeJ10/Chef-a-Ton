@@ -27,7 +27,7 @@ const recipesPage = () => {
   const [ids, setNewIds] = useState([])
   const { title } = useParams()
   const location = useLocation();  // <== Added location for URL debugging
-  const apiKey = 'f6fd6564459e467abbab59b6311ea1f2' // Updated API key
+  const apiKey = 'ebe1ff2f25c44e239165a2468e37f126' // Updated API key
 
 
   const urlParams = new URLSearchParams();
