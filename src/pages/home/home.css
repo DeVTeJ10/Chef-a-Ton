@@ -32,7 +32,7 @@ body{
     justify-content: center;
     align-items: center;
     margin-top: 60px;
-    border: 0.5px solid #6B4F31;
+    /* border: 0.5px solid #6B4F31; */
     width: 800px;
     border-radius: 30px;
 }
