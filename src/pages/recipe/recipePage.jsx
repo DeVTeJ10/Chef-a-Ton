@@ -176,7 +176,7 @@ console.log("post available?",post)
 console.log("similar post info", similarPost)
 
 
-  const saveRecipe = async (id, ) => {
+  const saveRecipe = async (id, user ) => {
     try {
       const recipeData = {
         id: postInfo?.data?.id,
