@@ -7,7 +7,7 @@ import sushi from "../../images/foodsushi.jpg";
 import "./home.css"
 import _ from 'lodash';
 import { Link } from 'react-router-dom';
-import { getFirestore, setDoc, addDoc, doc, collection, Firestore } from 'firebase/firestore';
+import { getFirestore, setDoc, addDoc, doc, collection, Firestore, db } from 'firebase/firestore';
 
 import useUserName from "../../userNameHook";
 
@@ -72,6 +72,13 @@ const homepage = () => {
                     },
                   }
                 );
+                if (!user) {
+                  console.error("User is not logged in.");
+                  return;
+                }else{
+                  const recipesCollectionRef = collection(db, "recipes");
+                  const recipeDocRef = doc(recipesCollectionRef, recipeApiData.recipeApiId); // Use the API's ID
+                }
                 const savedRecipe = saveRecipe
                 setUserSavedRecipe(savedRecipe)
             } catch (error) {
