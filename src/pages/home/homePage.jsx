@@ -7,7 +7,7 @@ import sushi from "../../images/foodsushi.jpg";
 import "./home.css"
 import _ from 'lodash';
 import { Link } from 'react-router-dom';
-import { getFirestore, setDoc, addDoc, doc, collection, Firestore, db } from 'firebase/firestore';
+import { getFirestore, setDoc, addDoc, doc, collection, Firestore } from 'firebase/firestore';
 
 import useUserName from "../../userNameHook";
 
@@ -61,30 +61,22 @@ const homepage = () => {
 
 
 
+          
+          
           const saveRecipes = async (user, randomRecipe) => {
 
-            try {
-  
-              const saveRecipe = await axios.get(`https://api.spoonacular.com/recipes/${id}/analyzedInstructions?apiKey=${apiKey}`,
-                  {
-                    headers: {
-                      'Content-Type': 'application/json', 
-                    },
-                  }
-                );
                 if (!user) {
                   console.error("User is not logged in.");
                   return;
                 }else{
                   const recipesCollectionRef = collection(db, "recipes");
                   const recipeDocRef = doc(recipesCollectionRef, recipeApiData.recipeApiId); // Use the API's ID
+
+                  console.log("checking if recipe id?", )
                 }
                 const savedRecipe = saveRecipe
                 setUserSavedRecipe(savedRecipe)
-            } catch (error) {
-              console.error("Error:", error.message); 
-            }
-  
+            
           }
   
 
@@ -151,6 +143,7 @@ const homepage = () => {
 
               }
           };
+          
 
           const changeLunch = async () => {
 
