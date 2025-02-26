@@ -20,6 +20,8 @@ const useUserName = () => {
         return () => unsubscribe();
     }, []);
 
+    
+
     const handleSignups = async (email, password, username) => {
         console.log("signup button called");
 
