@@ -7,7 +7,7 @@ import sushi from "../../images/foodsushi.jpg";
 import "./home.css"
 import _ from 'lodash';
 import { Link } from 'react-router-dom';
-import { getFirestore, setDoc, addDoc, doc, collection, Firestore } from 'firebase/firestore';
+import { getFirestore, setDoc, addDoc, doc, collection, Firestore, getDoc } from 'firebase/firestore';
 
 import useUserName from "../../userNameHook";
 
@@ -31,6 +31,7 @@ const homepage = () => {
 
 
         console.log(" checking user on homepage", user)
+        console.log("checking for user id", user.uid)
 
 
         const apiKey = 'ebe1ff2f25c44e239165a2468e37f126' // Api key needed for both apis to work
@@ -70,18 +71,15 @@ const homepage = () => {
                   return;
                 }else{
                   const recipesCollectionRef = collection(db, "recipes");
-                  const recipeDocRef = doc(recipesCollectionRef, recipeApiData.recipeApiId); // Use the API's ID
-
-                  console.log("checking if recipe id?", )
+                  const recipeDocRef = doc(recipesCollectionRef, randomRecipe.data); // Use the API's ID
+                  const docSnap = await getDoc(recipeDocRef)
+                  console.log("checking if recipe id?",  )
                 }
-                const savedRecipe = saveRecipe
-                setUserSavedRecipe(savedRecipe)
             
           }
   
 
 
-          
           
           const dishTypes = () => {
 
@@ -99,7 +97,6 @@ const homepage = () => {
                 setDinnerRecipes(dinnerRecipes)
 
               }
-
         }
           useEffect(() => {
             if (!randomRecipe) return
@@ -143,7 +140,7 @@ const homepage = () => {
 
               }
           };
-          
+
 
           const changeLunch = async () => {
 
@@ -174,9 +171,6 @@ const homepage = () => {
 
 
         
-
-
-            
 
   return (
     <div>
