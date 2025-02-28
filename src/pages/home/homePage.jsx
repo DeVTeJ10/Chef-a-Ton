@@ -64,22 +64,6 @@ const homepage = () => {
 
 
           
-          
-          const saveRecipes = async (user, randomRecipe) => {
-
-                if (!user) {
-                  console.error("User is not logged in.");
-                  return;
-                }else{
-                  const recipesCollectionRef = collection(db, "recipes");
-                  const recipeDocRef = doc(recipesCollectionRef, randomRecipe.data); // Use the API's ID
-                  const docSnap = await getDoc(recipeDocRef)
-                  console.log("checking if recipe id?",  )
-                }
-            
-          }
-  
-
 
           
           const dishTypes = () => {

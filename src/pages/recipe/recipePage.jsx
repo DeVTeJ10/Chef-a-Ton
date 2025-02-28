@@ -12,6 +12,7 @@ import similarfood1 from "../../images/similarfood1.jpg"
 import similarfood2 from "../../images/similarfood2.jpg"
 import sushi from "../../images/foodsushi.jpg";
 import Footer from "../../components/footer/footer"
+import { getFirestore, setDoc, addDoc, collection, doc, getDoc } from "firebase/firestore";
 import useUserName from "../../userNameHook";
 import "./recipe.css"
 
@@ -64,10 +65,7 @@ const recipesPage = () => {
             );
               setPost(recipeDetails); 
               console.log("post available?",post)
-
-              // Set postInfo with similarPost data
               setPostInfo(similarPostInfo);
-
             // }
           } catch (error) {
             console.error("Error:", error.message); 
@@ -76,6 +74,32 @@ const recipesPage = () => {
         
   fetchMoreRecipeDatas()
   }, [id, location]);
+
+
+
+
+        const saveRecipes = async (user, id) => {
+
+          if (!user) {
+            console.error("User is not logged in.");
+            return;
+          }else{
+            const recipesCollectionRef = collection(db, "recipes");
+            const recipeDocRef = doc(recipesCollectionRef, id); // Use the API's ID
+
+            const docSnap = await getDoc(recipeDocRef)
+            console.log("checking if recipe id?",  )
+
+            if(docSnap){
+              console.log("This recipe is already saved", postInfo.title)
+            }else{
+              
+            }
+          }
+
+      }
+
+
 
 
 
