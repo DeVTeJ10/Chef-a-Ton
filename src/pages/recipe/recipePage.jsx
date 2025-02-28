@@ -12,7 +12,8 @@ import similarfood1 from "../../images/similarfood1.jpg"
 import similarfood2 from "../../images/similarfood2.jpg"
 import sushi from "../../images/foodsushi.jpg";
 import Footer from "../../components/footer/footer"
-import { getFirestore, setDoc, addDoc, collection, doc, getDoc } from "firebase/firestore";
+import { getFirestore, setDoc, addDoc, collection, doc } from "firebase/firestore";
+import { app } from "../../firebase";
 import useUserName from "../../userNameHook";
 import "./recipe.css"
 
@@ -28,7 +29,7 @@ const recipesPage = () => {
   const [ids, setNewIds] = useState([])
   const { title } = useParams()
   const location = useLocation();  // <== Added location for URL debugging
-  const apiKey = 'ebe1ff2f25c44e239165a2468e37f126' // Updated API key
+  const apiKey = 'db83ac28e37d454e88bf80d8ec3a12d9' // Updated API key
 
 
   const urlParams = new URLSearchParams();
@@ -38,6 +39,8 @@ const recipesPage = () => {
   const { user } = useUserName();
 
   console.log("checking user on recipe page",user)
+
+  const db = getFirestore(app);
 
 
 
@@ -78,26 +81,35 @@ const recipesPage = () => {
 
 
 
-        const saveRecipes = async (user, id) => {
-
+        const saveRecipes = async (user, id, postInfo) => {
           if (!user) {
             console.error("User is not logged in.");
             return;
-          }else{
-            const recipesCollectionRef = collection(db, "recipes");
-            const recipeDocRef = doc(recipesCollectionRef, id); // Use the API's ID
-
-            const docSnap = await getDoc(recipeDocRef)
-            console.log("checking if recipe id?",  )
-
-            if(docSnap){
-              console.log("This recipe is already saved", postInfo.title)
-            }else{
-              
-            }
           }
+          
+          try {
+            const recipesCollectionRef = collection(db, "recipes");
+            const recipeDocRef = doc(recipesCollectionRef, id);
+            const docSnap = await getDoc(recipeDocRef);
 
-      }
+            if (docSnap.exists()) {
+              console.log("This recipe is already saved", postInfo.title);
+              return;
+            }
+
+            const newRecipeData = {
+              name: postInfo.data.name,
+              ingredients: postInfo.data.ingredients,
+              instructions: postInfo.data.instructions,
+              imageUrl: postInfo.data.image
+            };
+
+            await setDoc(recipeDocRef, newRecipeData);
+            console.log("The recipe has been successfully saved", recipeDocRef);
+          } catch (error) {
+            console.error("Error saving recipe:", error);
+          }
+        };
 
 
 
@@ -200,24 +212,6 @@ console.log("post available?",post)
 console.log("similar post info", similarPost)
 
 
-  const saveRecipe = async (id, user ) => {
-    try {
-      const recipeData = {
-        id: postInfo?.data?.id,
-        title: postInfo?.data?.title,
-        image: postInfo?.data?.image,
-        readyInMinutes: postInfo?.data?.readyInMinutes,
-        servings: postInfo?.data?.servings,
-      };
-
-      // Example POST request to save the recipe (replace with your actual endpoint)
-      await axios.post('/api/save-recipe', recipeData);
-      alert("Recipe saved successfully!");
-    } catch (error) {
-      console.error("Error saving recipe:", error.message);
-      alert("Failed to save recipe.");
-    }
-  };
 
 
   return (
@@ -253,7 +247,7 @@ console.log("similar post info", similarPost)
             <h3>Servings</h3>
         </div>
         </div>
-        <button className="saveRecipeButton">
+        <button className="saveRecipeButton" onClick={saveRecipes}>
           Save Recipe
         </button>
                 </div>
