@@ -12,7 +12,7 @@ import similarfood1 from "../../images/similarfood1.jpg"
 import similarfood2 from "../../images/similarfood2.jpg"
 import sushi from "../../images/foodsushi.jpg";
 import Footer from "../../components/footer/footer"
-import { getFirestore, setDoc, addDoc, collection, doc } from "firebase/firestore";
+import { getFirestore, setDoc, collection, doc } from "firebase/firestore";
 import { app } from "../../firebase";
 import useUserName from "../../userNameHook";
 import "./recipe.css"
