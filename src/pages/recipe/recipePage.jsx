@@ -27,7 +27,7 @@ const recipesPage = () => {
   const [ids, setNewIds] = useState([])
   const { title } = useParams()
   const location = useLocation();  // <== Added location for URL debugging
-  const apiKey = 'db83ac28e37d454e88bf80d8ec3a12d9' // Updated API key
+  const apiKey = '80d646daca174a1e90780737cc961823' // Updated API key
 
 
   const urlParams = new URLSearchParams();
@@ -85,13 +85,14 @@ const recipesPage = () => {
             return;
           }
           
-          try {
             const recipesCollectionRef = collection(db, "recipes");
             const recipeDocRef = doc(recipesCollectionRef, id);
             const docSnap = await getDoc(recipeDocRef);
 
             if (docSnap.exists()) {
               console.log("This recipe is already saved", postInfo.title);
+              const recipeId = recipeDocRef.id; // Use the existing recipe ID
+              await createUserSavedRecipe(userId, recipeId)
               return;
             }
 
@@ -103,10 +104,8 @@ const recipesPage = () => {
             };
 
             await setDoc(recipeDocRef, newRecipeData);
-            console.log("The recipe has been successfully saved", recipeDocRef);
-          } catch (error) {
-            console.error("Error saving recipe:", error);
-          }
+            console.log("Recipe added to recipes collection with ID:", recipeDocRef.id);
+            const recipeId = recipeDocRef.id; // Use the new recipe ID
         };
 
 
