@@ -5,7 +5,6 @@ import { useState } from "react";
 import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import streetfood from "../../images/streetfood.jpg";
 import perfectiming from "../../images/perfecttime.png"
 import foodserving from "../../images/foodserving.png"
 import sushi from "../../images/foodsushi.jpg";
@@ -106,6 +105,7 @@ const recipesPage = () => {
             await setDoc(recipeDocRef, newRecipeData);
             console.log("Recipe added to recipes collection with ID:", recipeDocRef.id);
             const recipeId = recipeDocRef.id; // Use the new recipe ID
+            await createUserSavedRecipe(userId, recipeId); // Create the saved recipe document
         };
 
 
