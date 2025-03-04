@@ -9,7 +9,7 @@ import perfectiming from "../../images/perfecttime.png"
 import foodserving from "../../images/foodserving.png"
 import sushi from "../../images/foodsushi.jpg";
 import Footer from "../../components/footer/footer"
-import { getFirestore, setDoc, collection, doc } from "firebase/firestore";
+import { getFirestore, setDoc, collection, doc, serverTimestamp, getDoc } from "firebase/firestore";
 import { app } from "../../firebase";
 import useUserName from "../../userNameHook";
 import "./recipe.css"
@@ -26,7 +26,7 @@ const recipesPage = () => {
   const [ids, setNewIds] = useState([])
   const { title } = useParams()
   const location = useLocation();  // <== Added location for URL debugging
-  const apiKey = '80d646daca174a1e90780737cc961823' // Updated API key
+  const apiKey = '62ab93cf58464979bb251729fe517cd8' // Updated API key
 
 
   const urlParams = new URLSearchParams();
@@ -78,34 +78,41 @@ const recipesPage = () => {
 
 
 
-        const saveRecipes = async (user, id, postInfo) => {
+        const saveRecipes = async (user, id, postInfo, post) => {
           if (!user) {
             console.error("User is not logged in.");
             return;
           }
           
-            const recipesCollectionRef = collection(db, "recipes");
-            const recipeDocRef = doc(recipesCollectionRef, id);
-            const docSnap = await getDoc(recipeDocRef);
+          if (!id) {
+            console.error("No ID provided for saving the recipe.");
+            return; // Exit if id is not valid
+          }
 
-            if (docSnap.exists()) {
-              console.log("This recipe is already saved", postInfo.title);
-              const recipeId = recipeDocRef.id; // Use the existing recipe ID
-              await createUserSavedRecipe(userId, recipeId)
-              return;
-            }
+          const recipesCollectionRef = collection(db, "recipes");
+          const recipeDocRef = doc(recipesCollectionRef, id);
+          const docSnap = await getDoc(recipeDocRef);
 
-            const newRecipeData = {
-              name: postInfo.data.name,
-              ingredients: postInfo.data.ingredients,
-              instructions: postInfo.data.instructions,
-              imageUrl: postInfo.data.image
-            };
+          if (docSnap.exists()) {
+            console.log("This recipe is already saved", postInfo.title);
+            const recipeId = recipeDocRef.id; // Use the existing recipe ID
+            await createUserSavedRecipe(userId, recipeId);
+            return;
+          }
 
-            await setDoc(recipeDocRef, newRecipeData);
-            console.log("Recipe added to recipes collection with ID:", recipeDocRef.id);
-            const recipeId = recipeDocRef.id; // Use the new recipe ID
-            await createUserSavedRecipe(userId, recipeId); // Create the saved recipe document
+          const newRecipeData = {
+            name: post?.data?.name,
+            ingredients: post?.data?.ingredients,
+            instructions: postInfo?.data?.instructions,
+            imageUrl: postInfo?.data?.image
+          };
+
+          console.log("checking values of newrecipedata to save", newRecipeData)
+
+          await setDoc(recipeDocRef, newRecipeData);
+          console.log("Recipe added to recipes collection with ID:", recipeDocRef.id);
+          const recipeId = recipeDocRef.id; // Use the new recipe ID
+          await createUserSavedRecipe(userId, recipeId); // Create the saved recipe document
         };
 
 
@@ -244,7 +251,7 @@ console.log("similar post info", similarPost)
             <h3>Servings</h3>
         </div>
         </div>
-        <button className="saveRecipeButton" onClick={saveRecipes}>
+        <button className="saveRecipeButton" onClick={() => saveRecipes(user, id, postInfo)}>
           Save Recipe
         </button>
                 </div>
