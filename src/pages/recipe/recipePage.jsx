@@ -26,7 +26,7 @@ const recipesPage = () => {
   const [ids, setNewIds] = useState([])
   const { title } = useParams()
   const location = useLocation();  // <== Added location for URL debugging
-  const apiKey = '62ab93cf58464979bb251729fe517cd8' // Updated API key
+  const apiKey = '78925688a8cb426f946c08a9f717d67e' // Updated API key
 
 
   const urlParams = new URLSearchParams();
@@ -101,8 +101,8 @@ const recipesPage = () => {
           }
 
           const newRecipeData = {
-            name: post?.data?.name,
-            ingredients: post?.data?.ingredients,
+            name: postInfo?.data?.title,
+            ingredients: postInfo?.data?.extendedIngredients.map(ingredient => ({igris: ingredient.extendedIngredients})),
             instructions: postInfo?.data?.instructions,
             imageUrl: postInfo?.data?.image
           };
