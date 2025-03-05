@@ -26,7 +26,8 @@ const recipesPage = () => {
   const [ids, setNewIds] = useState([])
   const { title } = useParams()
   const location = useLocation();  // <== Added location for URL debugging
-  const apiKey = '78925688a8cb426f946c08a9f717d67e' // Updated API key
+  const [available, setAvailable] = useState()
+  const apiKey = '38fd83c8e48e4377b2042b3900861a74' // Updated API key
 
 
   const urlParams = new URLSearchParams();
@@ -35,7 +36,8 @@ const recipesPage = () => {
 
   const { user } = useUserName();
 
-  console.log("checking user on recipe page",user)
+  console.log("checking user on recipe page",user.uid)
+  console.log("availability of recipes saved", available)
 
   const db = getFirestore(app);
 
@@ -78,7 +80,7 @@ const recipesPage = () => {
 
 
 
-        const saveRecipes = async (user, id, postInfo, post) => {
+        const saveRecipes = async (user, id, postInfo) => {
           if (!user) {
             console.error("User is not logged in.");
             return;
@@ -92,11 +94,12 @@ const recipesPage = () => {
           const recipesCollectionRef = collection(db, "recipes");
           const recipeDocRef = doc(recipesCollectionRef, id);
           const docSnap = await getDoc(recipeDocRef);
+          setAvailable(docSnap)
 
           if (docSnap.exists()) {
-            console.log("This recipe is already saved", postInfo.title);
+            console.log("This recipe is already saved", postInfo?.data?.title);
             const recipeId = recipeDocRef.id; // Use the existing recipe ID
-            await createUserSavedRecipe(userId, recipeId);
+            await createUserSavedRecipe(user.uid, recipeId);
             return;
           }
 
@@ -112,8 +115,31 @@ const recipesPage = () => {
           await setDoc(recipeDocRef, newRecipeData);
           console.log("Recipe added to recipes collection with ID:", recipeDocRef.id);
           const recipeId = recipeDocRef.id; // Use the new recipe ID
-          await createUserSavedRecipe(userId, recipeId); // Create the saved recipe document
-        };
+          try {
+            await createUserSavedRecipe(user.uid, recipeId); // Create the saved recipe document
+          } catch (error) {
+            console.error("Error adding recipe to recipes collection:", error);
+          }
+
+          async function createUserSavedRecipe(userId, recipeId) {
+            const savedRecipesCollectionRef = collection(db, "user_saved_recipes");
+            const savedRecipeId = `${userId}_${recipeId}`;
+            const savedRecipeDocRef = doc(savedRecipesCollectionRef, savedRecipeId);
+          
+            const savedRecipeData = {
+              userId: userId,
+              recipeId: recipeId,
+              savedAt: serverTimestamp(),
+            };
+          
+            try {
+              await setDoc(savedRecipeDocRef, savedRecipeData);
+              console.log("Recipe saved to user_saved_recipes collection!");
+            } catch (error) {
+              console.error("Error saving recipe to user_saved_recipes collection:", error);
+            }
+          }
+        }
 
 
 
@@ -251,10 +277,23 @@ console.log("similar post info", similarPost)
             <h3>Servings</h3>
         </div>
         </div>
-        <button className="saveRecipeButton" onClick={() => saveRecipes(user, id, postInfo)}>
-          Save Recipe
-        </button>
-                </div>
+
+          {available ? (
+            
+            <span>
+            <button className="saveRecipeButton" >
+              Unsave Recipe
+            </button>
+            </span>
+          ) : (
+            <span>
+              <button className="saveRecipeButton" onClick={() => saveRecipes(user, id, postInfo)}>
+                Save Recipe
+              </button>
+            </span>
+          )}
+
+      </div>
       </div>
         <div className="cooking2ton">
         { sushi &&
