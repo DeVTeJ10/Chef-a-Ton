@@ -27,7 +27,7 @@ const recipesPage = () => {
   const { title } = useParams()
   const location = useLocation();  // <== Added location for URL debugging
   const [available, setAvailable] = useState()
-  const apiKey = '38fd83c8e48e4377b2042b3900861a74' // Updated API key
+  const apiKey = 'e1d1032efceb46e89c32dae81d9542ed' // Updated API key
 
 
   const urlParams = new URLSearchParams();
@@ -40,6 +40,10 @@ const recipesPage = () => {
   console.log("availability of recipes saved", available)
 
   const db = getFirestore(app);
+  const userid = user?.uid
+  const recipeid = postInfo?.data?.id
+
+  console.log("checking postinfo id", recipeid)
 
 
 
@@ -97,17 +101,23 @@ const recipesPage = () => {
           setAvailable(docSnap)
 
           if (docSnap.exists()) {
-            console.log("This recipe is already saved", postInfo?.data?.title);
+            console.log("This recipe is already saved", postInfo.title);
             const recipeId = recipeDocRef.id; // Use the existing recipe ID
             await createUserSavedRecipe(user.uid, recipeId);
             return;
           }
 
+          // Ensure postInfo.data is defined and has the required fields
+          if (!postInfo || !postInfo.data) {
+            console.error("postInfo or postInfo.data is undefined");
+            return;
+          }
+
           const newRecipeData = {
-            name: postInfo?.data?.title,
-            ingredients: postInfo?.data?.extendedIngredients.map(ingredient => ({igris: ingredient.extendedIngredients})),
-            instructions: postInfo?.data?.instructions,
-            imageUrl: postInfo?.data?.image
+            name: postInfo.data.title || "Unnamed Recipe", // Default value if undefined
+            ingredients: postInfo.data.extendedIngredients || [], // Default to empty array if undefined
+            instructions: postInfo.data.instructions || "No instructions provided", // Default value if undefined
+            imageUrl: postInfo.data.image || "", // Default to empty string if undefined
           };
 
           console.log("checking values of newrecipedata to save", newRecipeData)
@@ -115,20 +125,16 @@ const recipesPage = () => {
           await setDoc(recipeDocRef, newRecipeData);
           console.log("Recipe added to recipes collection with ID:", recipeDocRef.id);
           const recipeId = recipeDocRef.id; // Use the new recipe ID
-          try {
-            await createUserSavedRecipe(user.uid, recipeId); // Create the saved recipe document
-          } catch (error) {
-            console.error("Error adding recipe to recipes collection:", error);
-          }
+          await createUserSavedRecipe(user.uid, recipeId); // Create the saved recipe document
 
-          async function createUserSavedRecipe(userId, recipeId) {
+          async function createUserSavedRecipe(userid, recipeid) {
             const savedRecipesCollectionRef = collection(db, "user_saved_recipes");
-            const savedRecipeId = `${userId}_${recipeId}`;
+            const savedRecipeId = `${userid}_${recipeid}`;
             const savedRecipeDocRef = doc(savedRecipesCollectionRef, savedRecipeId);
           
             const savedRecipeData = {
-              userId: userId,
-              recipeId: recipeId,
+              userId: userid,
+              recipeId: recipeid,
               savedAt: serverTimestamp(),
             };
           
