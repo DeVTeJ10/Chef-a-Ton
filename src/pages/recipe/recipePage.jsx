@@ -27,7 +27,7 @@ const recipesPage = () => {
   const { title } = useParams()
   const location = useLocation();  // <== Added location for URL debugging
   const [available, setAvailable] = useState()
-  const apiKey = 'e1d1032efceb46e89c32dae81d9542ed' // Updated API key
+  const apiKey = 'a7949ba057fa44e284d4451200291396' // Updated API key
 
 
   const urlParams = new URLSearchParams();
@@ -40,7 +40,7 @@ const recipesPage = () => {
   console.log("availability of recipes saved", available)
 
   const db = getFirestore(app);
-  const userid = user?.uid
+  // const userid = user?.uid
   const recipeid = postInfo?.data?.id
 
   console.log("checking postinfo id", recipeid)
@@ -135,6 +135,7 @@ const recipesPage = () => {
             const savedRecipeData = {
               userId: userid,
               recipeId: recipeid,
+              recipeName: postInfo?.data?.title,
               savedAt: serverTimestamp(),
             };
           
