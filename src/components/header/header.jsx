@@ -97,12 +97,20 @@ const Header = () => {
 
                             <h3>Recipe</h3>
 
+
+                        {
+                            user?.displayName ?
+                            <span>
                             <Link to={"/favourites-page"} className="favouritesTag">
                                 <h3>Favourites</h3>
                             </Link>
-                            {/* <Link to={"/favourites-page"} className="favouritesTag"> */}
+                            </span>
+
+                            :
+
+                            <h3>Login to save recipes</h3>
+                        }
                                 <h3>Searched recipe</h3>
-                            {/* </Link> */}
                         </div>
                     </div>
 
