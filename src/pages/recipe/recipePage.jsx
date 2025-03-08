@@ -27,7 +27,7 @@ const recipesPage = () => {
   const { title } = useParams()
   const location = useLocation();  // <== Added location for URL debugging
   const [available, setAvailable] = useState()
-  const apiKey = 'a7949ba057fa44e284d4451200291396' // Updated API key
+  const apiKey = '1eb5b69e69884a6dbfac47f81f365766' // Updated API key
 
 
   const urlParams = new URLSearchParams();
@@ -92,7 +92,6 @@ const recipesPage = () => {
           
           if (!id) {
             console.error("No ID provided for saving the recipe.");
-            return; // Exit if id is not valid
           }
 
           const recipesCollectionRef = collection(db, "recipes");
@@ -100,14 +99,8 @@ const recipesPage = () => {
           const docSnap = await getDoc(recipeDocRef);
           setAvailable(docSnap)
 
-          if (docSnap.exists()) {
-            console.log("This recipe is already saved", postInfo.title);
-            const recipeId = recipeDocRef.id; // Use the existing recipe ID
-            await createUserSavedRecipe(user.uid, recipeId);
-            return;
-          }
+          
 
-          // Ensure postInfo.data is defined and has the required fields
           if (!postInfo || !postInfo.data) {
             console.error("postInfo or postInfo.data is undefined");
             return;
@@ -147,6 +140,20 @@ const recipesPage = () => {
             }
           }
         }
+        useEffect(() => {
+
+          if(user, id, postInfo){
+            saveRecipes();
+          }else{
+            if (docSnap.exists()) {
+              console.log("This recipe is already saved", postInfo.title);
+              const recipeId = recipeDocRef.id; // Use the existing recipe ID
+              await createUserSavedRecipe(user.uid, recipeId);
+              return;
+            }
+          }
+      }, [user, id, postInfo, recipeDocRef]);
+      
 
 
 
