@@ -35,7 +35,7 @@ const homepage = () => {
         console.log("checking for user id", user.uid)
 
 
-        const apiKey = '1eb5b69e69884a6dbfac47f81f365766' // Api key needed for both apis to work
+        const apiKey = '58a951ee706e4d3e8c06d6b9b366e046' // Api key needed for both apis to work
 
 
           const fetchRandomRecipeData = async () => {
