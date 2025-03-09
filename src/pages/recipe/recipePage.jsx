@@ -1,9 +1,8 @@
 import Header from "../../components/header/header"
 import axios from "axios";
 import { useParams } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import perfectiming from "../../images/perfecttime.png"
 import foodserving from "../../images/foodserving.png"
@@ -28,7 +27,8 @@ const recipesPage = () => {
   const { title } = useParams()
   const location = useLocation();  // <== Added location for URL debugging
   const [available, setAvailable] = useState()
-  const apiKey = '58a951ee706e4d3e8c06d6b9b366e046' // Updated API key
+  const apiKey = '90510bf3a66e4b1bbb05386e2f4eb67d' // Updated API key
+  const [isSaved, setIsSaved] = useState(false); // State to track if the recipe is saved
 
 
   const urlParams = new URLSearchParams();
@@ -44,11 +44,11 @@ const recipesPage = () => {
 
   const recipeid = postInfo?.data?.id
   const userName = user?.displayName
-  const userIds = user.uid
+  const userid = user.uid
   // const auth = firebase.auth()
 
   console.log("checking postinfo id", recipeid)
-  console.log("checking if i'm getting the user id", userIds)
+  console.log("checking if i'm getting the user id", user)
 
 
 
@@ -123,6 +123,7 @@ const recipesPage = () => {
           console.log("Recipe added to recipes collection with ID:", recipeDocRef.id);
           const recipeId = recipeDocRef.id; // Use the new recipe ID
           await createUserSavedRecipe(user.uid, recipeId); // Create the saved recipe document
+          setIsSaved(true); // Set to true when the recipe is saved
 
           async function createUserSavedRecipe(userid, recipeid) {
             const savedRecipesCollectionRef = collection(db, "user_saved_recipes");
@@ -170,17 +171,15 @@ const recipesPage = () => {
 
 
 
-        const unsaveRecipes = async( recipeId, user, id, postInfo) => {
-
-          if(!userIds){
-            console.error("user is not logged in");
+        const unsaveRecipes = async (user, id) => {
+          if (!user) {
+            console.error("User is not logged in");
             return;
           }
 
           const savedRecipesCollectionRef = collection(db, "user_saved_recipes");
-          const savedRecipeId = `${userid}_${recipeid}`;
+          const savedRecipeId = `${user.uid}_${id}`; // Construct the saved recipe ID
           const savedRecipeDocRef = doc(savedRecipesCollectionRef, savedRecipeId);
-
 
           try {
             await deleteDoc(savedRecipeDocRef);
@@ -188,9 +187,8 @@ const recipesPage = () => {
           } catch (error) {
             console.error("Error unsaving recipe:", error);
           }
-
-
-        }
+          setIsSaved(false); // Set to false when the recipe is unsaved
+        };
       
 
 
@@ -330,10 +328,10 @@ console.log("similar post info", similarPost)
         </div>
         </div>
 
-          {available ? (
+          {isSaved ? (
             
             <span>
-            <button className="saveRecipeButton" onClick={() => unsaveRecipes(user, id, postInfo)}>
+            <button className="saveRecipeButton" onClick={() => unsaveRecipes(user, id)}>
               Unsave Recipe
             </button>
             </span>
