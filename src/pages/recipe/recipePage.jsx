@@ -9,10 +9,11 @@ import perfectiming from "../../images/perfecttime.png"
 import foodserving from "../../images/foodserving.png"
 import sushi from "../../images/foodsushi.jpg";
 import Footer from "../../components/footer/footer"
-import { getFirestore, setDoc, collection, doc, serverTimestamp, getDoc } from "firebase/firestore";
+import { getFirestore, setDoc, collection, doc, serverTimestamp, getDoc, deleteDoc } from "firebase/firestore";
 import { app } from "../../firebase";
 import useUserName from "../../userNameHook";
 import "./recipe.css"
+import firebase from "firebase/compat/app";
 
 
 const recipesPage = () => {
@@ -27,7 +28,7 @@ const recipesPage = () => {
   const { title } = useParams()
   const location = useLocation();  // <== Added location for URL debugging
   const [available, setAvailable] = useState()
-  const apiKey = '1eb5b69e69884a6dbfac47f81f365766' // Updated API key
+  const apiKey = '58a951ee706e4d3e8c06d6b9b366e046' // Updated API key
 
 
   const urlParams = new URLSearchParams();
@@ -40,11 +41,14 @@ const recipesPage = () => {
   console.log("availability of recipes saved", available)
 
   const db = getFirestore(app);
-  // const userid = user?.uid
+
   const recipeid = postInfo?.data?.id
+  const userName = user?.displayName
+  const userIds = user.uid
+  // const auth = firebase.auth()
 
   console.log("checking postinfo id", recipeid)
-
+  console.log("checking if i'm getting the user id", userIds)
 
 
 
@@ -126,6 +130,7 @@ const recipesPage = () => {
             const savedRecipeDocRef = doc(savedRecipesCollectionRef, savedRecipeId);
           
             const savedRecipeData = {
+              userName: userName,
               userId: userid,
               recipeId: recipeid,
               recipeName: postInfo?.data?.title,
@@ -140,22 +145,52 @@ const recipesPage = () => {
             }
           }
         }
-        useEffect(() => {
-          const handleSaveRecipes = async () => {
-            if (user && id && postInfo) {
-              await saveRecipes(user, id, postInfo); // Pass user, id, and postInfo to saveRecipes
-            } else {
-              if (docSnap.exists()) {
-                console.log("This recipe is already saved", postInfo.title);
-                const recipeId = recipeDocRef.id; // Use the existing recipe ID
-                await createUserSavedRecipe(user.uid, recipeId); // Call the async function here
-                return;
-              }
-            }
-          };
+        // useEffect(() => {
+        //   const handleSaveRecipes = async () => {
+        //     if (user && id && postInfo) {
+        //       await saveRecipes(user, id, postInfo); // Pass user, id, and postInfo to saveRecipes
+        //       const recipesCollectionRef = collection(db, "recipes");
+        //       const recipeDocRef = doc(recipesCollectionRef, id);
+        //       const docSnap = await getDoc(recipeDocRef);
+        //       setAvailable(docSnap)
+        //     } else {
+        //       if (docSnap.exists()) {
+        //         console.log("This recipe is already saved", postInfo.title);
+        //         const recipeId = recipeDocRef.id; // Use the existing recipe ID
+        //         await createUserSavedRecipe(user.uid, recipeId); // Call the async function here
+        //         return;
+        //       }
+        //     }
+        //   };
 
-          handleSaveRecipes(); // Call the inner async function
-        }, [user, id, postInfo]);
+        //   handleSaveRecipes(); // Call the inner async function
+        // }, [user, id, postInfo]);
+
+
+
+
+
+        const unsaveRecipes = async( recipeId, user, id, postInfo) => {
+
+          if(!userIds){
+            console.error("user is not logged in");
+            return;
+          }
+
+          const savedRecipesCollectionRef = collection(db, "user_saved_recipes");
+          const savedRecipeId = `${userid}_${recipeid}`;
+          const savedRecipeDocRef = doc(savedRecipesCollectionRef, savedRecipeId);
+
+
+          try {
+            await deleteDoc(savedRecipeDocRef);
+            console.log("Recipe unsaved successfully!");
+          } catch (error) {
+            console.error("Error unsaving recipe:", error);
+          }
+
+
+        }
       
 
 
@@ -298,7 +333,7 @@ console.log("similar post info", similarPost)
           {available ? (
             
             <span>
-            <button className="saveRecipeButton" >
+            <button className="saveRecipeButton" onClick={() => unsaveRecipes(user, id, postInfo)}>
               Unsave Recipe
             </button>
             </span>
