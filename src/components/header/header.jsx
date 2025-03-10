@@ -101,7 +101,7 @@ const Header = () => {
                         {
                             user?.displayName ?
                             <span>
-                            <Link to={"/favourites-page"} className="favouritesTag">
+                            <Link to={"/savedrecipes-page"} className="favouritesTag">
                                 <h3>Favourites</h3>
                             </Link>
                             </span>
