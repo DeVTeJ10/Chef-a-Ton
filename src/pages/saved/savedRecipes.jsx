@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { getFirestore, setDoc, addDoc, doc, collection, Firestore, getDoc, query, where, getDocs } from 'firebase/firestore';
 import Header from "../../components/header/header"
+import logoImg from "../../images/cookaton.png";
 import useUserName from "../../userNameHook";
 import "./savedRecipes.css"
 import { app } from "../../firebase";
@@ -26,17 +27,21 @@ const SavedRecipesPage = () => {
         return [];
       }
 
-      const savedRecipesCollectionRef = collection(db, "user_saved_recipes");
-      const q = query(savedRecipesCollectionRef, where("userid", "==", userId));
+        const savedRecipesCollectionRef = collection(db, "user_saved_recipes");
+        const q = query(savedRecipesCollectionRef, where("userid", "==", userId));
 
-      const querySnapshot = await getDocs(q);
-      const savedRecipeIds = [];
-      querySnapshot.forEach((doc) => {
-        savedRecipeIds.push(doc.data().recipeId);
-      });
-      setsavedRecipes(savedRecipeIds)
-      console.log("checking to display saved recipes",savedRecipes)
-      return savedRecipeIds;
+        try {
+          const querySnapshot = await getDocs(q);
+          const savedRecipes = querySnapshot.docs.map((doc) => doc.data());
+          resolve(savedRecipes); // Resolve with the saved recipes
+        } catch (error) {
+          console.error("Error getting saved recipes:", error);
+          reject([]); // Reject with an empty array or an error
+        }
+      } else {
+        console.error("User is not logged in.");
+        resolve([]); // Resolve with an empty array if not logged in
+      }
       
   }
 
@@ -44,7 +49,11 @@ const SavedRecipesPage = () => {
     <div className="savedRecipesContainer">
       <Header />
       <h3>Recipe Name</h3>
-      <img>Recipe Image</img>
+      <img src={logoImg}
+              width={100}
+              height={100}
+              className="cookingteamton"
+              alt="Villa" />
       <h2>Recipe Instructions</h2>
       <h2>Recipe Ingredients</h2>
     </div>
