@@ -27,23 +27,19 @@ const SavedRecipesPage = () => {
         return [];
       }
 
-        const savedRecipesCollectionRef = collection(db, "user_saved_recipes");
-        const q = query(savedRecipesCollectionRef, where("userid", "==", userId));
+      const savedRecipesCollectionRef = collection(db, "user_saved_recipes");
+      const q = query(savedRecipesCollectionRef, where("userid", "==", userId));
 
-        try {
-          const querySnapshot = await getDocs(q);
-          const savedRecipes = querySnapshot.docs.map((doc) => doc.data());
-          resolve(savedRecipes); // Resolve with the saved recipes
-        } catch (error) {
-          console.error("Error getting saved recipes:", error);
-          reject([]); // Reject with an empty array or an error
-        }
-      } else {
-        console.error("User is not logged in.");
-        resolve([]); // Resolve with an empty array if not logged in
+      try {
+        const querySnapshot = await getDocs(q);
+        const savedRecipes = querySnapshot.docs.map((doc) => doc.data());
+        setsavedRecipes(savedRecipes); // Use setState instead of resolve
+        return savedRecipes;
+      } catch (error) {
+        console.error("Error getting saved recipes:", error);
+        return []; // Return empty array instead of reject
       }
-      
-  }
+    }
 
   return (
     <div className="savedRecipesContainer">
