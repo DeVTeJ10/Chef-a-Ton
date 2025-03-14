@@ -11,16 +11,18 @@ import firebase from 'firebase/compat/app';
 
 const SavedRecipesPage = () => {
 
-    const [savedRecipes, setsavedRecipes] = useState()
+    const [displaySavedRecipes, setdisplaySavedRecipes] = useState()
+    const { user } = useUserName();
+    const userId = user.uid;
 
 
 
     const db = getFirestore(app);
-    const { user } = useUserName();
+
 
     async function getSavedRecipes() {
       const auth = firebase.auth();
-      const userId = user.uid;
+
 
       if (!userId) {
         console.error("User is not logged in.");
@@ -28,18 +30,22 @@ const SavedRecipesPage = () => {
       }
 
       const savedRecipesCollectionRef = collection(db, "user_saved_recipes");
-      const q = query(savedRecipesCollectionRef, where("userid", "==", userId));
+      const q = query(savedRecipesCollectionRef, where("userId" === userId));
 
       try {
         const querySnapshot = await getDocs(q);
         const savedRecipes = querySnapshot.docs.map((doc) => doc.data());
-        setsavedRecipes(savedRecipes); // Use setState instead of resolve
+        setdisplaySavedRecipes(savedRecipes); // Use setState instead of resolve
+        console.log("saved recipe showing for display?", displaySavedRecipes)
         return savedRecipes;
       } catch (error) {
         console.error("Error getting saved recipes:", error);
         return []; // Return empty array instead of reject
       }
     }
+
+    // console.log("checking saved recipes", displaySavedRecipes)
+    console.log("check if user is available here", userId)
 
   return (
     <div className="savedRecipesContainer">
@@ -51,7 +57,7 @@ const SavedRecipesPage = () => {
               className="cookingteamton"
               alt="Villa" />
       <h2>Recipe Instructions</h2>
-      <h2>Recipe Ingredients</h2>
+      <h2>{displaySavedRecipes}</h2>
     </div>
   );
 };

@@ -146,26 +146,7 @@ const recipesPage = () => {
             }
           }
         }
-        // useEffect(() => {
-        //   const handleSaveRecipes = async () => {
-        //     if (user && id && postInfo) {
-        //       await saveRecipes(user, id, postInfo); // Pass user, id, and postInfo to saveRecipes
-        //       const recipesCollectionRef = collection(db, "recipes");
-        //       const recipeDocRef = doc(recipesCollectionRef, id);
-        //       const docSnap = await getDoc(recipeDocRef);
-        //       setAvailable(docSnap)
-        //     } else {
-        //       if (docSnap.exists()) {
-        //         console.log("This recipe is already saved", postInfo.title);
-        //         const recipeId = recipeDocRef.id; // Use the existing recipe ID
-        //         await createUserSavedRecipe(user.uid, recipeId); // Call the async function here
-        //         return;
-        //       }
-        //     }
-        //   };
-
-        //   handleSaveRecipes(); // Call the inner async function
-        // }, [user, id, postInfo]);
+        
 
 
 
