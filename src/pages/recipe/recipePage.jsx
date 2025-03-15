@@ -140,13 +140,13 @@ const recipesPage = () => {
           
             try {
               await setDoc(savedRecipeDocRef, savedRecipeData);
-              console.log("Recipe saved to user_saved_recipes collection!");
+              console.log("Recipe saved successfully with ID:", savedRecipeId);
             } catch (error) {
-              console.error("Error saving recipe to user_saved_recipes collection:", error);
+              console.error("Error saving recipe:", error);
             }
           }
         }
-        
+
 
 
 
