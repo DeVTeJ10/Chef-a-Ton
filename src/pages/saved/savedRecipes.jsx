@@ -1,13 +1,12 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { getFirestore, setDoc, addDoc, doc, collection, Firestore, getDoc, query, where, getDocs } from 'firebase/firestore';
+import { getFirestore, setDoc, addDoc, doc, collection, getDoc, query, where, getDocs } from 'firebase/firestore';
 import Header from "../../components/header/header"
 import logoImg from "../../images/cookaton.png";
 import useUserName from "../../userNameHook";
 import "./savedRecipes.css"
 import { app } from "../../firebase";
-import firebase from 'firebase/compat/app';
 
 const SavedRecipesPage = () => {
 
@@ -15,36 +14,51 @@ const SavedRecipesPage = () => {
     const { user } = useUserName();
     const userId = user.uid;
 
-
-
     const db = getFirestore(app);
 
-
-    async function getSavedRecipes() {
-      const auth = firebase.auth();
-
-
+    
+    async function getSavedRecipes(user, userId) {
       if (!userId) {
         console.error("User is not logged in.");
         return [];
       }
 
-      const savedRecipesCollectionRef = collection(db, "user_saved_recipes");
-      const q = query(savedRecipesCollectionRef, where("userId" === userId));
-
       try {
+        console.log("Starting query for userId:", userId);
+        const savedRecipesCollectionRef = collection(db, "user_saved_recipes");
+        
+        // Log the collection reference
+        console.log("Collection ref:", savedRecipesCollectionRef.path);
+        
+        const q = query(savedRecipesCollectionRef);  // First try without where clause
         const querySnapshot = await getDocs(q);
-        const savedRecipes = querySnapshot.docs.map((doc) => doc.data());
-        setdisplaySavedRecipes(savedRecipes); // Use setState instead of resolve
-        console.log("saved recipe showing for display?", displaySavedRecipes)
+        
+        // Log all documents to see what we're getting
+        querySnapshot.forEach(doc => {
+          console.log("Document:", doc.id, doc.data());
+        });
+
+        // Filter client-side first to debug
+        const savedRecipes = querySnapshot.docs
+          .map(doc => doc.data())
+          .filter(data => data.userId === userId);
+        
+        console.log("Filtered recipes:", savedRecipes);
+        setdisplaySavedRecipes(savedRecipes);
         return savedRecipes;
       } catch (error) {
         console.error("Error getting saved recipes:", error);
-        return []; // Return empty array instead of reject
+        console.error("Error details:", error.code, error.message);
+        return [];
       }
     }
 
-    // console.log("checking saved recipes", displaySavedRecipes)
+    useEffect(() => {
+      getSavedRecipes(user, userId);
+  }, [user, userId]);
+
+
+    console.log("checking saved recipes", displaySavedRecipes)
     console.log("check if user is available here", userId)
 
   return (
