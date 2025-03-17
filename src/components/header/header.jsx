@@ -12,7 +12,7 @@ const Header = () => {
     const navigate = useNavigate()
     const [searchForRecipes, setSearchForRecipes] = useState()
     const [inputValue, setInputValue] = useState('')
-    const apiKey = 'ebe1ff2f25c44e239165a2468e37f126'
+    const apiKey = 'f36b7e2dfdbb4961ac74f677d4a9e486'
 
 
     console.log("checking availability of users",user);
@@ -36,7 +36,8 @@ const Header = () => {
                     }
                 }
             );
-            setSearchForRecipes(response.data.results);
+            const searchedResponse = response
+            setSearchForRecipes(searchedResponse.data.results);
             return response; // Return the full response
         } catch (error) {
             console.error("Error:", error.message);
