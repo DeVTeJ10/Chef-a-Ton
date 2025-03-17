@@ -91,14 +91,15 @@ body{
     border-radius: 5px;
 }
 
-.viewRecipeBTN{
+/* .viewRecipeBTN{
     border: 0.5px solid white;
     border-radius: 30px;
-    background-color: #6B4F31;
+    background-color: green;
     color: white;
     height: 38px;
     color: white;
-}
+    padding-bottom: 300px;
+} */
 
 .timePrep{
     font-weight: bold;
@@ -122,6 +123,7 @@ body{
     border-radius: 30px;
     padding-left: 20px;
     padding-right: 20px;
+    background-color: #A8B5A1;
 }
 
 .cardFood{

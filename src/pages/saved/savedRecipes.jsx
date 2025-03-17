@@ -75,7 +75,7 @@ const SavedRecipesPage = () => {
       <div className="savedRecipesList">
         {displaySavedRecipes && displaySavedRecipes.map((recipe, index) => (
           <div key={index} className="savedRecipe">
-            <h2>{recipe.recipeName}</h2>
+            <h2>Recipe Name: {recipe.recipeName}</h2>
             <p>Recipe ID: {recipe.recipeId}</p>
             <p>Saved on: {recipe.savedAt?.toDate().toLocaleDateString()}</p>
           </div>
