@@ -10,7 +10,6 @@ const SearchRecipes = () => {
     console.log("Search results:", location.state?.searchResults);
 
     const searchResults = location.state?.searchResults || [];
-    const searchQuery = location.state?.searchQuery || '';
 
     return (
         <div>

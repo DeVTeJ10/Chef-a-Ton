@@ -1,10 +1,10 @@
 import { Routes, Route } from 'react-router-dom';
-import HomePage from "./pages/home/homePage";
+import HomePage from "./pages/home/homepage";
 import RecipePage from "./pages/recipe/recipePage";
 import LoginPage from "./Auth/login/loginPage"
 import SignupPage from "./Auth/signup/signupPage"
 import SearchedRecipePage from "./pages/searched/searchRecipes"
-import SavedRecipes from "./pages/saved/savedRecipes"
+import SavedRecipes from "./pages/savedRecipes/savedRecipes"
 import './input.css'
 
 
