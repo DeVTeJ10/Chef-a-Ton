@@ -27,6 +27,7 @@ const homepage = () => {
 
 
         const { user } = useUserName();
+
         // const db = Firestore(app)
 
 
@@ -35,7 +36,7 @@ const homepage = () => {
         console.log("checking for user id", user.uid)
 
 
-        const apiKey = 'f36b7e2dfdbb4961ac74f677d4a9e486' // Api key needed for both apis to work
+        const apiKey = '5f6c3d28495049a7b5a8849211cdb16d' // Api key needed for both apis to work
 
 
           const fetchRandomRecipeData = async () => {
@@ -699,12 +700,26 @@ const homepage = () => {
         </div>
       </div>
 
-    <div className="railHeal">
-      <div className="healthyRailing">
-          <h1>Save more from the Healthy Train now</h1>
-          <h3 className="railAway"> its mearly a rail away, <a href="https://example.com">login</a> or <a href="https://example.com">signup</a> to save more recipes</h3>
+    {
+      user?.displayName ?
+
+      <div className='welcomeUser'>
+        <h1>welcome to the train way: </h1>
+          <h1> {user.displayName}</h1>
+      </div>
+    :
+
+    <span>
+        <div className="railHeal">
+          <div className="healthyRailing">
+            <h1>Save more from the Healthy Train now</h1>
+            <h3 className="railAway"> its mearly a rail away, <a href="/login">login</a> or <a href="/signup">signup</a> to save more recipes</h3>
+          </div>
         </div>
-    </div>
+    </span>
+
+    
+    }
     <Footer/>
     </div>
   );

@@ -27,7 +27,7 @@ const recipesPage = () => {
   const { title } = useParams()
   const location = useLocation();  // <== Added location for URL debugging
   const [available, setAvailable] = useState()
-  const apiKey = 'f36b7e2dfdbb4961ac74f677d4a9e486' // Updated API key
+  const apiKey = '5f6c3d28495049a7b5a8849211cdb16d' // Updated API key
   const [isSaved, setIsSaved] = useState(false); // State to track if the recipe is saved
 
 
