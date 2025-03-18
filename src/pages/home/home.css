@@ -91,6 +91,13 @@ body{
     border-radius: 5px;
 }
 
+.welcomeUser{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 70px;
+}
+
 /* .viewRecipeBTN{
     border: 0.5px solid white;
     border-radius: 30px;

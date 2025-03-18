@@ -2,33 +2,32 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./footer.css"
 import logoImg from "../../images/cookaton.png";
-import useUserName from "../../userNameHook";
 import { useEffect, useState } from "react";
 
 
 
 const header = () => {
 
-  const {user} = useUserName()
+
   const navigate = useNavigate()
-  const apiKey = "f36b7e2dfdbb4961ac74f677d4a9e486"
-  const [inputValue, setInputValue] = useState('')
+  const apiKey = "5f6c3d28495049a7b5a8849211cdb16d"
+  const [inputValues, setInputValue] = useState('')
   const [searchRecipes, setSearchRecipes] = useState()
 
 
         const searchForRecipe = async () => {
           try {
-              const response = await axios.get(
-                  `https://api.spoonacular.com/recipes/complexSearch?query=${inputValue}&apiKey=${apiKey}&number=30`,
+              const responses = await axios.get(
+                  `https://api.spoonacular.com/recipes/complexSearch?query=${inputValues}&apiKey=${apiKey}&number=30`,
                   {
                       headers: {
                           'Content-Type': 'application/json', 
                       }
                   }
               );
-              const searchedResponse = response
+              const searchedResponse = responses
               setSearchRecipes(searchedResponse.data.results);
-              return response; // Return the full response
+              return responses; // Return the full response
           } catch (error) {
               console.error("Error:", error.message);
               return null;
@@ -46,7 +45,7 @@ const header = () => {
               navigate('/searched-page', {
                   state: {
                       searchingRecipes: searchingRecipes.data.results,
-                      searchQuery: inputValue
+                      searchQuery: inputValues
                   }
               })
             }
@@ -105,7 +104,7 @@ const header = () => {
         <input
             placeholder='Search for recipe' 
             className='inputRecipe'
-            value={inputValue}
+            value={inputValues}
             onChange={(e) => setInputValue(e.target.value)}
             onKeyDown={handleKeyPress}
             type="text"/>
