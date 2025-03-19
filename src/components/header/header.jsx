@@ -95,9 +95,9 @@ const Header = () => {
                             <Link to={"/"} className="homeTag">
                                 <h3>Home</h3>
                             </Link>
-
-                            <h3>Recipe</h3>
-
+                            <Link to={"/recipe-page"} className="aboutUsTag">
+                                <h3>About us</h3>
+                            </Link>
 
                         {
                             user?.displayName ?
@@ -111,7 +111,6 @@ const Header = () => {
 
                             <h3>Login to save recipes</h3>
                         }
-                                <h3>Searched recipe</h3>
                         </div>
                     </div>
 
@@ -126,12 +125,16 @@ const Header = () => {
 
                         {
                             user?.displayName ? 
-                            <span>
-                              Welcome: {user?.displayName}
-                            <Link to={"/login"}>
-                              <button className="contactUS" onClick={handleLogout}>sign out</button>
-                            </Link>
-                            </span>
+                            <div className="theUser">
+                                    <span>
+                                        {/* <div className="welcome"> */}
+                                        Welcome: {user?.displayName}
+                                        {/* </div> */}
+                                        <Link to={"/login"}>
+                                        <button className="contactUS" onClick={handleLogout}>sign out</button>
+                                        </Link>
+                                    </span>
+                            </div>
 
                             :
                             
