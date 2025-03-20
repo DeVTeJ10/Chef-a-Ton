@@ -106,7 +106,7 @@ const SignupPage = () => {
               required/>
 
         <div className='signupBTN'>
-        <button type="button" className="signupButton" onClick={handleSignup}>Sign Up</button>
+        <button type="button" className="signupButton" onClick={handleSignup}>Sign Up </button>
         <button type='button' className="signupButton" onClick={handleGoogleSignup}>Sign up with Gmail</button>
         </div>
       </form>

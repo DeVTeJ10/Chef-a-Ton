@@ -95,8 +95,8 @@ const Header = () => {
                             <Link to={"/"} className="homeTag">
                                 <h3>Home</h3>
                             </Link>
-                            <Link to={"/recipe-page"} className="aboutUsTag">
-                                <h3>About us</h3>
+                            <Link to={"/how-to"} className="aboutUsTag">
+                                <h3>Chef A How</h3>
                             </Link>
 
                         {
