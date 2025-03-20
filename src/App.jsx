@@ -5,6 +5,7 @@ import LoginPage from "./Auth/login/loginPage"
 import SignupPage from "./Auth/signup/signupPage"
 import SearchedRecipePage from "./pages/searched/searchRecipes"
 import SavedRecipes from "./pages/savedRecipes/savedRecipes"
+import HowTo from "./pages/how/howTo"
 import './input.css'
 
 
@@ -21,6 +22,7 @@ function App() {
         <Route path="/savedrecipes-page" element={<SavedRecipes/>}/>
         <Route path="/login" element={<LoginPage/>}/>
         <Route path="/signup" element={<SignupPage/>}/>
+        <Route path="/how-to" element={<HowTo/>}/>
       </Routes>
     </>
   )
