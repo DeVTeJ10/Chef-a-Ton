@@ -69,16 +69,20 @@ const SavedRecipesPage = () => {
       <div className="savedRecipesList">
         {displaySavedRecipes && displaySavedRecipes.map((recipe, index) => (
           <div key={index} className="savedRecipe">
-            <h2>Recipe Name: {recipe.recipeName}</h2>
-            <p>Recipe ID: {recipe.recipeId}</p>
-            <p>Saved on: {recipe.savedAt?.toDate().toLocaleDateString()}</p>
             <img 
               src={recipe?.recipeImage}
-              width={100}
-              height={100}
+              width={350}
+              height={234}
               className="cookingteamton"
               alt="Villa" 
-      />
+             />
+            <h2>Recipe Name: {recipe?.recipeName}</h2>
+            <p>Recipe Ingredients: {recipe?.recipeIngredients?.map((ingredients) =>(
+              <li key={ingredients?.id}>
+                {ingredients?.name}
+              </li>
+            ))}</p>
+            <p>Saved on: {recipe.savedAt?.toDate().toLocaleDateString()}</p>
           </div>
         ))}
       </div>

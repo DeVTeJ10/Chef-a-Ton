@@ -136,6 +136,7 @@ const recipesPage = () => {
               recipeId: recipeid,
               recipeName: postInfo?.data?.title,
               recipeImage: postInfo.data.image,
+              recipeIngredients: postInfo.data?.extendedIngredients,
               savedAt: serverTimestamp(),
             };
           
