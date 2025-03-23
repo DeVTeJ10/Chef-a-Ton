@@ -27,6 +27,8 @@ const homepage = () => {
 
 
         const { user } = useUserName();
+        const userId = user.id
+
 
         // const db = Firestore(app)
 
@@ -61,6 +63,17 @@ const homepage = () => {
               fetchRandomRecipeData();
               console.log("array la recipes", randomRecipe)
           },[randomRecipe]);
+
+
+          const savingRecipes = async (user, randomRecipe) => {
+
+              if (!user){
+                console.error("User is not signed in")
+                return
+              }
+
+            
+          }
 
 
 

@@ -82,6 +82,9 @@ const SavedRecipesPage = () => {
                 {ingredients?.name}
               </li>
             ))}</p>
+            <p> Recipe Instrcutions: {recipe?.recipeInstructions}
+              
+            </p>
             <p>Saved on: {recipe.savedAt?.toDate().toLocaleDateString()}</p>
           </div>
         ))}
