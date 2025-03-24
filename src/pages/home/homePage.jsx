@@ -9,6 +9,7 @@ import "./home.css"
 import _ from 'lodash';
 import { Link } from 'react-router-dom';
 import { getFirestore, setDoc, addDoc, doc, collection, Firestore, getDoc } from 'firebase/firestore';
+import { app } from '../../firebase';
 
 import useUserName from "../../userNameHook";
 
@@ -24,13 +25,16 @@ const homepage = () => {
         const [breakfastNumber, setBreakfastNumber] = useState("")
         const [lunchNumber, setLunchNumber] = useState("")
         const [dinnerNumber, setDinnerNumber] = useState("")
+        const [isAvailable, setIsAvailable] = useState()
 
 
         const { user } = useUserName();
         const userId = user.id
+        const recipeIds = randomRecipe?.data?.recipes.map(recIds => ({id: recIds.id}))
+        console.log("checking for ids to save recipes on homepage",recipeIds)
 
 
-        // const db = Firestore(app)
+        const db = getFirestore(app)
 
 
 
@@ -65,13 +69,32 @@ const homepage = () => {
           },[randomRecipe]);
 
 
-          const savingRecipes = async (user, randomRecipe) => {
+
+
+
+
+          const savingRecipes = async (user, randomRecipe, recIds) => {
 
               if (!user){
                 console.error("User is not signed in")
                 return
               }
 
+              const recCollRef = collection(db, "recipes")
+              const recDocRef = doc(recCollRef, recIds)
+              const docSnap = await getDoc(recCollRef)
+
+              if(!randomRecipe){
+                console.error("No recipe data to work with, randomRecipe is not available", randomRecipe)
+              }
+
+              const saveRecData = {
+
+                name: randomRecipe?.data?.recipes.title, 
+                ingredients: randomRecipe?.data?.recipes.extendedIngredients,   
+                instructions: randomRecipe?.data?.recipes.instructions,
+                imageUrl: randomRecipe?.data?.recipes.image
+              }
             
           }
 
@@ -215,6 +238,7 @@ const homepage = () => {
           <button className="viewRecipeBTN">VIEW RECIPE</button>
           </Link>
           <button className="addRecipeBTN" onClick={() => {/* Add functionality here later */}}>+</button>
+          <button className="removeRecipeBTN" onClick={() => { }}>-</button>
         </div>
         </div>
 
