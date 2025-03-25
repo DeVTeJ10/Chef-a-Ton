@@ -26,11 +26,13 @@ const homepage = () => {
         const [lunchNumber, setLunchNumber] = useState("")
         const [dinnerNumber, setDinnerNumber] = useState("")
         const [isAvailable, setIsAvailable] = useState()
+        const [isSaved, setIsSaved] = useState(false)
 
 
         const { user } = useUserName();
         const userId = user.id
         const recipeIds = randomRecipe?.data?.recipes.map(recIds => ({id: recIds.id}))
+        const userName = user.displayName
         console.log("checking for ids to save recipes on homepage",recipeIds)
 
 
@@ -73,34 +75,62 @@ const homepage = () => {
 
 
 
-          const savingRecipes = async (user, randomRecipe, recIds) => {
+            const savingRecipes = async (user, randomRecipe, recIds) => {
+                if (!user) {
+                    console.error("User is not signed in")
+                    return
+                }
 
-              if (!user){
-                console.error("User is not signed in")
-                return
-              }
+                const recCollRef = collection(db, "recipes")
+                const recDocRef = doc(recCollRef, recIds)
+                const docSnap = await getDoc(recCollRef)
 
-              const recCollRef = collection(db, "recipes")
-              const recDocRef = doc(recCollRef, recIds)
-              const docSnap = await getDoc(recCollRef)
+                if (!randomRecipe) {
+                    console.error("No recipe data to work with, randomRecipe is not available", randomRecipe)
+                    return
+                }
 
-              if(!randomRecipe){
-                console.error("No recipe data to work with, randomRecipe is not available", randomRecipe)
-              }
+                const saveRecData = {
+                    name: randomRecipe?.data?.recipes.title,
+                    ingredients: randomRecipe?.data?.recipes.extendedIngredients,
+                    instructions: randomRecipe?.data?.recipes.instructions,
+                    imageUrl: randomRecipe?.data?.recipes.image
+                }
 
-              const saveRecData = {
+                await setDoc(recDocRef, saveRecData)
+                console.log("check for the id of the ref", recDocRef.id)
+                const recipeId = recDocRef.id
+                await createUserRecipeCollection(userId, recipeId)
+                setIsSaved(true)
 
-                name: randomRecipe?.data?.recipes.title, 
-                ingredients: randomRecipe?.data?.recipes.extendedIngredients,   
-                instructions: randomRecipe?.data?.recipes.instructions,
-                imageUrl: randomRecipe?.data?.recipes.image
-              }
+                async function createUserRecipeCollection(userId, recipeId) {
+                    const savedRecipesCollection = collection(db, "user_saved_recipes")
+                    const savedRecipesId = `${userId}_${recipeId}`
+                    const savedRecipesDocRef = doc(savedRecipesCollection, savedRecipesId)
+
+                    const savedRecipesData = {
+                        userName: userName,
+                        userId: userId,
+                        recipeId: recipeId,
+                        recipeName: randomRecipe?.data?.title,
+                        recipeImage: randomRecipe.data.image,
+                        recipeIngredients: randomRecipe.data?.extendedIngredients,
+                        recipeInstructions: randomRecipe.data?.instructions,
+                        savedAt: serverTimestamp(),
+                    }
+
+                    try {
+                        await setDoc(savedRecipesDocRef, savedRecipesData)
+                        console.log("Recipe saved successfully with ID:", savedRecipesId)
+                    } catch (error) {
+                        console.error("Error saving recipe:", error)
+                    }
+                }
+            }
+
+
+
             
-          }
-
-
-
-          
 
           
           const dishTypes = () => {
@@ -194,7 +224,7 @@ const homepage = () => {
 
         
 
-  return (
+return (
     <div>
         <Header/>
         <div className='cookingteam'>
@@ -237,7 +267,7 @@ const homepage = () => {
               ${randomRecipe?.data?.recipes[0]?.title}`}>
           <button className="viewRecipeBTN">VIEW RECIPE</button>
           </Link>
-          <button className="addRecipeBTN" onClick={() => {/* Add functionality here later */}}>+</button>
+          <button className="addRecipeBTN" onClick={() => {savingRecipes(user, randomRecipe)}}>+</button>
           <button className="removeRecipeBTN" onClick={() => { }}>-</button>
         </div>
         </div>
