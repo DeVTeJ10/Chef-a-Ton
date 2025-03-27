@@ -27,6 +27,9 @@ const homepage = () => {
         const [dinnerNumber, setDinnerNumber] = useState("")
         const [isAvailable, setIsAvailable] = useState()
         const [isSaved, setIsSaved] = useState(false)
+        const [getId, setGetid] = useState()
+
+        const {id} = useParams()
 
 
         const { user } = useUserName();
@@ -49,11 +52,15 @@ const homepage = () => {
 
 
 
-        const getRecipeId = async () => {
+        const getRecipeId = async (id) => {
 
-          console.log("the id for this recipe is", `${id}`)
+          if(randomRecipe){
+            setGetid(id)
+            console.log("This is the id fro the clicked recipe", `${id}`)
+          }
 
         }
+
 
 
           const fetchRandomRecipeData = async () => {
@@ -276,8 +283,8 @@ return (
               ${randomRecipe?.data?.recipes[0]?.title}`}>
           <button className="viewRecipeBTN">VIEW RECIPE</button>
           </Link>
-          <button className="addRecipeBTN" onClick={() => {savingRecipes(user, randomRecipe)}}>+</button>
-          <button className="removeRecipeBTN" onClick={() => { }}>-</button>
+          <button className="addRecipeBTN" onClick={getRecipeId(randomRecipe?.data?.recipes[0]?.id)}>+</button>
+           <button className="removeRecipeBTN" onClick={() => { }}>-</button>
         </div>
         </div>
 
