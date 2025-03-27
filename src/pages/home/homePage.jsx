@@ -47,7 +47,7 @@ const homepage = () => {
         console.log("checking for user id", user.uid)
 
 
-        const apiKey = '5f6c3d28495049a7b5a8849211cdb16d' // Api key needed for both apis to work
+        const apiKey = 'edded284742f42ebabb9523442416398' // Api key needed for both apis to work
 
 
 
@@ -56,7 +56,7 @@ const homepage = () => {
 
           if(randomRecipe){
             setGetid(id)
-            console.log("This is the id fro the clicked recipe", `${id}`)
+            console.log("This is the id from the clicked recipe", `${id}`)
           }
 
         }
@@ -283,7 +283,7 @@ return (
               ${randomRecipe?.data?.recipes[0]?.title}`}>
           <button className="viewRecipeBTN">VIEW RECIPE</button>
           </Link>
-          <button className="addRecipeBTN" onClick={getRecipeId(randomRecipe?.data?.recipes[0]?.id)}>+</button>
+          <button className="addRecipeBTN" onClick={() => getRecipeId(randomRecipe?.data?.recipes[0]?.id)}>+</button>
            <button className="removeRecipeBTN" onClick={() => { }}>-</button>
         </div>
         </div>
@@ -312,7 +312,7 @@ return (
           ${randomRecipe?.data?.recipes[1]?.title}}` }>
           <button className="viewRecipeBTN">VIEW RECIPE</button>
           </Link>
-          <button className="addRecipeBTN" onClick={() => {/* Add functionality here later */}}>+</button>
+          <button className="addRecipeBTN" onClick={() => getRecipeId(randomRecipe?.data?.recipes[1]?.id)}>+</button>
         </div>
         </div>
         <div className="foodCard">
@@ -336,7 +336,7 @@ return (
           ${randomRecipe?.data?.recipes[2]?.title}}` }>
           <button className="viewRecipeBTN">VIEW RECIPE</button>
           </Link>
-          <button className="addRecipeBTN" onClick={() => {/* Add functionality here later */}}>+</button>
+          <button className="addRecipeBTN" onClick={() => getRecipeId(randomRecipe?.data?.recipes[2]?.id)}>+</button>
         </div>
         </div>
       </div>
@@ -363,7 +363,7 @@ return (
           ${randomRecipe?.data?.recipes[3]?.title}}` }>`
           <button className="viewRecipeBTN">VIEW RECIPE</button>
           </Link>
-          <button className="addRecipeBTN" onClick={() => {/* Add functionality here later */}}>+</button>
+          <button className="addRecipeBTN" onClick={() => getRecipeId(randomRecipe?.data?.recipes[3]?.id)}>+</button>
         </div>
         </div>
 
@@ -392,7 +392,7 @@ return (
           ${randomRecipe?.data?.recipes[4]?.title}}` }>` 
           <button className="viewRecipeBTN">VIEW RECIPE</button>
           </Link>
-          <button className="addRecipeBTN" onClick={() => {/* Add functionality here later */}}>+</button>
+          <button className="addRecipeBTN" onClick={() => getRecipeId(randomRecipe?.data?.recipes[4]?.id)}>+</button>
         </div>
         </div>
 
@@ -420,7 +420,7 @@ return (
            ${randomRecipe?.data?.recipes[5]?.title}}` }>
           <button className="viewRecipeBTN">VIEW RECIPE</button>
           </Link>
-          <button className="addRecipeBTN" onClick={() => {/* Add functionality here later */}}>+</button>
+          <button className="addRecipeBTN" onClick={() => getRecipeId(randomRecipe?.data?.recipes[5]?.id)}>+</button>
         </div>
         </div>
       </div>
@@ -447,7 +447,7 @@ return (
            ${randomRecipe?.data?.recipes[6]?.title}}` }>
           <button className="viewRecipeBTN">VIEW RECIPE</button>
           </Link>
-          <button className="addRecipeBTN" onClick={() => {/* Add functionality here later */}}>+</button>
+          <button className="addRecipeBTN" onClick={() => getRecipeId(randomRecipe?.data?.recipes[6]?.id)}>+</button>
         </div>
         </div>
 
@@ -476,7 +476,7 @@ return (
            ${randomRecipe?.data?.recipes[7]?.title}}`  }>
           <button className="viewRecipeBTN">VIEW RECIPE</button>
           </Link>
-          <button className="addRecipeBTN" onClick={() => {/* Add functionality here later */}}>+</button>
+          <button className="addRecipeBTN" onClick={() => getRecipeId(randomRecipe?.data?.recipes[7]?.id)}>+</button>
         </div>
         </div>
 
@@ -504,7 +504,7 @@ return (
            ${randomRecipe?.data?.recipes[8]?.title}}`}>
           <button className="viewRecipeBTN">VIEW RECIPE</button>
           </Link>
-          <button className="addRecipeBTN" onClick={() => {/* Add functionality here later */}}>+</button>
+          <button className="addRecipeBTN" onClick={() => getRecipeId(randomRecipe?.data?.recipes[8]?.id)}>+</button>
         </div>
         </div>
       </div>
@@ -539,7 +539,7 @@ return (
            ${breakfastNumber[0]?.title}}`}>
           <button className="viewRecipeBTN">VIEW RECIPE</button>
           </Link>
-          <button className="addRecipeBTN" onClick={() => {/* Add functionality here later */}}>+</button>
+          <button className="addRecipeBTN" onClick={() => getRecipeId(breakfastNumber[0]?.id)}>+</button>
         </div>
         </div>
 
@@ -569,7 +569,7 @@ return (
           ${breakfastNumber[1]?.title}}` }>
           <button className="viewRecipeBTN">VIEW RECIPE</button>
           </Link>
-          <button className="addRecipeBTN" onClick={() => {/* Add functionality here later */}}>+</button>
+          <button className="addRecipeBTN" onClick={() => getRecipeId(breakfastNumber[1]?.id)}>+</button>
         </div>
         </div>
         <div className="foodCard">
@@ -595,7 +595,7 @@ return (
           ${breakfastNumber[2]?.title}}`}>
           <button className="viewRecipeBTN">VIEW RECIPE</button>
           </Link>
-          <button className="addRecipeBTN" onClick={() => {/* Add functionality here later */}}>+</button>
+          <button className="addRecipeBTN" onClick={() => getRecipeId(breakfastNumber[2]?.id)}>+</button>
         </div>
         </div>
       </div>
@@ -630,7 +630,7 @@ return (
           ${lunchNumber[0]?.title}}`}>`
           <button className="viewRecipeBTN">VIEW RECIPE</button>
           </Link>
-          <button className="addRecipeBTN" onClick={() => {/* Add functionality here later */}}>+</button>
+          <button className="addRecipeBTN" onClick={() => getRecipeId(lunchNumber[0]?.id)}>+</button>
         </div>
         </div>
 
@@ -662,7 +662,7 @@ return (
           ${lunchNumber[1]?.title}}`}>
           <button className="viewRecipeBTN">VIEW RECIPE</button>
           </Link>
-          <button className="addRecipeBTN" onClick={() => {/* Add functionality here later */}}>+</button>
+          <button className="addRecipeBTN" onClick={() => getRecipeId(lunchNumber[1]?.id)}>+</button>
         </div>
         </div>
         <div className="foodCard">
@@ -688,7 +688,7 @@ return (
           ${lunchNumber[2]?.title}}`}>
           <button className="viewRecipeBTN">VIEW RECIPE</button>
           </Link>
-          <button className="addRecipeBTN" onClick={() => {/* Add functionality here later */}}>+</button>
+          <button className="addRecipeBTN" onClick={() => getRecipeId(lunchNumber[2]?.id)}>+</button>
         </div>
         </div>
       </div>
@@ -722,7 +722,7 @@ return (
           ${dinnerNumber[0]?.title}}`}>
           <button className="viewRecipeBTN">VIEW RECIPE</button>
           </Link>
-          <button className="addRecipeBTN" onClick={() => {/* Add functionality here later */}}>+</button>
+          <button className="addRecipeBTN" onClick={() => getRecipeId(dinnerNumber[0]?.id)}>+</button>
         </div>
         </div>
 
@@ -752,7 +752,7 @@ return (
           ${dinnerNumber[1]?.title}}`}>
           <button className="viewRecipeBTN">VIEW RECIPE</button>
           </Link>
-          <button className="addRecipeBTN" onClick={() => {/* Add functionality here later */}}>+</button>
+          <button className="addRecipeBTN" onClick={() => getRecipeId(dinnerNumber[1]?.id)}>+</button>
         </div>
         </div>
         <div className="foodCard">
@@ -778,7 +778,7 @@ return (
           ${dinnerNumber[2]?.title}}`}>
           <button className="viewRecipeBTN">VIEW RECIPE</button>
           </Link>
-          <button className="addRecipeBTN" onClick={() => {/* Add functionality here later */}}>+</button>
+          <button className="addRecipeBTN" onClick={() => getRecipeId(dinnerNumber[2]?.id)}>+</button>
         </div>
         </div>
       </div>
