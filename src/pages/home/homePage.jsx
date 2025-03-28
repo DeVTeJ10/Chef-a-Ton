@@ -29,14 +29,12 @@ const homepage = () => {
         const [isSaved, setIsSaved] = useState(false)
         const [getId, setGetid] = useState()
 
-        const {id} = useParams()
 
 
         const { user } = useUserName();
         const userId = user.id
-        const recipeIds = randomRecipe?.data?.recipes.map(recIds => ({id: recIds.id}))
         const userName = user.displayName
-        console.log("checking for ids to save recipes on homepage",recipeIds)
+        // console.log("checking for ids to save recipes on homepage",recipeIds)
 
 
         const db = getFirestore(app)
@@ -91,15 +89,19 @@ const homepage = () => {
 
 
 
-            const savingRecipes = async (user, randomRecipe, userId) => {
+            const savingRecipes = async (user, randomRecipe, userId, getId) => {
+
+            
+
                 if (!user) {
                     console.error("User is not signed in")
                     return
                 }
 
                 const recCollRef = collection(db, "recipes")
-                const recDocRef = doc(recCollRef, recipeId)
+                const recDocRef = doc(recCollRef, getId)
                 const docSnap = await getDoc(recCollRef)
+                setIsAvailable(docSnap)
 
                 if (!randomRecipe) {
                     console.error("No recipe data to work with, randomRecipe is not available", randomRecipe)
@@ -143,6 +145,11 @@ const homepage = () => {
                     }
                 }
             }
+            useEffect(() => {
+              if (getId) {
+                savingRecipes()
+              }
+            },[randomRecipe, getId])
 
 
 
