@@ -32,8 +32,8 @@ const homepage = () => {
 
 
         const { user } = useUserName();
-        const userId = user.id
-        const userName = user.displayName
+        const userId = user?.id
+        const userName = user?.displayName
         // console.log("checking for ids to save recipes on homepage",recipeIds)
 
 
@@ -42,7 +42,7 @@ const homepage = () => {
 
 
         console.log(" checking user on homepage", user)
-        console.log("checking for user id", user.uid)
+        console.log("checking for user id", user?.uid)
 
 
         const apiKey = 'edded284742f42ebabb9523442416398' // Api key needed for both apis to work
@@ -90,17 +90,22 @@ const homepage = () => {
 
 
             const savingRecipes = async (user, randomRecipe, userId, getId) => {
-
-            
-
                 if (!user) {
                     console.error("User is not signed in")
                     return
                 }
 
+                if (!getId) {
+                    console.error("cannot get recipe id")
+                    return
+                }
+
+                // Convert getId to string if it isn't already
+                const recipeId = String(getId)
+                
                 const recCollRef = collection(db, "recipes")
-                const recDocRef = doc(recCollRef, getId)
-                const docSnap = await getDoc(recCollRef)
+                const recDocRef = doc(recCollRef, recipeId)
+                const docSnap = await getDoc(recDocRef)
                 setIsAvailable(docSnap)
 
                 if (!randomRecipe) {
@@ -108,16 +113,22 @@ const homepage = () => {
                     return
                 }
 
+                // Find the specific recipe from randomRecipe.data.recipes array
+                const selectedRecipe = randomRecipe.data.recipes.find(recipe => recipe.id === getId)
+                
+                if (!selectedRecipe) {
+                    console.error("Recipe not found")
+                    return
+                }
+
                 const saveRecData = {
-                    name: randomRecipe?.data?.recipes.title,
-                    ingredients: randomRecipe?.data?.recipes.extendedIngredients,
-                    instructions: randomRecipe?.data?.recipes.instructions,
-                    imageUrl: randomRecipe?.data?.recipes.image
+                    name: selectedRecipe.title,
+                    ingredients: selectedRecipe.extendedIngredients,
+                    instructions: selectedRecipe.instructions,
+                    imageUrl: selectedRecipe.image
                 }
 
                 await setDoc(recDocRef, saveRecData)
-                console.log("check for the id of the ref", recDocRef.id)
-                const recipeId = recDocRef.id
                 await createUserRecipeCollection(userId, recipeId)
                 setIsSaved(true)
 
@@ -146,8 +157,8 @@ const homepage = () => {
                 }
             }
             useEffect(() => {
-              if (getId) {
-                savingRecipes()
+              if (getId && user) {
+                savingRecipes(user, randomRecipe, userId, getId)
               }
             },[randomRecipe, getId])
 
