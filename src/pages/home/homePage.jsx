@@ -8,7 +8,7 @@ import sushi from "../../images/foodsushi.jpg";
 import "./home.css"
 import _ from 'lodash';
 import { Link } from 'react-router-dom';
-import { getFirestore, setDoc, addDoc, doc, collection, Firestore, getDoc, serverTimestamp } from 'firebase/firestore';
+import { getFirestore, setDoc, addDoc, doc, collection, Firestore, getDoc, serverTimestamp, deleteDoc } from 'firebase/firestore';
 import { app } from '../../firebase';
 
 import useUserName from "../../userNameHook";
@@ -28,6 +28,7 @@ const homepage = () => {
         const [isAvailable, setIsAvailable] = useState()
         const [savedRecipes, setSavedRecipes] = useState({});
         const [getId, setGetid] = useState()
+        const [isSaved, setIsSaved] = useState(true)
 
 
 
@@ -171,6 +172,30 @@ const homepage = () => {
                         console.error("Error saving recipe:", error)
                     }
                 }
+            }
+
+
+            const deleteRecipe = async (user, getId, userId) => {
+                if (!user) {
+                    console.error("user is not logged in")
+                    return
+                }
+
+                if (!savedRecipes(getId)) {
+                    return
+                }
+
+                const savedRecipesCollectionRef = collection(db, "user_saved_recipes")
+                const savedRecipeId = `${user.uid}_${getId}`
+                const savedRecipeDocRef = doc(savedRecipesCollectionRef, savedRecipeId)
+
+                try {
+                    await deleteDoc(savedRecipeDocRef)
+                    console.log("recipe deleted successfully")
+                } catch (error) {
+                    console.error("error unsaving recipes", error)
+                }
+                setIsSaved(true)
             }
 
 
@@ -320,7 +345,7 @@ return (
 
           :
 
-           <button className="removeRecipeBTN" onClick={() => { }}>-</button>
+           <button className="removeRecipeBTN" onClick={() => deleteRecipe(randomRecipe?.data?.recipes[0]?.id, user?.uid, user)}>-</button>
            }
         </div>
         </div>
