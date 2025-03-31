@@ -26,7 +26,7 @@ const homepage = () => {
         const [lunchNumber, setLunchNumber] = useState("")
         const [dinnerNumber, setDinnerNumber] = useState("")
         const [isAvailable, setIsAvailable] = useState()
-        const [isSaved, setIsSaved] = useState(false)
+        const [savedRecipes, setSavedRecipes] = useState({});
         const [getId, setGetid] = useState()
 
 
@@ -45,7 +45,7 @@ const homepage = () => {
         console.log("checking for user id", user?.uid)
 
 
-        const apiKey = 'edded284742f42ebabb9523442416398' // Api key needed for both apis to work
+        const apiKey = 'd42c442326c947f8945a69083e52b6da' // Api key needed for both apis to work
 
 
 
@@ -54,8 +54,11 @@ const homepage = () => {
             if (randomRecipe && user && userId) {
                 setGetid(id)
                 console.log("This is the id from the clicked recipe", `${id}`)
-                // Call savingRecipes directly here
-                 savingRecipes(user, randomRecipe, userId, id)
+                await savingRecipes(user, randomRecipe, userId, id)
+                setSavedRecipes(prev => ({
+                    ...prev,
+                    [id]: true
+                }));
             } else {
                 console.log("Please login to save recipes")
             }
@@ -135,7 +138,10 @@ const homepage = () => {
 
                 await setDoc(recDocRef, saveRecData)
                 await createUserRecipeCollection(userId, recipeId)
-                setIsSaved(true)
+                setSavedRecipes(prev => ({
+                    ...prev,
+                    [recipeId]: true
+                }));
 
                 async function createUserRecipeCollection(userId, recipeId) {
                     if (!userId || !recipeId) {
@@ -305,8 +311,17 @@ return (
               ${randomRecipe?.data?.recipes[0]?.title}`}>
           <button className="viewRecipeBTN">VIEW RECIPE</button>
           </Link>
+
+          { 
+            !savedRecipes[randomRecipe?.data?.recipes[0]?.id] ?
+            <span>
           <button className="addRecipeBTN" onClick={() => getRecipeId(randomRecipe?.data?.recipes[0]?.id, user?.uid, user)}>+</button>
+          </span>
+
+          :
+
            <button className="removeRecipeBTN" onClick={() => { }}>-</button>
+           }
         </div>
         </div>
 
@@ -334,7 +349,14 @@ return (
           ${randomRecipe?.data?.recipes[1]?.title}}` }>
           <button className="viewRecipeBTN">VIEW RECIPE</button>
           </Link>
+          {
+            !savedRecipes[randomRecipe?.data?.recipes[1]?.id] ?
+            <span>
           <button className="addRecipeBTN" onClick={() => getRecipeId(randomRecipe?.data?.recipes[1]?.id, user?.uid, user)}>+</button>
+          </span>
+          :
+          <button className="removeRecipeBTN" onClick={() => { }}>-</button>
+        }
         </div>
         </div>
         <div className="foodCard">
@@ -358,7 +380,13 @@ return (
           ${randomRecipe?.data?.recipes[2]?.title}}` }>
           <button className="viewRecipeBTN">VIEW RECIPE</button>
           </Link>
+          {
+            !savedRecipes[randomRecipe?.data?.recipes[2]?.id] ?
+            <span>
           <button className="addRecipeBTN" onClick={() => getRecipeId(randomRecipe?.data?.recipes[2]?.id, user?.uid, user)}>+</button>
+          </span>
+          :
+          <button className="removeRecipeBTN" onClick={() => { }}>-</button>}
         </div>
         </div>
       </div>
@@ -385,7 +413,13 @@ return (
           ${randomRecipe?.data?.recipes[3]?.title}}` }>`
           <button className="viewRecipeBTN">VIEW RECIPE</button>
           </Link>
+          {
+            !savedRecipes[randomRecipe?.data?.recipes[3]?.id] ?
+            <span>
           <button className="addRecipeBTN" onClick={() => getRecipeId(randomRecipe?.data?.recipes[3]?.id, user?.uid, user)}>+</button>
+          </span>
+          :
+          <button className="removeRecipeBTN" onClick={() => { }}>-</button>}
         </div>
         </div>
 
@@ -414,7 +448,14 @@ return (
           ${randomRecipe?.data?.recipes[4]?.title}}` }>` 
           <button className="viewRecipeBTN">VIEW RECIPE</button>
           </Link>
+          {
+            !savedRecipes[randomRecipe?.data?.recipes[4]?.id] ?
+            <span>
           <button className="addRecipeBTN" onClick={() => getRecipeId(randomRecipe?.data?.recipes[4]?.id, user?.uid, user)}>+</button>
+          </span>
+          :
+          <button className="removeRecipeBTN" onClick={() => { }}>-</button>
+          }
         </div>
         </div>
 
@@ -442,7 +483,14 @@ return (
            ${randomRecipe?.data?.recipes[5]?.title}}` }>
           <button className="viewRecipeBTN">VIEW RECIPE</button>
           </Link>
+          {
+            !savedRecipes[randomRecipe?.data?.recipes[5]?.id] ?
+            <span>
           <button className="addRecipeBTN" onClick={() => getRecipeId(randomRecipe?.data?.recipes[5]?.id, user?.uid, user)}>+</button>
+          </span>
+          :
+          <button className="removeRecipeBTN" onClick={() => { }}>-</button>
+          }
         </div>
         </div>
       </div>
@@ -469,7 +517,14 @@ return (
            ${randomRecipe?.data?.recipes[6]?.title}}` }>
           <button className="viewRecipeBTN">VIEW RECIPE</button>
           </Link>
+          {
+            !savedRecipes[randomRecipe?.data?.recipes[6]?.id] ?
+            <span>
           <button className="addRecipeBTN" onClick={() => getRecipeId(randomRecipe?.data?.recipes[6]?.id, user?.uid, user)}>+</button>
+          </span>
+          :
+          <button className="removeRecipeBTN" onClick={() => { }}>-</button>
+          }
         </div>
         </div>
 
@@ -498,7 +553,14 @@ return (
            ${randomRecipe?.data?.recipes[7]?.title}}`  }>
           <button className="viewRecipeBTN">VIEW RECIPE</button>
           </Link>
+          {
+            !savedRecipes[randomRecipe?.data?.recipes[7]?.id] ?
+            <span>
           <button className="addRecipeBTN" onClick={() => getRecipeId(randomRecipe?.data?.recipes[7]?.id, user?.uid, user)}>+</button>
+          </span>
+          :
+          <button className="removeRecipeBTN" onClick={() => { }}>-</button>
+          }
         </div>
         </div>
 
@@ -526,7 +588,14 @@ return (
            ${randomRecipe?.data?.recipes[8]?.title}}`}>
           <button className="viewRecipeBTN">VIEW RECIPE</button>
           </Link>
+          {
+            !savedRecipes[randomRecipe?.data?.recipes[8]?.id] ?
+            <span>
           <button className="addRecipeBTN" onClick={() => getRecipeId(randomRecipe?.data?.recipes[8]?.id, user?.uid, user)}>+</button>
+          </span>
+          :
+          <button className="removeRecipeBTN" onClick={() => { }}>-</button>
+          }
         </div>
         </div>
       </div>
@@ -561,7 +630,14 @@ return (
            ${breakfastNumber[0]?.title}}`}>
           <button className="viewRecipeBTN">VIEW RECIPE</button>
           </Link>
+          {
+            !savedRecipes[breakfastNumber[0]?.id] ?
+            <span>
           <button className="addRecipeBTN" onClick={() => getRecipeId(breakfastNumber[0]?.id, user?.uid, user)}>+</button>
+          </span>
+          :
+          <button className="removeRecipeBTN" onClick={() => { }}>-</button>
+          }
         </div>
         </div>
 
@@ -591,7 +667,14 @@ return (
           ${breakfastNumber[1]?.title}}` }>
           <button className="viewRecipeBTN">VIEW RECIPE</button>
           </Link>
+          {
+            !savedRecipes[breakfastNumber[1]?.id] ?
+            <span>
           <button className="addRecipeBTN" onClick={() => getRecipeId(breakfastNumber[1]?.id, user?.uid, user)}>+</button>
+          </span>
+          :
+          <button className="removeRecipeBTN" onClick={() => { }}>-</button>
+          }
         </div>
         </div>
         <div className="foodCard">
@@ -617,7 +700,13 @@ return (
           ${breakfastNumber[2]?.title}}`}>
           <button className="viewRecipeBTN">VIEW RECIPE</button>
           </Link>
+         { 
+          !savedRecipes[breakfastNumber[2]?.id] ?
+          <span>
           <button className="addRecipeBTN" onClick={() => getRecipeId(breakfastNumber[2]?.id, user?.uid, user)}>+</button>
+          </span>
+          :
+          <button className="removeRecipeBTN" onClick={() => { }}>-</button>}
         </div>
         </div>
       </div>
@@ -652,7 +741,14 @@ return (
           ${lunchNumber[0]?.title}}`}>`
           <button className="viewRecipeBTN">VIEW RECIPE</button>
           </Link>
+          {
+            !savedRecipes[lunchNumber[0]?.id] ?
+            <span>
           <button className="addRecipeBTN" onClick={() => getRecipeId(lunchNumber[0]?.id, user?.uid, user)}>+</button>
+          </span>
+          :
+          <button className="removeRecipeBTN" onClick={() => { }}>-</button>
+          }
         </div>
         </div>
 
@@ -684,7 +780,14 @@ return (
           ${lunchNumber[1]?.title}}`}>
           <button className="viewRecipeBTN">VIEW RECIPE</button>
           </Link>
+          {
+            !savedRecipes[lunchNumber[1]?.id] ?
+            <span>
           <button className="addRecipeBTN" onClick={() => getRecipeId(lunchNumber[1]?.id, user?.uid, user)}>+</button>
+          </span>
+          :
+          <button className="removeRecipeBTN" onClick={() => { }}>-</button>
+          }
         </div>
         </div>
         <div className="foodCard">
@@ -710,7 +813,14 @@ return (
           ${lunchNumber[2]?.title}}`}>
           <button className="viewRecipeBTN">VIEW RECIPE</button>
           </Link>
+          {
+            !savedRecipes[lunchNumber[2]?.id] ?
+            <span>
           <button className="addRecipeBTN" onClick={() => getRecipeId(lunchNumber[2]?.id, user?.uid, user)}>+</button>
+          </span>
+          :
+          <button className="removeRecipeBTN" onClick={() => { }}>-</button>
+          }
         </div>
         </div>
       </div>
@@ -744,7 +854,14 @@ return (
           ${dinnerNumber[0]?.title}}`}>
           <button className="viewRecipeBTN">VIEW RECIPE</button>
           </Link>
+          {
+            !savedRecipes[dinnerNumber[0]?.id] ?
+            <span>
           <button className="addRecipeBTN" onClick={() => getRecipeId(dinnerNumber[0]?.id, user?.uid, user)}>+</button>
+          </span>
+          :
+          <button className="removeRecipeBTN" onClick={() => { }}>-</button>
+          }
         </div>
         </div>
 
@@ -774,7 +891,14 @@ return (
           ${dinnerNumber[1]?.title}}`}>
           <button className="viewRecipeBTN">VIEW RECIPE</button>
           </Link>
+          {
+            !savedRecipes[dinnerNumber[1]?.id] ?
+            <span>
           <button className="addRecipeBTN" onClick={() => getRecipeId(dinnerNumber[1]?.id, user?.uid, user)}>+</button>
+          </span>
+          :
+          <button className="removeRecipeBTN" onClick={() => { }}>-</button>
+          }
         </div>
         </div>
         <div className="foodCard">
@@ -800,7 +924,14 @@ return (
           ${dinnerNumber[2]?.title}}`}>
           <button className="viewRecipeBTN">VIEW RECIPE</button>
           </Link>
+          {
+            !savedRecipes[dinnerNumber[2]?.id] ?
+            <span>
           <button className="addRecipeBTN" onClick={() => getRecipeId(dinnerNumber[2]?.id, user?.uid, user)}>+</button>
+          </span>
+          :
+          <button className="removeRecipeBTN" onClick={() => { }}>-</button>
+          }
         </div>
         </div>
       </div>
@@ -809,7 +940,7 @@ return (
       user?.displayName ?
 
       <div className='welcomeUser'>
-        <h1>welcome to the train way: </h1>
+        <h1>Once again, we say welcome: </h1>
           <h1> {user.displayName}</h1>
       </div>
     :
