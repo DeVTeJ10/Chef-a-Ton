@@ -98,6 +98,13 @@ body{
     margin-top: 70px;
 }
 
+.removeRecipeBTN{
+    background-color: #6B4F31;
+    color: white;
+    border: 0px;
+    /* padding: 8px */
+}
+
 /* .viewRecipeBTN{
     border: 0.5px solid white;
     border-radius: 30px;

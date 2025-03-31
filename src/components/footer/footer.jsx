@@ -10,7 +10,7 @@ const header = () => {
 
 
   const navigate = useNavigate()
-  const apiKey = "edded284742f42ebabb9523442416398"
+  const apiKey = "d42c442326c947f8945a69083e52b6da"
   const [inputValues, setInputValue] = useState('')
   const [searchRecipes, setSearchRecipes] = useState()
 
