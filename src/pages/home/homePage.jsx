@@ -46,7 +46,7 @@ const homepage = () => {
         console.log("checking for user id", user?.uid)
 
 
-        const apiKey = 'd42c442326c947f8945a69083e52b6da' // Api key needed for both apis to work
+        const apiKey = 'd76e5d9754a04d969338e9d1dc2d144b' // Api key needed for both apis to work
 
 
 
@@ -175,27 +175,28 @@ const homepage = () => {
             }
 
 
-            const deleteRecipe = async (user, getId, userId) => {
+            const deleteRecipe = async (recipeId, userId) => {
                 if (!user) {
                     console.error("user is not logged in")
                     return
                 }
 
-                if (!savedRecipes(getId)) {
-                    return
-                }
-
-                const savedRecipesCollectionRef = collection(db, "user_saved_recipes")
-                const savedRecipeId = `${user.uid}_${getId}`
-                const savedRecipeDocRef = doc(savedRecipesCollectionRef, savedRecipeId)
-
                 try {
+                    const savedRecipesCollectionRef = collection(db, "user_saved_recipes")
+                    const savedRecipeId = `${userId}_${recipeId}`
+                    const savedRecipeDocRef = doc(savedRecipesCollectionRef, savedRecipeId)
+                    
                     await deleteDoc(savedRecipeDocRef)
                     console.log("recipe deleted successfully")
+                    
+                    // Update local state to reflect deletion
+                    setSavedRecipes(prev => ({
+                        ...prev,
+                        [recipeId]: false
+                    }));
                 } catch (error) {
-                    console.error("error unsaving recipes", error)
+                    console.error("error unsaving recipe:", error)
                 }
-                setIsSaved(true)
             }
 
 
@@ -345,7 +346,7 @@ return (
 
           :
 
-           <button className="removeRecipeBTN" onClick={() => deleteRecipe(randomRecipe?.data?.recipes[0]?.id, user?.uid, user)}>-</button>
+           <button className="removeRecipeBTN" onClick={() => deleteRecipe(randomRecipe?.data?.recipes[0]?.id, user?.uid)}>-</button>
            }
         </div>
         </div>
@@ -380,7 +381,7 @@ return (
           <button className="addRecipeBTN" onClick={() => getRecipeId(randomRecipe?.data?.recipes[1]?.id, user?.uid, user)}>+</button>
           </span>
           :
-          <button className="removeRecipeBTN" onClick={() => { }}>-</button>
+          <button className="removeRecipeBTN" onClick={() => deleteRecipe(randomRecipe?.data?.recipes[1]?.id, user?.uid)}>-</button>
         }
         </div>
         </div>
@@ -411,7 +412,7 @@ return (
           <button className="addRecipeBTN" onClick={() => getRecipeId(randomRecipe?.data?.recipes[2]?.id, user?.uid, user)}>+</button>
           </span>
           :
-          <button className="removeRecipeBTN" onClick={() => { }}>-</button>}
+          <button className="removeRecipeBTN" onClick={() => deleteRecipe(randomRecipe?.data?.recipes[2]?.id, user?.uid)}>-</button>}
         </div>
         </div>
       </div>
@@ -444,7 +445,7 @@ return (
           <button className="addRecipeBTN" onClick={() => getRecipeId(randomRecipe?.data?.recipes[3]?.id, user?.uid, user)}>+</button>
           </span>
           :
-          <button className="removeRecipeBTN" onClick={() => { }}>-</button>}
+          <button className="removeRecipeBTN" onClick={() => deleteRecipe(randomRecipe?.data?.recipes[3]?.id, user?.uid)}>-</button>}
         </div>
         </div>
 
@@ -479,7 +480,7 @@ return (
           <button className="addRecipeBTN" onClick={() => getRecipeId(randomRecipe?.data?.recipes[4]?.id, user?.uid, user)}>+</button>
           </span>
           :
-          <button className="removeRecipeBTN" onClick={() => { }}>-</button>
+          <button className="removeRecipeBTN" onClick={() => deleteRecipe(randomRecipe?.data?.recipes[4]?.id, user?.uid)}>-</button>
           }
         </div>
         </div>
@@ -514,7 +515,7 @@ return (
           <button className="addRecipeBTN" onClick={() => getRecipeId(randomRecipe?.data?.recipes[5]?.id, user?.uid, user)}>+</button>
           </span>
           :
-          <button className="removeRecipeBTN" onClick={() => { }}>-</button>
+          <button className="removeRecipeBTN" onClick={() => deleteRecipe(randomRecipe?.data?.recipes[5]?.id, user?.uid)}>-</button>
           }
         </div>
         </div>
@@ -548,7 +549,7 @@ return (
           <button className="addRecipeBTN" onClick={() => getRecipeId(randomRecipe?.data?.recipes[6]?.id, user?.uid, user)}>+</button>
           </span>
           :
-          <button className="removeRecipeBTN" onClick={() => { }}>-</button>
+          <button className="removeRecipeBTN" onClick={() => deleteRecipe(randomRecipe?.data?.recipes[6]?.id, user?.uid)}>-</button>
           }
         </div>
         </div>
@@ -584,7 +585,7 @@ return (
           <button className="addRecipeBTN" onClick={() => getRecipeId(randomRecipe?.data?.recipes[7]?.id, user?.uid, user)}>+</button>
           </span>
           :
-          <button className="removeRecipeBTN" onClick={() => { }}>-</button>
+          <button className="removeRecipeBTN" onClick={() => deleteRecipe(randomRecipe?.data?.recipes[7]?.id, user?.uid)}>-</button>
           }
         </div>
         </div>
@@ -619,7 +620,7 @@ return (
           <button className="addRecipeBTN" onClick={() => getRecipeId(randomRecipe?.data?.recipes[8]?.id, user?.uid, user)}>+</button>
           </span>
           :
-          <button className="removeRecipeBTN" onClick={() => { }}>-</button>
+          <button className="removeRecipeBTN" onClick={() => deleteRecipe(randomRecipe?.data?.recipes[8]?.id, user?.uid)}>-</button>
           }
         </div>
         </div>
@@ -661,7 +662,7 @@ return (
           <button className="addRecipeBTN" onClick={() => getRecipeId(breakfastNumber[0]?.id, user?.uid, user)}>+</button>
           </span>
           :
-          <button className="removeRecipeBTN" onClick={() => { }}>-</button>
+          <button className="removeRecipeBTN" onClick={() => deleteRecipe(breakfastNumber[0]?.id, user?.uid)}>-</button>
           }
         </div>
         </div>
@@ -698,7 +699,7 @@ return (
           <button className="addRecipeBTN" onClick={() => getRecipeId(breakfastNumber[1]?.id, user?.uid, user)}>+</button>
           </span>
           :
-          <button className="removeRecipeBTN" onClick={() => { }}>-</button>
+          <button className="removeRecipeBTN" onClick={() => deleteRecipe(breakfastNumber[1]?.id, user?.uid)}>-</button>
           }
         </div>
         </div>
@@ -731,7 +732,7 @@ return (
           <button className="addRecipeBTN" onClick={() => getRecipeId(breakfastNumber[2]?.id, user?.uid, user)}>+</button>
           </span>
           :
-          <button className="removeRecipeBTN" onClick={() => { }}>-</button>}
+          <button className="removeRecipeBTN" onClick={() => deleteRecipe(breakfastNumber[2]?.id, user?.uid)}>-</button>}
         </div>
         </div>
       </div>
@@ -772,7 +773,7 @@ return (
           <button className="addRecipeBTN" onClick={() => getRecipeId(lunchNumber[0]?.id, user?.uid, user)}>+</button>
           </span>
           :
-          <button className="removeRecipeBTN" onClick={() => { }}>-</button>
+          <button className="removeRecipeBTN" onClick={() => deleteRecipe(lunchNumber[0]?.id, user?.uid)}>-</button>
           }
         </div>
         </div>
@@ -811,7 +812,7 @@ return (
           <button className="addRecipeBTN" onClick={() => getRecipeId(lunchNumber[1]?.id, user?.uid, user)}>+</button>
           </span>
           :
-          <button className="removeRecipeBTN" onClick={() => { }}>-</button>
+          <button className="removeRecipeBTN" onClick={() => deleteRecipe(lunchNumber[1]?.id, user?.uid)}>-</button>
           }
         </div>
         </div>
@@ -844,7 +845,7 @@ return (
           <button className="addRecipeBTN" onClick={() => getRecipeId(lunchNumber[2]?.id, user?.uid, user)}>+</button>
           </span>
           :
-          <button className="removeRecipeBTN" onClick={() => { }}>-</button>
+          <button className="removeRecipeBTN" onClick={() => deleteRecipe(lunchNumber[2]?.id, user?.uid)}>-</button>
           }
         </div>
         </div>
@@ -885,7 +886,7 @@ return (
           <button className="addRecipeBTN" onClick={() => getRecipeId(dinnerNumber[0]?.id, user?.uid, user)}>+</button>
           </span>
           :
-          <button className="removeRecipeBTN" onClick={() => { }}>-</button>
+          <button className="removeRecipeBTN" onClick={() => deleteRecipe(dinnerNumber[0]?.id, user?.uid)}>-</button>
           }
         </div>
         </div>
@@ -922,7 +923,7 @@ return (
           <button className="addRecipeBTN" onClick={() => getRecipeId(dinnerNumber[1]?.id, user?.uid, user)}>+</button>
           </span>
           :
-          <button className="removeRecipeBTN" onClick={() => { }}>-</button>
+          <button className="removeRecipeBTN" onClick={() => deleteRecipe(dinnerNumber[1]?.id, user?.uid)}>-</button>
           }
         </div>
         </div>
@@ -955,7 +956,7 @@ return (
           <button className="addRecipeBTN" onClick={() => getRecipeId(dinnerNumber[2]?.id, user?.uid, user)}>+</button>
           </span>
           :
-          <button className="removeRecipeBTN" onClick={() => { }}>-</button>
+          <button className="removeRecipeBTN" onClick={() => deleteRecipe(dinnerNumber[2]?.id, user?.uid)}>-</button>
           }
         </div>
         </div>

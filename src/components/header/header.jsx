@@ -12,7 +12,7 @@ const Header = () => {
     const navigate = useNavigate()
     const [searchForRecipes, setSearchForRecipes] = useState()
     const [inputValue, setInputValue] = useState('')
-    const apiKey = 'd42c442326c947f8945a69083e52b6da'
+    const apiKey = 'd76e5d9754a04d969338e9d1dc2d144b'
 
 
     console.log("checking availability of users",user);
