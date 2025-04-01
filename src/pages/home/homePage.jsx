@@ -13,10 +13,7 @@ import { app } from '../../firebase';
 
 import useUserName from "../../userNameHook";
 
-
-
-
-const homepage = () => {
+const Homepage = () => {
 
         const [randomRecipe, setRandomRecipe] = useState(""); // Holding the api data called.
         const [breakfastRecipe, setBreakfastRecipes] = useState([""]); // Holding breakfast filtered recipes.
@@ -987,4 +984,4 @@ return (
   );
 };
 
-export default homepage;
+export default Homepage;
