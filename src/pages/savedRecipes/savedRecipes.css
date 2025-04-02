@@ -75,7 +75,7 @@ body {
 .ingredientsList h4 {
   color: #6B4F31;
   margin-bottom: 8px;
-  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  /* font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; */
 }
 
 .ingredientsList ul {
@@ -87,7 +87,7 @@ body {
 .ingredientsList li {
   font-size: 0.9em;
   margin-bottom: 5px;
-  color: #666;
+  color: #6B4F31;
 }
 
 .recipeMeta {
@@ -97,11 +97,12 @@ body {
   margin-top: 15px;
   flex-wrap: wrap;
   gap: 10px;
+  color: #6B4F31;
 }
 
 .savedDate {
   font-size: 0.8em;
-  color: #888;
+  color: #6B4F31;
 }
 
 .viewRecipeBtn {
