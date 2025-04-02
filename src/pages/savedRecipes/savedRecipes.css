@@ -1,3 +1,131 @@
 body {
     background-color: #A8B5A1; /* Universal background color */
 }
+
+
+.savedRecipe{
+    border: #6b4f31 1px solid;
+}
+
+.savedRecipesContainer {
+  padding: 20px;
+  min-height: 100vh;
+  background-color: #A8B5A1;
+}
+
+.savedRecipesTitle {
+  text-align: center;
+  color: #6B4F31;
+  margin: 30px 0;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.recipesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 30px;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.recipeCard {
+  background-color: #A8B5A1;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+}
+
+.recipeCard:hover {
+  transform: translateY(-5px);
+}
+
+.recipeImageContainer {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+}
+
+.recipeImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.recipeContent {
+  padding: 20px;
+}
+
+.recipeName {
+  color: #6B4F31;
+  margin-bottom: 15px;
+  font-size: 1.2em;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.recipeDetails {
+  color: #6B4F31;
+}
+
+.ingredientsList {
+  margin-bottom: 15px;
+}
+
+.ingredientsList h4 {
+  color: #6B4F31;
+  margin-bottom: 8px;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.ingredientsList ul {
+  list-style: none;
+  padding-left: 0;
+  color: #6B4F31;
+}
+
+.ingredientsList li {
+  font-size: 0.9em;
+  margin-bottom: 5px;
+  color: #666;
+}
+
+.recipeMeta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 15px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.savedDate {
+  font-size: 0.8em;
+  color: #888;
+}
+
+.viewRecipeBtn {
+  background-color: #6B4F31;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.viewRecipeBtn:hover {
+  background-color: #5a4228;
+}
+
+@media (max-width: 768px) {
+  .recipesGrid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    padding: 10px;
+  }
+  
+  .recipeCard {
+    margin: 10px;
+  }
+}

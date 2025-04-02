@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+// import { useParams } from 'react-router-dom';
 import Header from "../../components/header/header";
 import Footer from "../../components/footer/footer";
 import cooking1 from "../../images/cooking1.jpg";
@@ -8,7 +8,7 @@ import sushi from "../../images/foodsushi.jpg";
 import "./home.css"
 import _ from 'lodash';
 import { Link } from 'react-router-dom';
-import { getFirestore, setDoc, addDoc, doc, collection, Firestore, getDoc, serverTimestamp, deleteDoc } from 'firebase/firestore';
+import { getFirestore, setDoc, doc, collection, getDoc, serverTimestamp, deleteDoc } from 'firebase/firestore';
 import { app } from '../../firebase';
 
 import useUserName from "../../userNameHook";
