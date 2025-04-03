@@ -75,6 +75,7 @@ const SavedRecipesPage = () => {
                     <Link to={`/recipe-page/${recipe.recipeId}/${recipe.recipeName}`}>
                       <button className="viewRecipeBtn">View Recipe</button>
                     </Link>
+                    <button className='deleteRecipe'>-</button>
                   </div>
                 </div>
               </div>

@@ -103,6 +103,13 @@ body {
 .savedDate {
   font-size: 0.8em;
   color: #6B4F31;
+  cursor: pointer;
+}
+
+.deleteRecipe{
+    background-color: #6B4F31;
+    color: white;
+    border: 0px
 }
 
 .viewRecipeBtn {
