@@ -31,7 +31,7 @@ body {
 
 .recipeCard {
   background-color: #A8B5A1;
-  border-radius: 15px;
+  border-radius: 15px #6B4f31 solid;
   overflow: hidden;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s;
