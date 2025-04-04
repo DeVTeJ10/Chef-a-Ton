@@ -40,6 +40,13 @@ const SavedRecipesPage = () => {
       }
     }, [user, userId]);
 
+
+
+    const deleteSavedRecipe = () => {
+
+      
+    }
+
     return (
       <div className="savedRecipesContainer">
         <Header />
