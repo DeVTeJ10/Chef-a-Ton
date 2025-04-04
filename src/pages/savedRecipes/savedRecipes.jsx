@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { getFirestore, collection, getDocs, query } from 'firebase/firestore';
+import { getFirestore, collection, getDocs, query, deleteDoc } from 'firebase/firestore';
 import Header from "../../components/header/header"
 import useUserName from "../../userNameHook";
 import "./savedRecipes.css"
@@ -42,9 +42,28 @@ const SavedRecipesPage = () => {
 
 
 
-    const deleteSavedRecipe = () => {
+    const deleteSavedRecipe = async () => {
 
-      
+        if (!userId) {
+          console.error("user is not signed in")
+          return []
+        }
+
+
+
+          const savedCollectionRef = collection(db, "saved recipes collection")
+          const savedRecipeId = `${userId}_${recipeId}`
+          const savedRecipeDocRef = doc(savedCollectionRef, savedRecipeId)
+  
+          if (savedRecipeDocRef){
+  
+            await deleteDoc(savedRecipeDocRef)
+            console.log("recipe delted succesfully")
+          }
+
+
+       
+
     }
 
     return (
