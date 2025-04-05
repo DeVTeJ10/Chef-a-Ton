@@ -49,8 +49,7 @@ const SavedRecipesPage = () => {
           return []
         }
 
-
-
+        try {
           const savedCollectionRef = collection(db, "saved recipes collection")
           const savedRecipeId = `${userId}_${recipeId}`
           const savedRecipeDocRef = doc(savedCollectionRef, savedRecipeId)
@@ -59,7 +58,14 @@ const SavedRecipesPage = () => {
   
             await deleteDoc(savedRecipeDocRef)
             console.log("recipe delted succesfully")
-          }
+            
+          }setSavedRecipes(prev => ({
+            ...prev,
+            [recipeId]: false
+        }));
+        } catch (error) {
+            console.error("error unsaving recipe:", error)
+        }
 
 
        
@@ -101,7 +107,7 @@ const SavedRecipesPage = () => {
                     <Link to={`/recipe-page/${recipe.recipeId}/${recipe.recipeName}`}>
                       <button className="viewRecipeBtn">View Recipe</button>
                     </Link>
-                    <button className='deleteRecipe'>-</button>
+                    <button className='deleteRecipe' onClick={deleteSavedRecipe()}>-</button>
                   </div>
                 </div>
               </div>
