@@ -1,7 +1,8 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-import { getFirestore, collection, getDocs, query, deleteDoc } from 'firebase/firestore';
+import { getFirestore, collection, getDocs, query, deleteDoc, doc } from 'firebase/firestore';
 import Header from "../../components/header/header"
 import useUserName from "../../userNameHook";
 import "./savedRecipes.css"
@@ -12,6 +13,10 @@ const SavedRecipesPage = () => {
     const { user } = useUserName();
     const userId = user?.uid;
     const db = getFirestore(app);
+    const { id } = useParams() 
+
+
+    // const recipeId = 
     
     async function getSavedRecipes(user, userId) {
       if (!userId) {
@@ -107,7 +112,9 @@ const SavedRecipesPage = () => {
                     <Link to={`/recipe-page/${recipe.recipeId}/${recipe.recipeName}`}>
                       <button className="viewRecipeBtn">View Recipe</button>
                     </Link>
-                    <button className='deleteRecipe' onClick={deleteSavedRecipe()}>-</button>
+                    <button className="saveRecipeButton" onClick={() => deleteSavedRecipe(user, id)}>
+              Unsave Recipe
+            </button>
                   </div>
                 </div>
               </div>
