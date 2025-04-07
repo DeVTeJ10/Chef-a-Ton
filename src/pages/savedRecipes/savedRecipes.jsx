@@ -1,6 +1,6 @@
-import React from 'react';
+// import React from 'react';
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+// import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { getFirestore, collection, getDocs, query, deleteDoc, doc } from 'firebase/firestore';
 import Header from "../../components/header/header"
@@ -13,10 +13,10 @@ const SavedRecipesPage = () => {
     const { user } = useUserName();
     const userId = user?.uid;
     const db = getFirestore(app);
-    const { id } = useParams() 
+    // const { id } = useParams() 
 
 
-    // const recipeId = 
+
     
     async function getSavedRecipes(user, userId) {
       if (!userId) {
@@ -42,40 +42,32 @@ const SavedRecipesPage = () => {
     useEffect(() => {
       if (userId) {
         getSavedRecipes(user, userId);
+        console.log("Saved recipe IDs:", displaySavedRecipes.map(recipe => recipe.recipeId));
       }
     }, [user, userId]);
 
 
 
-    const deleteSavedRecipe = async () => {
+    const deleteSavedRecipe = async (user, recipeId) => {
+      if (!userId) {
+        console.error("user is not signed in");
+        return [];
+      }
 
-        if (!userId) {
-          console.error("user is not signed in")
-          return []
+      try {
+        const savedCollectionRef = collection(db, "saved recipes collection");
+        const savedRecipeId = `${userId}_${recipeId}`;
+        const savedRecipeDocRef = doc(savedCollectionRef, savedRecipeId);
+
+        if (savedRecipeDocRef) {
+          await deleteDoc(savedRecipeDocRef);
+          console.log("recipe deleted successfully");
         }
-
-        try {
-          const savedCollectionRef = collection(db, "saved recipes collection")
-          const savedRecipeId = `${userId}_${recipeId}`
-          const savedRecipeDocRef = doc(savedCollectionRef, savedRecipeId)
-  
-          if (savedRecipeDocRef){
-  
-            await deleteDoc(savedRecipeDocRef)
-            console.log("recipe delted succesfully")
-            
-          }setSavedRecipes(prev => ({
-            ...prev,
-            [recipeId]: false
-        }));
-        } catch (error) {
-            console.error("error unsaving recipe:", error)
-        }
-
-
-       
-
-    }
+        setdisplaySavedRecipes(prev => prev.filter(recipe => recipe.recipeId !== recipeId));
+      } catch (error) {
+        console.error("error unsaving recipe:", error);
+      }
+    };
 
     return (
       <div className="savedRecipesContainer">
@@ -112,9 +104,9 @@ const SavedRecipesPage = () => {
                     <Link to={`/recipe-page/${recipe.recipeId}/${recipe.recipeName}`}>
                       <button className="viewRecipeBtn">View Recipe</button>
                     </Link>
-                    <button className="saveRecipeButton" onClick={() => deleteSavedRecipe(user, id)}>
-              Unsave Recipe
-            </button>
+                    <button className="saveRecipeButton" onClick={() => deleteSavedRecipe(user, recipe.recipeId)}>
+                      Unsave Recipe
+                    </button>
                   </div>
                 </div>
               </div>
