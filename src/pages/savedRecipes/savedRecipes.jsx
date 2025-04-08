@@ -104,7 +104,7 @@ const SavedRecipesPage = () => {
                     <Link to={`/recipe-page/${recipe.recipeId}/${recipe.recipeName}`}>
                       <button className="viewRecipeBtn">View Recipe</button>
                     </Link>
-                    <button className="saveRecipeButton" onClick={() => deleteSavedRecipe(user, recipe.recipeId)}>
+                    <button className="saveRecipeButton" onClick={() => deleteSavedRecipe(user.uid, recipe.recipeId)}>
                       Unsave Recipe
                     </button>
                   </div>
