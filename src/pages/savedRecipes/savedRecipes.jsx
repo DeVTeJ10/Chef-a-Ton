@@ -48,24 +48,24 @@ const SavedRecipesPage = () => {
 
 
 
-    const deleteSavedRecipe = async (user, recipeId) => {
-      if (!userId) {
-        console.error("user is not signed in");
-        return [];
+    const deleteSavedRecipe = async (recipeId, userId) => {
+      if (!user) {
+        console.error("User is not logged in");
+        return;
       }
 
       try {
-        const savedCollectionRef = collection(db, "saved recipes collection");
+        const savedRecipesCollectionRef = collection(db, "user_saved_recipes");
         const savedRecipeId = `${userId}_${recipeId}`;
-        const savedRecipeDocRef = doc(savedCollectionRef, savedRecipeId);
-
-        if (savedRecipeDocRef) {
-          await deleteDoc(savedRecipeDocRef);
-          console.log("recipe deleted successfully");
-        }
+        const savedRecipeDocRef = doc(savedRecipesCollectionRef, savedRecipeId);
+        
+        await deleteDoc(savedRecipeDocRef);
+        console.log("Recipe deleted successfully");
+        
+        // Update local state to reflect deletion
         setdisplaySavedRecipes(prev => prev.filter(recipe => recipe.recipeId !== recipeId));
       } catch (error) {
-        console.error("error unsaving recipe:", error);
+        console.error("Error unsaving recipe:", error);
       }
     };
 
@@ -104,7 +104,7 @@ const SavedRecipesPage = () => {
                     <Link to={`/recipe-page/${recipe.recipeId}/${recipe.recipeName}`}>
                       <button className="viewRecipeBtn">View Recipe</button>
                     </Link>
-                    <button className="saveRecipeButton" onClick={() => deleteSavedRecipe(user.uid, recipe.recipeId)}>
+                    <button className="saveRecipeButton" onClick={() => deleteSavedRecipe(recipe.recipeId, user.uid)}>
                       Unsave Recipe
                     </button>
                   </div>
