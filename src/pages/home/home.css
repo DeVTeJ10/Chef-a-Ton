@@ -6,6 +6,11 @@ body{
     margin-top: 20px;
 }
 
+
+@media(max-width: 480px) {
+
+}
+
 .cookingteam{
     display: flex;
     justify-content: center;
