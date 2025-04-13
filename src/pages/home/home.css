@@ -9,6 +9,12 @@ body{
 
 @media(max-width: 480px) {
 
+    .cardFood{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin-left: 90px;
+    }
 }
 
 .cookingteam{
