@@ -17,8 +17,27 @@ body{
     }
 
     .foodCard{
-        display: flex;flex-direction: column;
+        display: flex;
+        flex-direction: column;
         justify-content: center;
+    }
+
+    .featTheRecipes{
+        border: 0.5px solid #6B4F31 ;
+        border-radius: 10px;
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        font-size:larger;
+    }
+
+    .healthWealth{
+        display: flex;
+        justify-content: center;
+        margin-top: -30px;
+        padding-left: 30px;
+        padding-right: 30px;
     }
 }
 
