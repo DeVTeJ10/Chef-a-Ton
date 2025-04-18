@@ -33,6 +33,18 @@
 
 } 
 
+@media(max-width: 480px) {
+
+    .heading2{
+        /* padding-left: 50px;
+        padding-right: 50px; */
+        font-size: small;
+        display: flex;
+        flex-direction: column;
+    }
+
+}
+
 .heading2{
     padding-left: 50px;
     padding-right: 50px;

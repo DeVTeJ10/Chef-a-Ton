@@ -310,7 +310,9 @@ return (
           <h1 className='featTheRecipes'> Some of our featured recipes,<br></br> you could potentially try out.</h1>
         </div>
         </div>
+        <div className='healthswealth'>
         <p className="healthWealth">Health is wealth they say yeah?, so have a Ton of recipe in your pocket.</p>
+        </div>
 
       <div className="cardFood">
       <div className="foodCard">
