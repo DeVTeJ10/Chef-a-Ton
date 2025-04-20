@@ -14,7 +14,7 @@
 
     .heading{
         display: flex;
-        flex-direction: column;
+        /* flex-direction: column; */
         padding-left: 70px;
         /* justify-content: center; */
         align-items: center;

@@ -58,7 +58,10 @@ body{
 }
 
 
-.cookingteamton{
+.cookingteamton {
+    width: 100%; 
+    height: auto; 
+    max-width: 480px;
     padding-left: 50px;
     padding-right: 50px;
     border-radius: 5%;
