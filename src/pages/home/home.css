@@ -49,6 +49,48 @@ body{
         margin-top: 30px;
     }
 
+    .cookingteamton {
+        width: 100%; 
+        height: auto; 
+        max-width: 480px;
+        padding-left: 50px;
+        padding-right: 50px;
+        border-radius: 5%;
+        filter: brightness(50%); /* Adjust the blur intensity */
+    }
+
+    .breakfast{
+        padding-left: 5px;
+        padding-right: 5px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        color: white;
+        background-color: #6B4F31;
+        justify-content: center;
+    }
+    
+    .lunch{
+        padding-left: 5px;
+        padding-right: 5px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        color: white;
+        background-color: #6B4F31;
+        display: flex;
+        justify-content: center;
+    
+    }
+    
+    .dinner{
+        padding-left: 5px;
+        padding-right: 5px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        color: white;
+        background-color: #6B4F31;
+    }
+    
+
 }
 
 .cookingteam{
@@ -59,9 +101,9 @@ body{
 
 
 .cookingteamton {
-    width: 100%; 
+    /* width: 100%; 
     height: auto; 
-    max-width: 480px;
+    max-width: 480px; */
     padding-left: 50px;
     padding-right: 50px;
     border-radius: 5%;
