@@ -10,6 +10,9 @@
 @media(max-width: 480px){
     .headers{
         display: flex;
+        gap: 20px;
+        
+
     }
 
     .heading{
@@ -53,6 +56,21 @@
         font-size: small;
         display: flex;
         flex-direction: column;
+    }
+
+    /* .headersLinks{
+        padding-left: 60px;
+        display: flex;
+        justify-content: center;
+    } */
+
+    .inputRecipe{
+        padding-left: 5px;
+        padding-right: 5px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        border-radius: 20px;
+        border: 0px;
     }
 
 }
