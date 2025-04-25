@@ -1,11 +1,4 @@
-.headers{
-    display: flex;
-    gap:60px;
-    border: 0.5px solid #786C3B;
-    border-radius: 30px;
-    padding-left: 20px;
-    padding-right: 20px;
-}
+
 
 @media(max-width: 480px){
     .headers{
@@ -17,14 +10,6 @@
         padding-right: 20px;
     }
 
-    .heading{
-        display: flex;
-        padding-left: 70px;
-        align-items: center;
-        margin-top: 40px;
-        gap: 70px;
-        border-radius: 30px;
-    }
 
     .heading2{
         font-size: small;
@@ -43,6 +28,15 @@
     }
 
 
+}
+
+.headers{
+    display: flex;
+    gap:60px;
+    border: 0.5px solid #786C3B;
+    border-radius: 30px;
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
 .heading{
