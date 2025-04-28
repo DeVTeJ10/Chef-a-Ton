@@ -95,7 +95,6 @@
 
     .similarRecipes{
         display: flex;
-        flex-direction: column;
         justify-content: center;
         gap: 30px;
         border: 0.5px solid #6B4F31;
@@ -103,6 +102,14 @@
         padding-top: 30px;
         padding-bottom: 30px;
         margin-top: 100px;
+    }
+
+    .firstrecipecontent{
+        margin-top: 80px;
+        display: flex;
+        flex-direction: column;
+        font-size: small;
+        justify-content: center;
     }
 }
 
