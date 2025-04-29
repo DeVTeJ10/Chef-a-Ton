@@ -356,7 +356,7 @@ console.log("similar post info", similarPost)
                 </div>
                 <div>
                 <h2>Equipments: </h2>
-                <p>{postInfo?.data?.analyzedInstructions?.[0]?.steps?.map((equipments) => (
+                <p className="instructionsedit">{postInfo?.data?.analyzedInstructions?.[0]?.steps?.map((equipments) => (
                   <li key={equipments.equipment[0]?.id}>
                     {equipments?.equipment[0]?.name}
                   </li>
