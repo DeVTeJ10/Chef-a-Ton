@@ -111,6 +111,19 @@
         font-size: small;
         justify-content: center;
     }
+
+    .loremthekingsun{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding-left: 50px;
+        padding-right: 100px;
+        margin-top: 30px;
+        /* gap: 30px; */
+    }
+    .instructionsedit{
+        margin-top: 50px;
+    }
 }
 
 
