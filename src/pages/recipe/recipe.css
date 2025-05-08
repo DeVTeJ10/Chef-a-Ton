@@ -150,6 +150,11 @@
         gap: 10px;
         font-size: larger;
     }
+
+    .foodtimelapse{
+        padding-right: 500px; 
+        margin-bottom: 30px;
+    }
 }
 
 
