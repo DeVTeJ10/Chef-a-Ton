@@ -140,7 +140,7 @@
 
     .foodingrecipe{
         display: flex;
-        justify-content: center;
+        padding-right: 40px;
     }
 
 
@@ -152,7 +152,7 @@
     }
 
     .foodtimelapse{
-        padding-right: 500px; 
+
         margin-bottom: 30px;
     }
 }
