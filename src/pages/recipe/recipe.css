@@ -155,6 +155,7 @@
     .foodtimelapse{
         text-align: center;
         display: flex;
+        display: flex;
         margin-left: -300px;
         margin-bottom: 30px;
     }
