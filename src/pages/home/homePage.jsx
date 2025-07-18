@@ -8,7 +8,7 @@ import sushi from "../../images/foodsushi.jpg";
 import "./home.css"
 import _ from 'lodash';
 import { Link } from 'react-router-dom';
-import { getFirestore, setDoc, doc, collection, getDoc, serverTimestamp, deleteDoc } from 'firebase/firestore';
+import { getFirestore, setDoc, doc, collection, serverTimestamp, deleteDoc } from 'firebase/firestore';
 import { app } from '../../firebase';
 
 import useUserName from "../../userNameHook";
@@ -23,11 +23,7 @@ const Homepage = () => {
         const [lunchNumber, setLunchNumber] = useState("")
         const [dinnerNumber, setDinnerNumber] = useState("")
         const [savedRecipes, setSavedRecipes] = useState({});
-        const [isAvailable, setIsAvailable] = useState()
-        const [getId, setGetid] = useState()
-        const [isSaved, setIsSaved] = useState(true)
         const { user } = useUserName();
-        const userId = user?.id
         const userName = user?.displayName
         // console.log("checking for ids to save recipes on homepage",recipeIds)
 
