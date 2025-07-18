@@ -22,13 +22,10 @@ const Homepage = () => {
         const [breakfastNumber, setBreakfastNumber] = useState("")
         const [lunchNumber, setLunchNumber] = useState("")
         const [dinnerNumber, setDinnerNumber] = useState("")
-        const [isAvailable, setIsAvailable] = useState()
         const [savedRecipes, setSavedRecipes] = useState({});
+        const [isAvailable, setIsAvailable] = useState()
         const [getId, setGetid] = useState()
         const [isSaved, setIsSaved] = useState(true)
-
-
-
         const { user } = useUserName();
         const userId = user?.id
         const userName = user?.displayName
@@ -50,7 +47,6 @@ const Homepage = () => {
 
         const getRecipeId = async (id, userId, user) => {
             if (randomRecipe && user && userId) {
-                setGetid(id)
                 console.log("This is the id from the clicked recipe", `${id}`)
                 await savingRecipes(user, randomRecipe, userId, id)
                 setSavedRecipes(prev => ({
@@ -111,8 +107,6 @@ const Homepage = () => {
                 
                 const recCollRef = collection(db, "recipes")
                 const recDocRef = doc(recCollRef, recipeId)
-                const docSnap = await getDoc(recDocRef)
-                setIsAvailable(docSnap)
 
                 if (!randomRecipe) {
                     console.error("No recipe data to work with, randomRecipe is not available", randomRecipe)
@@ -332,8 +326,7 @@ return (
 
         <div className="timePrepRecipe">
           <p className="timePrep">{randomRecipe?.data?.recipes[0].readyInMinutes}Min - easy prep - {randomRecipe?.data?.recipes[0].servings} serves</p>
-          <Link to={`/recipe-page/${randomRecipe?.data?.recipes[0]?.id}/
-              ${randomRecipe?.data?.recipes[0]?.title}`}>
+          <Link to={`/recipe-page/${randomRecipe?.data?.recipes[0]?.id}/${randomRecipe?.data?.recipes[0]?.title}`}>
           <button className="viewRecipeBTN">VIEW RECIPE</button>
           </Link>
 
@@ -370,8 +363,7 @@ return (
 
         <div className="timePrepRecipe">
           <p className="timePrep">{randomRecipe?.data?.recipes[1].readyInMinutes}Min - easy prep - {randomRecipe?.data?.recipes[1].servings} serves</p>
-          <Link to={`/recipe-page/${randomRecipe?.data?.recipes[1]?.id}/
-          ${randomRecipe?.data?.recipes[1]?.title}}` }>
+          <Link to={`/recipe-page/${randomRecipe?.data?.recipes[1]?.id}/${randomRecipe?.data?.recipes[1]?.title}`}>
           <button className="viewRecipeBTN">VIEW RECIPE</button>
           </Link>
           {
@@ -401,8 +393,7 @@ return (
 
         <div className="timePrepRecipe">
           <p className="timePrep">{randomRecipe?.data?.recipes[2].readyInMinutes}Min - easy prep - {randomRecipe?.data?.recipes[2].servings} serves</p>
-          <Link to={`/recipe-page/${randomRecipe?.data?.recipes[2]?.id}/
-          ${randomRecipe?.data?.recipes[2]?.title}}` }>
+          <Link to={`/recipe-page/${randomRecipe?.data?.recipes[2]?.id}/${randomRecipe?.data?.recipes[2]?.title}`}>
           <button className="viewRecipeBTN">VIEW RECIPE</button>
           </Link>
           {
@@ -434,8 +425,7 @@ return (
 
         <div className="timePrepRecipe">
           <p className="timePrep">{randomRecipe?.data?.recipes[3].readyInMinutes}Min - easy prep - {randomRecipe?.data?.recipes[3].servings} serves</p>
-          <Link to={`/recipe-page/${randomRecipe?.data?.recipes[3]?.id}/
-          ${randomRecipe?.data?.recipes[3]?.title}}` }>`
+          <Link to={`/recipe-page/${randomRecipe?.data?.recipes[3]?.id}/${randomRecipe?.data?.recipes[3]?.title}`}>
           <button className="viewRecipeBTN">VIEW RECIPE</button>
           </Link>
           {
@@ -469,8 +459,7 @@ return (
 
         <div className="timePrepRecipe">
           <p className="timePrep">{randomRecipe?.data?.recipes[4].readyInMinutes}Min - easy prep - {randomRecipe?.data?.recipes[4].servings} serves</p>
-          <Link to={`/recipe-page/${randomRecipe?.data?.recipes[4]?.id}/
-          ${randomRecipe?.data?.recipes[4]?.title}}` }>` 
+          <Link to={`/recipe-page/${randomRecipe?.data?.recipes[4]?.id}/${randomRecipe?.data?.recipes[4]?.title}`}>
           <button className="viewRecipeBTN">VIEW RECIPE</button>
           </Link>
           {
@@ -504,8 +493,7 @@ return (
 
         <div className="timePrepRecipe">
           <p className="timePrep">{randomRecipe?.data?.recipes[5].readyInMinutes}Min - easy prep - {randomRecipe?.data?.recipes[5].servings} serves</p>
-          <Link to={`/recipe-page/${randomRecipe?.data?.recipes[5]?.id}/
-           ${randomRecipe?.data?.recipes[5]?.title}}` }>
+          <Link to={`/recipe-page/${randomRecipe?.data?.recipes[5]?.id}/${randomRecipe?.data?.recipes[5]?.title}`}>
           <button className="viewRecipeBTN">VIEW RECIPE</button>
           </Link>
           {
@@ -538,8 +526,7 @@ return (
 
         <div className="timePrepRecipe">
           <p className="timePrep">{randomRecipe?.data?.recipes[6].readyInMinutes}Min - easy prep - {randomRecipe?.data?.recipes[6].servings} serves</p>
-          <Link to={`/recipe-page/${randomRecipe?.data?.recipes[6]?.id}/
-           ${randomRecipe?.data?.recipes[6]?.title}}` }>
+          <Link to={`/recipe-page/${randomRecipe?.data?.recipes[6]?.id}/${randomRecipe?.data?.recipes[6]?.title}`}>
           <button className="viewRecipeBTN">VIEW RECIPE</button>
           </Link>
           {
@@ -574,8 +561,7 @@ return (
 
         <div className="timePrepRecipe">
           <p className="timePrep">{randomRecipe?.data?.recipes[7].readyInMinutes}Min - easy prep - {randomRecipe?.data?.recipes[7].servings} serves</p>
-          <Link to={`/recipe-page/${randomRecipe?.data?.recipes[7]?.id}/
-           ${randomRecipe?.data?.recipes[7]?.title}}`  }>
+          <Link to={`/recipe-page/${randomRecipe?.data?.recipes[7]?.id}/${randomRecipe?.data?.recipes[7]?.title}`}>
           <button className="viewRecipeBTN">VIEW RECIPE</button>
           </Link>
           {
@@ -609,8 +595,7 @@ return (
 
         <div className="timePrepRecipe">
           <p className="timePrep">{randomRecipe?.data?.recipes[8].readyInMinutes}Min - easy prep - {randomRecipe?.data?.recipes[8].servings} serves</p>
-          <Link to={`/recipe-page/${randomRecipe?.data?.recipes[8]?.id}/
-           ${randomRecipe?.data?.recipes[8]?.title}}`}>
+          <Link to={`/recipe-page/${randomRecipe?.data?.recipes[8]?.id}/${randomRecipe?.data?.recipes[8]?.title}`}>
           <button className="viewRecipeBTN">VIEW RECIPE</button>
           </Link>
           {
@@ -651,8 +636,7 @@ return (
 
         <div className="timePrepRecipe">
           <p className="timePrep">40 Min - easy prep - 3 serves</p>
-          <Link to={`/recipe-page/${breakfastNumber[0]?.id}/
-           ${breakfastNumber[0]?.title}}`}>
+          <Link to={`/recipe-page/${breakfastNumber[0]?.id}/${breakfastNumber[0]?.title}`}>
           <button className="viewRecipeBTN">VIEW RECIPE</button>
           </Link>
           {
@@ -688,8 +672,7 @@ return (
 
         <div className="timePrepRecipe">
           <p className="timePrep">40 Min - easy prep - 3 serves</p>
-          <Link to={`/recipe-page/${breakfastNumber[1]?.id}/
-          ${breakfastNumber[1]?.title}}` }>
+          <Link to={`/recipe-page/${breakfastNumber[1]?.id}/${breakfastNumber[1]?.title}`}>
           <button className="viewRecipeBTN">VIEW RECIPE</button>
           </Link>
           {
@@ -721,8 +704,7 @@ return (
 
         <div className="timePrepRecipe">
           <p className="timePrep">40 Min - easy prep - 3 serves</p>
-          <Link to={`/recipe-page/${breakfastNumber[2]?.id}/
-          ${breakfastNumber[2]?.title}}`}>
+          <Link to={`/recipe-page/${breakfastNumber[2]?.id}/${breakfastNumber[2]?.title}`}>
           <button className="viewRecipeBTN">VIEW RECIPE</button>
           </Link>
          { 
@@ -762,8 +744,7 @@ return (
 
         <div className="timePrepRecipe">
           <p className="timePrep">40 Min - easy prep - 3 serves</p>
-          <Link to={`/recipe-page/${lunchNumber[0]?.id}/
-          ${lunchNumber[0]?.title}}`}>`
+          <Link to={`/recipe-page/${lunchNumber[0]?.id}/${lunchNumber[0]?.title}`}>
           <button className="viewRecipeBTN">VIEW RECIPE</button>
           </Link>
           {
@@ -801,8 +782,7 @@ return (
 
         <div className="timePrepRecipe">
           <p className="timePrep">40 Min - easy prep - 3 serves</p>
-          <Link to={`/recipe-page/${lunchNumber[1]?.id}/
-          ${lunchNumber[1]?.title}}`}>
+          <Link to={`/recipe-page/${lunchNumber[1]?.id}/${lunchNumber[1]?.title}`}>
           <button className="viewRecipeBTN">VIEW RECIPE</button>
           </Link>
           {
@@ -834,8 +814,7 @@ return (
 
         <div className="timePrepRecipe">
           <p className="timePrep">40 Min - easy prep - 3 serves</p>
-          <Link to={`/recipe-page/${lunchNumber[2]?.id}/
-          ${lunchNumber[2]?.title}}`}>
+          <Link to={`/recipe-page/${lunchNumber[2]?.id}/${lunchNumber[2]?.title}`}>
           <button className="viewRecipeBTN">VIEW RECIPE</button>
           </Link>
           {
@@ -875,8 +854,7 @@ return (
 
         <div className="timePrepRecipe">
           <p className="timePrep">40 Min - easy prep - 3 serves</p>
-          <Link to={`/recipe-page/${dinnerNumber[0]?.id}/
-          ${dinnerNumber[0]?.title}}`}>
+          <Link to={`/recipe-page/${dinnerNumber[0]?.id}/${dinnerNumber[0]?.title}`}>
           <button className="viewRecipeBTN">VIEW RECIPE</button>
           </Link>
           {
@@ -912,8 +890,7 @@ return (
 
         <div className="timePrepRecipe">
           <p className="timePrep">40 Min - easy prep - 3 serves</p>
-          <Link to={`/recipe-page/${dinnerNumber[1]?.id}/
-          ${dinnerNumber[1]?.title}}`}>
+          <Link to={`/recipe-page/${dinnerNumber[1]?.id}/${dinnerNumber[1]?.title}`}>
           <button className="viewRecipeBTN">VIEW RECIPE</button>
           </Link>
           {
@@ -945,8 +922,7 @@ return (
 
         <div className="timePrepRecipe">
           <p className="timePrep">40 Min - easy prep - 3 serves</p>
-          <Link to={`/recipe-page/${dinnerNumber[2]?.id}/
-          ${dinnerNumber[2]?.title}}`}>
+          <Link to={`/recipe-page/${dinnerNumber[2]?.id}/${dinnerNumber[2]?.title}`}>
           <button className="viewRecipeBTN">VIEW RECIPE</button>
           </Link>
           {
